@@ -3,7 +3,7 @@ package com.demo1.client.comman;
  * 玩家对战成绩记录
  * 每一次定出胜负都要保存对战记录
  **/
-public class GradeRecord {
+public class GradeRecord implements java.io.Serializable{
     private int id;     //标识记录的id
     private String userName;    //玩家名字
     private String rivalName;   //对手名字
@@ -12,6 +12,7 @@ public class GradeRecord {
     private String time;        //对战时间
     private String userLevel;   //玩家等级
     private String rivalLevel;  //对手等级
+    private String model;       //游戏模式，对弈或者训练
 
     public GradeRecord() {
     }
@@ -88,6 +89,14 @@ public class GradeRecord {
         this.rivalLevel = rivalLevel;
     }
 
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     @Override
     public String toString() {
         return "GradeRecord{" +
@@ -99,6 +108,7 @@ public class GradeRecord {
                 ", time='" + time + '\'' +
                 ", userLevel='" + userLevel + '\'' +
                 ", rivalLevel='" + rivalLevel + '\'' +
+                ", model='" + model + '\'' +
                 '}';
     }
 }

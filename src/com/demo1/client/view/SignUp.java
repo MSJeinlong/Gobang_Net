@@ -4,8 +4,6 @@ import com.demo1.client.comman.Message;
 import com.demo1.client.comman.MessageType;
 import com.demo1.client.comman.User;
 import com.demo1.client.model.ClientConnServer;
-import com.demo1.client.model.UserDAO;
-import com.demo1.client.model.UserDAOImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -130,7 +128,7 @@ public class SignUp extends JDialog implements ActionListener {
                     u.setSex(sex);
                     Message m = new Message();
                     //设置消息包为注册类型
-                    m.setMesType(MessageType.User_SignUp);
+                    m.setMesType(MessageType.USER_SIGN_UP);
                     //设置消息包的用户
                     m.setU(u);
 

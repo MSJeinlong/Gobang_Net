@@ -93,7 +93,7 @@ public class Login extends JDialog implements ActionListener{
                 u.setName(name);
                 u.setPassword(password);
                 Message m = new Message();
-                m.setMesType(MessageType.User_Login);
+                m.setMesType(MessageType.USER_LOGIN);
                 m.setU(u);
 
                 //如果登录成功

@@ -37,6 +37,7 @@ public class GradeRDAOImpl implements GradeRDAO {
                 gh.setTime(time);
                 gh.setUserLevel(rs.getString(7));
                 gh.setRivalLevel(rs.getString(8));
+                gh.setModel(rs.getString(9));
                 list.add(gh);
             }
             return list;
@@ -50,7 +51,7 @@ public class GradeRDAOImpl implements GradeRDAO {
 
     @Override
     public boolean add(GradeRecord gh) {
-        String sql = "insert into gradeHistory(userName, rivalName, rounds, win, time, userLevel, rivalLevel) value(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into gradeHistory(userName, rivalName, rounds, win, time, userLevel, rivalLevel, model) value(?, ?, ?, ?, ?, ?, ?, ?)";
         conn = DBConnection.getConnection();
         try {
             pstmt = conn.prepareStatement(sql);
@@ -70,6 +71,7 @@ public class GradeRDAOImpl implements GradeRDAO {
             pstmt.setTimestamp(5, d);
             pstmt.setString(6, gh.getUserLevel());
             pstmt.setString(7, gh.getRivalLevel());
+            pstmt.setString(8, gh.getModel());
             if(pstmt.executeUpdate() != -1){
                 return true;
             }

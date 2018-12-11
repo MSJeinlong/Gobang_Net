@@ -4,6 +4,7 @@ import com.demo1.client.comman.TimeThread;
 import com.demo1.client.comman.User;
 import com.demo1.client.model.StaticModel;
 
+import com.demo1.client.tools.MapGradeRecordDialog;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
@@ -245,7 +246,8 @@ public class PCMainBoard extends MainBoard {
         }
         //玩家点击了历史战绩
         else if(source == gradeHistory){
-            new GradeRecordDialog(this, "历史战绩", u.getName());
+            GradeRecordDialog grd = new GradeRecordDialog(this, "历史战绩", u);
+            /*MapGradeRecordDialog.addGradeRecordDialog(u.getName(), grd);*/
         }
     }
 

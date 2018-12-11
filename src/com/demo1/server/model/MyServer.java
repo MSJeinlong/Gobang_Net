@@ -5,14 +5,12 @@ import com.demo1.client.comman.MessageType;
 import com.demo1.client.comman.User;
 import com.demo1.client.model.UserDAO;
 import com.demo1.client.model.UserDAOImpl;
-import com.demo1.client.tools.MapClientConServerThread;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -82,7 +80,7 @@ public class MyServer extends Thread{
                 //数据库操作
                 UserDAO uDAO = new UserDAOImpl();
                 //如果是用户登录
-                if(getMess.getMesType() == MessageType.User_Login) {
+                if(getMess.getMesType() == MessageType.USER_LOGIN) {
                     u = uDAO.Query(getMess.getU());
                     sendMess.setU(u);
                     //验证用户是否可以合法登录
@@ -108,15 +106,15 @@ public class MyServer extends Thread{
                     }
                 }
                 //如果是用户注册
-                else if(getMess.getMesType() == MessageType.User_SignUp){
+                else if(getMess.getMesType() == MessageType.USER_SIGN_UP){
                     //添加用户成功，则表示用户注册成功
                     if(uDAO.add(u)){
                         //设置消息类型为注册成功
-                        sendMess.setMesType(MessageType.SignUp_SUCCEED);
+                        sendMess.setMesType(MessageType.SIGN_UP_SUCCEED);
                         oos.writeObject(sendMess);
                     } else {    //注册失败
                         //设置注册失败消息类型
-                        sendMess.setMesType(MessageType.SignUp_FAIL);
+                        sendMess.setMesType(MessageType.SIGN_UP_FAIL);
                         oos.writeObject(sendMess);
                     }
                     //关闭连接

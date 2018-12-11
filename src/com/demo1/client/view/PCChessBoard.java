@@ -3,10 +3,12 @@ package com.demo1.client.view;
 import com.demo1.client.comman.*;
 import com.demo1.client.model.*;
 import com.demo1.client.tools.Judge;
+import com.demo1.client.tools.MapClientConServerThread;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -90,36 +92,48 @@ public class PCChessBoard extends ChessBoard {
             mb.getSituation2().setText("    状态:");
 
             //保存对战记录
-            GradeRecord gh = new GradeRecord();
+            GradeRecord gr = new GradeRecord();
             //获取当前系统时间
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
             String time = df.format(new Date()).toString();
             User u = mb.getU();
-            gh.setUserName(u.getName());
-            gh.setRivalName("电脑");
-            gh.setRounds(rounds);
-            gh.setTime(time);
-            gh.setUserLevel(u.getDan()+"-"+u.getGrade());
+            gr.setUserName(u.getName());
+            gr.setRivalName("电脑");
+            gr.setRounds(rounds);
+            gr.setTime(time);
+            gr.setUserLevel(u.getDan()+"-"+u.getGrade());
+            //设置对战记录中的模式
+            if(StaticModel.getModel() == StaticModel.VERSUS){
+                gr.setModel("对弈");
+            } else {
+                gr.setModel("训练");
+            }
             int level = mb.getLevel();
+            //设置记录里的电脑水平
+            if(level == SelectLevel.PRIMARY){
+                gr.setRivalLevel("初级");
+            }
+            else if(level == SelectLevel.MEDIUM){
+                gr.setRivalLevel("中级");
+            } else if(level == SelectLevel.SENIOR){
+                gr.setRivalLevel("高级");
+            }
+
             //黑棋赢
             if(winner == Chess.BLACK){
                 //电脑获胜
-                gh.setWin("负");
+                gr.setWin("负");
                 if(StaticModel.getModel() == StaticModel.VERSUS){
                     //对弈模式下玩家段位可以上升，训练模式下无论输赢段位都不改变
                     //电脑为初级时
-
                     if(level == SelectLevel.PRIMARY){
-                        gh.setRivalLevel("初级");
                         //输给初级电脑连降2级
                         u.degrade(2);
                     }
                     else if(level == SelectLevel.MEDIUM){
-                        gh.setRivalLevel("中级");
                         //输给中级电脑降1级
                         u.degrade(1);
                     } else if(level == SelectLevel.SENIOR){
-                        gh.setRivalLevel("高级");
                         //输给高级电脑降1级
                         u.upgrade(2);
                     }
@@ -132,21 +146,19 @@ public class PCChessBoard extends ChessBoard {
                 logger1.info("黑棋获胜！初始化棋盘页面");
             }
             else {
-                gh.setWin("胜");
+                gr.setWin("胜");
                 //对弈模式下玩家段位可以上升，训练模式下无论输赢段位都不改变
-                //电脑为初级时
-                if(level == SelectLevel.PRIMARY){
-                    gh.setRivalLevel("初级");
-                    //初级太简单了，不升级
-                }
-                else if(level == SelectLevel.MEDIUM){
-                    gh.setRivalLevel("中级");
-                    //赢了中级电脑升1级
-                    u.upgrade(1);
-                } else if(level == SelectLevel.SENIOR){
-                    gh.setRivalLevel("高级");
-                    //赢了高级电脑升2级
-                    u.upgrade(2);
+                if(StaticModel.getModel() == StaticModel.VERSUS) {
+                    //电脑为初级时
+                    if (level == SelectLevel.PRIMARY) {
+                        //初级太简单了，不升级
+                    } else if (level == SelectLevel.MEDIUM) {
+                        //赢了中级电脑升1级
+                        u.upgrade(1);
+                    } else if (level == SelectLevel.SENIOR) {
+                        //赢了高级电脑升2级
+                        u.upgrade(2);
+                    }
                 }
 
                 JOptionPane.showMessageDialog(mb, "恭喜！白棋获胜\n共 "+rounds+" 个回合, 你赢了~");
@@ -156,16 +168,50 @@ public class PCChessBoard extends ChessBoard {
             mb.setU(u);
             //更新用户等级标签
             mb.getPlv().setText("    等 级: "+u.getDan()+"-"+u.getGrade());
-            UserDAO uDAO = new UserDAOImpl();
-            uDAO.update(u);     //信息更新到数据库
-            GradeRDAO ghDAO = new GradeRDAOImpl();
-            ghDAO.add(gh);
+
+            //通过通信线程向服务器发送消息包，请求保存对战记录和更新用户等级
+            Message m = new Message();
+            //设置消息包类型
+            m.setMesType(MessageType.UPDATE_GRADE);
+            m.setU(u);
+            m.setGr(gr);
+
+            try {
+                //获取客户端到服务器的通信线程
+                ObjectOutputStream oos = new ObjectOutputStream
+                        (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                //通过对象流发送消息包
+                oos.writeObject(m);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             setClickable(MainBoard.CAN_NOT_CLICK_INFO);
             initArray();    //初始化页面
             rounds = 0;     //重置chessCount
             mb.getLabel().setText(null);    //清空计时
         }
+        //出现游戏和棋的局面
+        else if(isGameDraw()){
 
+        }
+
+    }
+
+    /**
+     * 判断是否和棋
+     */
+
+    public boolean isGameDraw(){
+        for (int i = 0; i < 19; i++) {
+            for (int j = 0; j < 19; j++) {
+                //还有可以下棋的地方（且胜负未分），就不是和棋
+                if(chess[i][j] == Chess.BLANK){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**

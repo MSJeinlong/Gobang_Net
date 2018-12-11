@@ -43,11 +43,11 @@ public class ClientConnServer {
                 User u = ms.getU();
                 MapClientConServerThread.addClientConnServerThread(u.getName(), ccst);
                 b = true;
-            } else if (ms.getMesType() == MessageType.SignUp_SUCCEED) {
+            } else if (ms.getMesType() == MessageType.SIGN_UP_SUCCEED) {
                 //注册成功
                 b = true;
                 s.close();
-            } else if(ms.getMesType() == MessageType.SignUp_FAIL || ms.getMesType() == MessageType.LOGIN_FAIL){
+            } else if(ms.getMesType() == MessageType.SIGN_UP_FAIL || ms.getMesType() == MessageType.LOGIN_FAIL){
                 //注册失败或者登录失败
                 s.close();
             }
