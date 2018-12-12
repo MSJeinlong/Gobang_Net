@@ -4,7 +4,7 @@ import com.demo1.client.comman.Message;
 import com.demo1.client.comman.MessageType;
 import com.demo1.client.comman.User;
 import com.demo1.client.model.ClientConnServer;
-import com.demo1.client.model.StaticModel;
+import com.demo1.client.model.MapUserModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -99,8 +99,7 @@ public class Login extends JDialog implements ActionListener{
                 //如果登录成功
                 if(new ClientConnServer().checkUser(m)){
                     //保存登录成功的用户信息到数据模型
-                    StaticModel.setU(u);
-                    new SelectModel();   //生成游戏模式选择界面
+                    new SelectModel(u.getName());   //生成游戏模式选择界面
                     this.dispose();     //关闭登录界面
                 } else {
                     //登录失败，提示用户

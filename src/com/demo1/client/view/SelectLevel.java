@@ -10,9 +10,10 @@ public class SelectLevel extends JDialog implements ActionListener {
     public static final int MEDIUM = 2;  //中级
     public static final int SENIOR = 3;  //高级
     private JButton jb1, jb2, jb3, jb4;
+    private String userName;
 
-    public SelectLevel() {
-
+    public SelectLevel(String userName) {
+        this.userName = userName;
         jb1 = new JButton("初级");
         jb2 = new JButton("中级");
         jb3 = new JButton("高级");
@@ -40,21 +41,25 @@ public class SelectLevel extends JDialog implements ActionListener {
         this.setResizable(false);
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == jb1){           //用户选择了电脑初级
             dispose();      //关闭当前界面
-            new PCMainBoard(PRIMARY);   //加载电脑初级游戏界面
+            new PCMainBoard(PRIMARY, userName);   //加载电脑初级游戏界面
         } else if(e.getSource() == jb2){    //用户选择了电脑中级
             dispose();      //关闭当前界面
-            new PCMainBoard(MEDIUM);   //加载电脑中级游戏界面
+            new PCMainBoard(MEDIUM, userName);   //加载电脑中级游戏界面
         } else if(e.getSource() == jb3){    //用户选择了电脑高级
             dispose();      //关闭当前界面
-            new PCMainBoard(SENIOR);   //加载电脑高级游戏界面
+            new PCMainBoard(SENIOR, userName);   //加载电脑高级游戏界面
         } else if(e.getSource() == jb4){
             dispose();
-            new SelectModel();          //直接回到SelectModel
+            new SelectModel(userName);          //直接回到SelectModel
         }
     }
 }

@@ -2,9 +2,8 @@ package com.demo1.client.view;
 
 import com.demo1.client.comman.TimeThread;
 import com.demo1.client.comman.User;
-import com.demo1.client.model.StaticModel;
+import com.demo1.client.model.MapUserModel;
 
-import com.demo1.client.tools.MapGradeRecordDialog;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
@@ -72,7 +71,8 @@ public class PCMainBoard extends MainBoard {
     }
 
     //显示对应等级的人机对战界面
-    public PCMainBoard(int level) {
+    public PCMainBoard(int level, String userName) {
+        this.u = MapUserModel.getUser(userName);
         this.level = level;
         //根据玩家选择的电脑等级，在游戏界面将其显示出来
         if(level == SelectLevel.PRIMARY){
@@ -83,14 +83,16 @@ public class PCMainBoard extends MainBoard {
             clv_text = "高级";
         }
         init();
+        String title = "欢乐五子棋--当前用户："+u.getName()+"("+u.getSex()+")"+"  等级："+u.getDan()+"-"+u.getGrade();
+        setTitle(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void init() {
-        this.u = StaticModel.getU();//获取用户的数据模型
+    /*    this.u = MapUserModel.getU();//获取用户的数据模型
         if(u == null){
             u = new User();
-        }
+        }*/
         cb = new PCChessBoard(this);
         cb.setClickable(CAN_NOT_CLICK_INFO);//设置棋盘是否能被点击
         cb.setBounds(210, 40, 570, 585);
@@ -241,7 +243,7 @@ public class PCMainBoard extends MainBoard {
         //点击返回后的操作，返回模式选择界面
         else if (source == exit) {
                 dispose();
-                new SelectLevel();
+                new SelectLevel(u.getName());
                 logger.info("玩家选择返回主菜单");
         }
         //玩家点击了历史战绩

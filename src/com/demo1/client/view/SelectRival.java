@@ -8,9 +8,11 @@ import java.awt.event.ActionListener;
 public class SelectRival extends JDialog implements ActionListener {
 
     private JButton jb1, jb2, jb3;
+    private String userName;
 
-    public SelectRival() {
+    public SelectRival(String userName) {
 
+        this.userName = userName;
         jb1 = new JButton("人人对战");
         jb2 = new JButton("人机对战");
         jb3 = new JButton("上一级菜单");
@@ -41,11 +43,11 @@ public class SelectRival extends JDialog implements ActionListener {
         } else if(e.getSource() == jb2){
             //人机对战模式
             dispose();
-            new SelectLevel();      //进入电脑水平模式选择
+            new SelectLevel(userName);      //进入电脑水平模式选择
         } else if(e.getSource() == jb3){
             //返回上一级菜单
             dispose();
-            new SelectModel();
+            new SelectModel(userName);
         }
     }
 }

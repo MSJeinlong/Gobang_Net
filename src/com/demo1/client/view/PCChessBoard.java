@@ -97,13 +97,14 @@ public class PCChessBoard extends ChessBoard {
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
             String time = df.format(new Date()).toString();
             User u = mb.getU();
+            this.model = MapUserModel.getModel(u.getName());
             gr.setUserName(u.getName());
             gr.setRivalName("电脑");
             gr.setRounds(rounds);
             gr.setTime(time);
             gr.setUserLevel(u.getDan()+"-"+u.getGrade());
             //设置对战记录中的模式
-            if(StaticModel.getModel() == StaticModel.VERSUS){
+            if(model == MapUserModel.VERSUS){
                 gr.setModel("对弈");
             } else {
                 gr.setModel("训练");
@@ -123,7 +124,7 @@ public class PCChessBoard extends ChessBoard {
             if(winner == Chess.BLACK){
                 //电脑获胜
                 gr.setWin("负");
-                if(StaticModel.getModel() == StaticModel.VERSUS){
+                if(model == MapUserModel.VERSUS){
                     //对弈模式下玩家段位可以上升，训练模式下无论输赢段位都不改变
                     //电脑为初级时
                     if(level == SelectLevel.PRIMARY){
@@ -148,7 +149,7 @@ public class PCChessBoard extends ChessBoard {
             else {
                 gr.setWin("胜");
                 //对弈模式下玩家段位可以上升，训练模式下无论输赢段位都不改变
-                if(StaticModel.getModel() == StaticModel.VERSUS) {
+                if(model == MapUserModel.VERSUS) {
                     //电脑为初级时
                     if (level == SelectLevel.PRIMARY) {
                         //初级太简单了，不升级
@@ -186,6 +187,8 @@ public class PCChessBoard extends ChessBoard {
                 e.printStackTrace();
             }
 
+            //更新MapUserModel里User的数据
+            MapUserModel.addUser(u.getName(), u);
             setClickable(MainBoard.CAN_NOT_CLICK_INFO);
             initArray();    //初始化页面
             rounds = 0;     //重置chessCount
@@ -195,7 +198,6 @@ public class PCChessBoard extends ChessBoard {
         else if(isGameDraw()){
 
         }
-
     }
 
     /**

@@ -316,7 +316,7 @@ public class PPMainBoard extends MainBoard {
         //退出游戏，加载主菜单
         else if (e.getSource() == exitGame) {
             dispose();
-            new SelectModel();
+            new SelectModel(u.getName()  );
         }
     }
 

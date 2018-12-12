@@ -1,6 +1,6 @@
 package com.demo1.client.view;
 
-import com.demo1.client.model.StaticModel;
+import com.demo1.client.model.MapUserModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +10,10 @@ import java.awt.event.ActionListener;
 public class SelectModel extends JDialog implements ActionListener {
 
     private JButton jb1, jb2;
+    private String userName;
 
-    public SelectModel() {
-
+    public SelectModel(String userName) {
+        this.userName = userName;
         jb1 = new JButton("对弈模式");
         jb2 = new JButton("训练模式");
 
@@ -30,18 +31,22 @@ public class SelectModel extends JDialog implements ActionListener {
         this.setResizable(false);
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         //用户选择了对弈模式
         if(e.getSource() == jb1){
             dispose();          //关闭当前界面
-            StaticModel.setModel(StaticModel.VERSUS);     //设置模式为对弈
-            new SelectRival();          //进入对手选择模式
+            MapUserModel.addModel(userName, MapUserModel.VERSUS);//设置模式为对弈
+            new SelectRival(userName);          //进入对手选择模式
         } else if(e.getSource() == jb2){
             //用户选择了训练模式，直接进入人机训练
             dispose();
-            StaticModel.setModel(StaticModel.TRAIN);      //设置模式为训练
-            new SelectLevel();          //进入电脑等级选择
+            MapUserModel.addModel(userName, MapUserModel.TRAIN);      //设置模式为训练
+            new SelectLevel(userName);          //进入电脑等级选择
         }
     }
 }

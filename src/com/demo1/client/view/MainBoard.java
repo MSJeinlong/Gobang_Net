@@ -1,18 +1,13 @@
 package com.demo1.client.view;
 
-
 import com.demo1.client.comman.TimeThread;
 import com.demo1.client.comman.User;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-;
-
 
 /**
  * 人机对战和人人对战父类
@@ -46,7 +41,7 @@ public class MainBoard extends JFrame implements MouseListener, ActionListener {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setTitle("欢乐五子棋");
+        setTitle("趣味五子棋");
     }
 
     public User getU() {
@@ -71,7 +66,6 @@ public class MainBoard extends JFrame implements MouseListener, ActionListener {
      * 初始化计时标签
      */
     public void init1() {
-        u = new User();     //初始化用户(伪用户)信息，该用户信息为空，用于程序调试
         label_timeCount = new JLabel();
         label_timeCount.setFont(new Font("宋体", Font.BOLD, 30));
         label_timeCount.setBounds(502, 1, 500, 50);

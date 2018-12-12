@@ -42,6 +42,8 @@ public class ChessBoard extends JPanel implements MouseMotionListener, MouseList
     //棋盘上隐形的坐标，每一个小区域代表一个数组元素
     public int chess[][] = new int[COLS][RAWS];
     public int clickable;       //棋盘是否可以点击
+    public int model;           //游戏模式，对弈或训练
+
 
     /**
      * 构造函数，初始化棋盘的图片，初始化数组

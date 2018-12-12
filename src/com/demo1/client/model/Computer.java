@@ -3,7 +3,7 @@ package com.demo1.client.model;
 
 import com.demo1.client.comman.Chess;
 import com.demo1.client.comman.Coord;
-import com.demo1.client.view.ChooseLevel;
+import com.demo1.client.view.SelectLevel;
 
 /**
  * 电脑水平算法
@@ -32,7 +32,7 @@ public class Computer {
     public Coord computePos(int role, int chess[][], int level) {
         int x, y, posX, posY;
         //选择初级
-        if (level == ChooseLevel.PRIMARY) {
+        if (level == SelectLevel.PRIMARY) {
             //随机找到的位置可能有棋，所以用循环
             while (true) {
                 //随机生成坐标
@@ -47,14 +47,14 @@ public class Computer {
             }
         }
         //选择初级人机
-        else if (level == ChooseLevel.MEDIUM) {
+        else if (level == SelectLevel.MEDIUM) {
             //加载初级人机函数
             countMaxLines_primary(chess, Chess.WHITE);
             return coord;
 
         }
         //选择中级人机
-        else if (level == ChooseLevel.SENIOR) {
+        else if (level == SelectLevel.SENIOR) {
             //加载中级人机函数
             countMaxLines_medium(chess, Chess.WHITE);
             return coord;

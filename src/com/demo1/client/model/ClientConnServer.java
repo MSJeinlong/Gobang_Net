@@ -39,9 +39,11 @@ public class ClientConnServer {
                 ClientConnServerThread ccst = new ClientConnServerThread(s);
                 //启动该通信线程
                 ccst.start();
-                //把线程添加到Map映射
+                //把线程添加到Map映射，
                 User u = ms.getU();
                 MapClientConServerThread.addClientConnServerThread(u.getName(), ccst);
+                //把用户user也添加到Map映射
+                MapUserModel.addUser(u.getName(), u);
                 b = true;
             } else if (ms.getMesType() == MessageType.SIGN_UP_SUCCEED) {
                 //注册成功
