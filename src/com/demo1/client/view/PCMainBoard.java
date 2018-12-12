@@ -249,7 +249,6 @@ public class PCMainBoard extends MainBoard {
         //玩家点击了历史战绩
         else if(source == gradeHistory){
             GradeRecordDialog grd = new GradeRecordDialog(this, "历史战绩", u);
-            /*MapGradeRecordDialog.addGradeRecordDialog(u.getName(), grd);*/
         }
     }
 

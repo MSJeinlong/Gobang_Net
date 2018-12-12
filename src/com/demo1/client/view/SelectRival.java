@@ -39,7 +39,8 @@ public class SelectRival extends JDialog implements ActionListener {
         if(e.getSource() == jb1){
             //人人模式
             dispose();
-            new PPMainBoard();
+            new PPMainBoard_Demo2(userName);
+            /*new PPMainBoard();*/
         } else if(e.getSource() == jb2){
             //人机对战模式
             dispose();

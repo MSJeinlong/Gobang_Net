@@ -26,6 +26,8 @@ public class GradeRecordDialog extends JDialog {
     private JScrollPane jsp;
     private GradeRDAO grDAO;
     private GradeRModel grModel;
+    private JPanel infobar;     //用于显示记录总数的面板
+    private JLabel label_count; //用于显示记录总数的标签
 
     public GradeRecordDialog(Frame owner, String title, User u) {
         super(owner, title);
@@ -33,6 +35,25 @@ public class GradeRecordDialog extends JDialog {
         //把自个加入Map映射
         MapGradeRecordDialog.addGradeRecordDialog(u.getName(), this);
 
+        grModel = new GradeRModel();
+        table = new JTable(grModel);
+        jsp = new JScrollPane(table);
+
+        //南部的面板
+        infobar = new JPanel();
+        label_count = new JLabel();
+
+        infobar.add(label_count);
+
+        this.setLayout(new BorderLayout());
+        this.add(jsp, "Center");
+        this.add(infobar, "South");
+
+        //设置JDialog属性
+        this.setBounds(500, 400, 1100, 500);
+        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setVisible(true);
+        this.setResizable(false);
 
         //向服务器发出请求，要求得到用户的对战记录
         try {
@@ -45,30 +66,9 @@ public class GradeRecordDialog extends JDialog {
             //通过对象流向服务器发送消息包
             oos.writeObject(sendMs);
 
-            /*//得到服务器返回的信息包
-            ObjectInputStream ois = new ObjectInputStream(MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getInputStream());
-            Message getMs = (Message) ois.readObject();
-            this.addRows(getMs.getGrlist());*/
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-    /*    grDAO = new GradeRDAOImpl();
-        List<GradeRecord> list= grDAO.Query(userName);
-        this.addRows(list);*/
-
-        grModel = new GradeRModel();
-        table = new JTable(grModel);
-        jsp = new JScrollPane(table);
-
-        this.setLayout(new BorderLayout());
-        this.add(jsp);
-
-        //设置JDialog属性
-        this.setBounds(500, 400, 1100, 500);
-        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        this.setVisible(true);
-        /*this.setResizable(false);*/
     }
 
 
@@ -76,15 +76,7 @@ public class GradeRecordDialog extends JDialog {
     public void updateGradeRecord(List<GradeRecord> list){
         grModel = new GradeRModel();
         grModel.updateRows(list);
-        if(table == null){
-            System.out.println("table为 Null");
-        }
-        if (grModel == null){
-            System.out.println("grModel为null");
-        }
-        if(list == null){
-            System.out.println("list为null");
-        }
         table.setModel(grModel);
+        label_count.setText("共有 "+grModel.getRowCount()+" 条记录");
     }
 }
