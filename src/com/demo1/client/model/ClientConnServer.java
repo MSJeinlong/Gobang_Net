@@ -4,6 +4,7 @@ import com.demo1.client.comman.Message;
 import com.demo1.client.comman.MessageType;
 import com.demo1.client.comman.User;
 import com.demo1.client.tools.MapClientConServerThread;
+import com.demo1.client.tools.MapUserModel;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

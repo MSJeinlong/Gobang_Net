@@ -1,9 +1,16 @@
 package com.demo1.client.view;
 
+import com.demo1.client.comman.Message;
+import com.demo1.client.comman.MessageType;
+import com.demo1.client.comman.User;
+import com.demo1.client.tools.MapClientConServerThread;
+import com.demo1.client.tools.MapUserModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ObjectOutputStream;
 
 public class SelectLevel extends JDialog implements ActionListener {
     public static final int PRIMARY = 1; //初级
@@ -47,7 +54,7 @@ public class SelectLevel extends JDialog implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        User u = MapUserModel.getUser(userName);
         if(e.getSource() == jb1){           //用户选择了电脑初级
             dispose();      //关闭当前界面
             new PCMainBoard(PRIMARY, userName);   //加载电脑初级游戏界面
@@ -60,6 +67,27 @@ public class SelectLevel extends JDialog implements ActionListener {
         } else if(e.getSource() == jb4){
             dispose();
             new SelectModel(userName);          //直接回到SelectModel
+        }
+        if(e.getSource() != jb4){
+            //设置User的status 为 STAND_ALONE， STAND_ALONE 表示和电脑对战
+            u.setStatus(User.STAND_ALONE);
+            //关闭当前界面
+            this.dispose();
+            //更新Map里User
+            MapUserModel.addUser(userName, u);
+            //向服务器发出请求，要求更新数据库里的user.status
+            try {
+                //获取客户端到服务器的通信线程
+                ObjectOutputStream oos = new ObjectOutputStream
+                        (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                Message m = new Message();
+                m.setMesType(MessageType.UPDATE_USER);
+                m.setU(u);
+                //通过对象流向服务器发送消息包
+                oos.writeObject(m);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
     }
 }

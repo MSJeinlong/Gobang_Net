@@ -1,11 +1,16 @@
 package com.demo1.client.view;
 
-import com.demo1.client.model.MapUserModel;
+import com.demo1.client.comman.Message;
+import com.demo1.client.comman.MessageType;
+import com.demo1.client.comman.User;
+import com.demo1.client.tools.MapClientConServerThread;
+import com.demo1.client.tools.MapUserModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ObjectOutputStream;
 
 public class SelectModel extends JDialog implements ActionListener {
 
@@ -37,9 +42,10 @@ public class SelectModel extends JDialog implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         //用户选择了对弈模式
         if(e.getSource() == jb1){
-            dispose();          //关闭当前界面
+            dispose();
             MapUserModel.addModel(userName, MapUserModel.VERSUS);//设置模式为对弈
             new SelectRival(userName);          //进入对手选择模式
         } else if(e.getSource() == jb2){

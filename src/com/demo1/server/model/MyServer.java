@@ -5,6 +5,7 @@ import com.demo1.client.comman.MessageType;
 import com.demo1.client.comman.User;
 import com.demo1.client.model.UserDAO;
 import com.demo1.client.model.UserDAOImpl;
+import com.demo1.client.tools.MapUserModel;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -94,6 +95,8 @@ public class MyServer extends Thread{
                         SerConClientThread scct = new SerConClientThread(s);
                         //保存客户端线程到 Map，便于后面的通信
                         MapSerConClientThread.addSerConClientThread(u.getName(), scct);
+                        //把登录成功的用户用HashMap保存起来
+                        MapUserModel.addUser(u.getName(), u);
                         //启动线程
                         scct.start();
                     } else {

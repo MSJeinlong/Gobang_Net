@@ -3,6 +3,8 @@ import com.demo1.client.comman.User;
 import com.demo1.client.tools.DBConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
 
@@ -104,6 +106,35 @@ public class UserDAOImpl implements UserDAO {
             DBConnection.free(conn, pstmt, rs);
         }
         return false;
+    }
+
+    //查询所有状态为1的玩家
+    @Override
+    public List<User> QueryAllWaitVersusUser() {
+        List<User> list = new ArrayList<>();
+        String sql = "select * from users where status = 1";
+        conn = DBConnection.getConnection();
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                //数据中存在用户u,完善u的信息即可
+                User u = new User();
+                u.setId(rs.getInt(1));
+                u.setName(rs.getString(2));
+                u.setPassword(rs.getString(3));
+                u.setSex(rs.getString(4));
+                u.setDan(rs.getInt(5));
+                u.setGrade(rs.getInt(6));
+                u.setStatus(rs.getInt(7));
+                list.add(u);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnection.free(conn, stmt, rs);
+        }
+        return list;
     }
 
 }

@@ -3,8 +3,9 @@ package com.demo1.client.model;
 import com.demo1.client.comman.Message;
 import com.demo1.client.comman.MessageType;
 import com.demo1.client.tools.MapGradeRecordDialog;
+import com.demo1.client.tools.MapFindRival;
+import com.demo1.client.view.FindRival;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
@@ -47,8 +48,12 @@ public class ClientConnServerThread extends Thread{
                     //服务器返回用户对战记录
                     case MessageType.RECORD_RESPONSE:
                         //拿到客户端的历史记录Dialog,更新数据
-                        System.out.println("这是客户端：得到并显示"+m.getU().getName()+" 对战记录");
                         MapGradeRecordDialog.getGradeRecordDialog(m.getU().getName()).updateGradeRecord(m.getGrlist());
+                        break;
+                        //服务器返回等待对战的用户
+                    case MessageType.RESPONSE_WAIT_VERSUS_USERS:
+                        //得到消息包的等待对战的用户列表，在FindRival显示
+                        MapFindRival.getFindRival(m.getU().getName()).showWaitUser(m.getUserList());
                         break;
                 }
 

@@ -4,6 +4,7 @@ import com.demo1.client.comman.*;
 import com.demo1.client.model.*;
 import com.demo1.client.tools.Judge;
 import com.demo1.client.tools.MapClientConServerThread;
+import com.demo1.client.tools.MapUserModel;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;

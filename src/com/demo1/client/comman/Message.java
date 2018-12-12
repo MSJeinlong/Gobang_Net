@@ -17,6 +17,7 @@ public class Message implements java.io.Serializable{
     private User u;
     private GradeRecord gr;
     private List<GradeRecord> grlist;
+    private List<User> userList;
 
     public Message() {
     }
@@ -83,5 +84,13 @@ public class Message implements java.io.Serializable{
 
     public void setGrlist(List<GradeRecord> grlist) {
         this.grlist = grlist;
+    }
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 }

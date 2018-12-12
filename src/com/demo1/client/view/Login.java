@@ -4,7 +4,6 @@ import com.demo1.client.comman.Message;
 import com.demo1.client.comman.MessageType;
 import com.demo1.client.comman.User;
 import com.demo1.client.model.ClientConnServer;
-import com.demo1.client.model.MapUserModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -72,7 +71,7 @@ public class Login extends JDialog implements ActionListener{
 
         // 设置窗体属性
         setTitle("趣味五子棋登录界面");
-        /*setBounds(500, 500, 300, 400);*/
+      /*  setBounds(500, 500, 300, 400);*/
         pack();
         setLocation(700, 400);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -86,7 +85,6 @@ public class Login extends JDialog implements ActionListener{
         switch (e.getActionCommand()){
             //登录
             case "Login":
-
                 String name = jtf.getText().trim();
                 String password = new String(jpf.getPassword()).trim();
                 User u = new User();

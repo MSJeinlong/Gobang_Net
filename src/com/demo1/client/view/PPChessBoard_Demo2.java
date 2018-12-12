@@ -228,6 +228,7 @@ public class PPChessBoard_Demo2 extends ChessBoard{
         }
     }
 
+
     /**
      * 鼠标点击事件
      *

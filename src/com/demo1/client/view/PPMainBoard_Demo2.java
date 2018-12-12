@@ -1,18 +1,22 @@
 package com.demo1.client.view;
 
-import com.demo1.client.comman.TimeThread;
+import com.demo1.client.comman.Message;
+import com.demo1.client.comman.MessageType;
 import com.demo1.client.comman.User;
-import com.demo1.client.model.MapUserModel;
+import com.demo1.client.tools.MapClientConServerThread;
+import com.demo1.client.tools.MapUserModel;
 import com.demo1.client.tools.NetTool;
 import org.apache.log4j.Logger;
 
+import javax.management.ObjectName;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import java.net.DatagramPacket;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.ObjectOutputStream;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 
 /**
  * @program: Gobang
@@ -24,7 +28,7 @@ import java.net.InetAddress;
  */
 public class PPMainBoard_Demo2 extends MainBoard {
     private PPChessBoard_Demo2 cb;
-    private JButton startGame;
+    private JButton findRival;
     private JButton exitGame;
     private JButton back;//悔棋按钮
     private JButton send; //聊天发送按钮
@@ -39,6 +43,7 @@ public class PPMainBoard_Demo2 extends MainBoard {
     private JLabel situation2;//对手状态标签
     private JLabel jLabel1;
     private JLabel jLabel2;//
+
     private JTextArea talkArea;
 /*    private JTextField tf_ip; //输入IP框*/
     private JTextField talkField; //聊天文本框
@@ -50,7 +55,7 @@ public class PPMainBoard_Demo2 extends MainBoard {
     private User rival;     //对手
 
     public JButton getstart() {
-        return startGame;
+        return findRival;
     }
 
     public String getIp() {
@@ -83,6 +88,8 @@ public class PPMainBoard_Demo2 extends MainBoard {
 
     public PPMainBoard_Demo2(String userName) {
         init(userName);
+        String title = "欢乐五子棋--当前用户："+u.getName()+"("+u.getSex()+")"+"  等级："+u.getDan()+"-"+u.getGrade();
+        setTitle(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -110,11 +117,11 @@ public class PPMainBoard_Demo2 extends MainBoard {
         gradeRecord.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
         gradeRecord.addActionListener(this);
 
-        startGame = new JButton("寻找对手");//设置名称，下同
-        startGame.setBounds(780, 130, 200, 50);//设置起始位置，宽度和高度，下同
-        startGame.setBackground(new Color(50, 205, 50));//设置颜色，下同
-        startGame.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
-        startGame.addActionListener(this);
+        findRival = new JButton("寻找对手");//设置名称，下同
+        findRival.setBounds(780, 130, 200, 50);//设置起始位置，宽度和高度，下同
+        findRival.setBackground(new Color(50, 205, 50));//设置颜色，下同
+        findRival.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
+        findRival.addActionListener(this);
         back = new JButton("悔  棋");
         back.setBounds(780, 185, 200, 50);
         back.setBackground(new Color(85, 107, 47));
@@ -148,12 +155,12 @@ public class PPMainBoard_Demo2 extends MainBoard {
         myLevel = new JLabel("    等 级: "+u.getDan()+"-"+u.getGrade());
         myLevel.setOpaque(true);
         myLevel.setBackground(new Color(82, 109, 165));
-        myLevel.setBounds(10, 130, 200, 50);
+        myLevel.setBounds(10, 465, 200, 50);
         myLevel.setFont(new Font("宋体", Font.BOLD, 20));
         rivalLevel = new JLabel("    等 级: "+rival.getDan()+"-"+rival.getGrade());
         rivalLevel.setOpaque(true);
         rivalLevel.setBackground(new Color(82, 109, 165));
-        rivalLevel.setBounds(10, 465, 200, 50);
+        rivalLevel.setBounds(10, 130, 200, 50);
         rivalLevel.setFont(new Font("宋体", Font.BOLD, 20));
         situation1 = new JLabel("    状态:");
         situation1.setOpaque(true);
@@ -176,7 +183,7 @@ public class PPMainBoard_Demo2 extends MainBoard {
         timecount.setFont(new Font("宋体", Font.BOLD, 30));
         talkArea = new JTextArea();  //对弈信息
         talkArea.setEnabled(false);
-        talkArea.setBackground(Color.BLUE);
+        talkArea.setBackground(new Color(199,238,206));
         //滑动条
         JScrollPane p = new JScrollPane(talkArea);
         p.setBounds(780, 295, 200, 200);
@@ -184,7 +191,7 @@ public class PPMainBoard_Demo2 extends MainBoard {
      /*   add(tf_ip);*/
         add(cb);
         add(gradeRecord);
-        add(startGame);
+        add(findRival);
         add(back);
         add(exitGame);
         add(people1);
@@ -200,6 +207,50 @@ public class PPMainBoard_Demo2 extends MainBoard {
         //加载线程
         /*ReicThread();*/
         repaint();
+
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent e)
+            {
+                System.out.println("触发windowClosing事件");
+                //向服务器发出请求，要求更新数据库里的user.status
+                try {
+                    //获取客户端到服务器的通信线程
+                    ObjectOutputStream oos = new ObjectOutputStream
+                            (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                    Message m = new Message();
+                    m.setMesType(MessageType.UPDATE_USER);
+                    m.setU(u);
+                    u.setStatus(User.OUT_LINE);
+                    //通过对象流向服务器发送消息包
+                    oos.writeObject(m);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                System.exit(0);
+            }
+
+            public void windowClosed(WindowEvent e)
+            {
+                //向服务器发出请求，要求更新数据库里的user.status
+                try {
+                    //获取客户端到服务器的通信线程
+                    ObjectOutputStream oos = new ObjectOutputStream
+                            (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                    Message m = new Message();
+                    m.setMesType(MessageType.UPDATE_USER);
+                    m.setU(u);
+                    u.setStatus(User.OUT_LINE);
+                    //通过对象流向服务器发送消息包
+                    oos.writeObject(m);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                System.exit(0);
+                System.out.println("触发windowClosed事件");
+            }
+        });
     }
 
     /**
@@ -285,30 +336,8 @@ public class PPMainBoard_Demo2 extends MainBoard {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == startGame) {
-      /*      if (!tf_ip.getText().isEmpty() &&
-                    !tf_ip.getText().equals("不能为空") &&
-                    !tf_ip.getText().equals("请输入IP地址") &&
-                    !tf_ip.getText().equals("不能连接到此IP")) {
-                ip = tf_ip.getText();
-                startGame.setEnabled(false);
-                startGame.setText("等待对方准备");
-                tf_ip.setEditable(false);
-                //发送准备好信息
-                NetTool.sendUDPBroadCast(ip, "ready, ");
-                gameState = "ready";
-                if (enemyGameState == "ready") {
-                    gameState = "FIGHTING";
-                    cb.setClickable(CAN_CLICK_INFO);
-                    startGame.setText("正在游戏");
-                    situation1.setText("    状态:等待...");
-                    situation2.setText("    状态:下棋...");
-                    timer = new TimeThread(label_timeCount);
-                    timer.start();
-                }
-            } else {
-                tf_ip.setText("不能为空");
-            }*/
+        if (e.getSource() == findRival) {
+            FindRival fr = new FindRival(u);
         }
         //点击悔棋后的操作
         else if (e.getSource() == back) {
@@ -342,10 +371,6 @@ public class PPMainBoard_Demo2 extends MainBoard {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-    /*    if (e.getSource() == tf_ip) {
-            tf_ip.setText("");
-        } else if (e.getSource() == talkField) {
-            talkField.setText("");
-        }*/
+
     }
 }

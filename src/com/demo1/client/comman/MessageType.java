@@ -19,4 +19,7 @@ public interface MessageType {
     public final static int UPDATE_GRADE = 10;       //（赢或输时）更新用户等级和保存对战记录
     public final static int RECORD_REQUEST = 11;     //用户（客户端）请求的对战记录
     public final static int RECORD_RESPONSE = 12;    //服务器返回给客户端的对战记录
+    public final static int UPDATE_USER = 13;       //更新数据库里的User.status
+    public final static int REQUEST_WAIT_VERSUS_USERS = 14;    //客户端请求得到所有在等待对战的用户
+    public final static int RESPONSE_WAIT_VERSUS_USERS = 15;    //服务器返回所有在等待对战的用户list
 }

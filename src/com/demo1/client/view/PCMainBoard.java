@@ -1,14 +1,20 @@
 package com.demo1.client.view;
 
+import com.demo1.client.comman.Message;
+import com.demo1.client.comman.MessageType;
 import com.demo1.client.comman.TimeThread;
 import com.demo1.client.comman.User;
-import com.demo1.client.model.MapUserModel;
+import com.demo1.client.tools.MapClientConServerThread;
+import com.demo1.client.tools.MapUserModel;
 
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.ObjectOutputStream;
 
 /**
  * 人机对战页面（棋盘为人机和人人共享）
@@ -85,7 +91,49 @@ public class PCMainBoard extends MainBoard {
         init();
         String title = "欢乐五子棋--当前用户："+u.getName()+"("+u.getSex()+")"+"  等级："+u.getDan()+"-"+u.getGrade();
         setTitle(title);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent e)
+            {
+                System.out.println("触发windowClosing事件");
+                //向服务器发出请求，要求更新数据库里的user.status
+                try {
+                    //获取客户端到服务器的通信线程
+                    ObjectOutputStream oos = new ObjectOutputStream
+                            (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                    Message m = new Message();
+                    m.setMesType(MessageType.UPDATE_USER);
+                    m.setU(u);
+                    u.setStatus(User.OUT_LINE);
+                    //通过对象流向服务器发送消息包
+                    oos.writeObject(m);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                System.exit(0);
+            }
+
+            public void windowClosed(WindowEvent e)
+            {
+                //向服务器发出请求，要求更新数据库里的user.status
+                try {
+                    //获取客户端到服务器的通信线程
+                    ObjectOutputStream oos = new ObjectOutputStream
+                            (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                    Message m = new Message();
+                    m.setMesType(MessageType.UPDATE_USER);
+                    m.setU(u);
+                    u.setStatus(User.OUT_LINE);
+                    //通过对象流向服务器发送消息包
+                    oos.writeObject(m);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                System.exit(0);
+                System.out.println("触发windowClosed事件");
+            }
+        });
     }
 
     public void init() {

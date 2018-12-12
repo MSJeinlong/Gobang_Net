@@ -1,4 +1,4 @@
-package com.demo1.client.model;
+package com.demo1.client.tools;
 
 import com.demo1.client.comman.User;
 
@@ -37,4 +37,7 @@ public class MapUserModel {
         return (User)userMap.get(userName);
     }
 
+    public static HashMap getUserMap() {
+        return userMap;
+    }
 }

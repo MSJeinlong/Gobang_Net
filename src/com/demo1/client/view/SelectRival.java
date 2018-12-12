@@ -1,9 +1,17 @@
 package com.demo1.client.view;
 
+import com.demo1.client.comman.Message;
+import com.demo1.client.comman.MessageType;
+import com.demo1.client.comman.User;
+import com.demo1.client.tools.MapClientConServerThread;
+import com.demo1.client.tools.MapPPMainBoard;
+import com.demo1.client.tools.MapUserModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ObjectOutputStream;
 
 public class SelectRival extends JDialog implements ActionListener {
 
@@ -35,12 +43,32 @@ public class SelectRival extends JDialog implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        User u = MapUserModel.getUser(userName);
         //判断用户选择了哪种模式
         if(e.getSource() == jb1){
             //人人模式
             dispose();
-            new PPMainBoard_Demo2(userName);
-            /*new PPMainBoard();*/
+            //设置User的status 为 1， 1 表示等待对战状态
+            u.setStatus(User.WAIT_VERSUS);
+            //更新Map里User
+            MapUserModel.addUser(userName, u);
+            //向服务器发出请求，要求更新数据库里的user.status
+            try {
+                //获取客户端到服务器的通信线程
+                ObjectOutputStream oos = new ObjectOutputStream
+                        (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                Message m = new Message();
+                m.setMesType(MessageType.UPDATE_USER);
+                m.setU(u);
+                //通过对象流向服务器发送消息包
+                oos.writeObject(m);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+            //生成人人对战界面
+            PPMainBoard_Demo2 ppmb = new PPMainBoard_Demo2(userName);
+            //把userName的PPMainBoard添加到Map，用于通信
+            MapPPMainBoard.addPPMainBoard(userName, ppmb);
         } else if(e.getSource() == jb2){
             //人机对战模式
             dispose();

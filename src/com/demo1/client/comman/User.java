@@ -1,13 +1,17 @@
 package com.demo1.client.comman;
 
 public class User implements java.io.Serializable{
+    public static final int OUT_LINE = 0;       //离线
+    public static final int WAIT_VERSUS = 1;    //在线且未在对弈
+    public static final int VERSUSING = 2;      //在线对弈中
+    public static final int STAND_ALONE = 3;    //和电脑玩（单机）
     private int id;              //标识用户的id号
     private String name;         //账号名
     private String password;     //密码
     private String sex;          //性别
     private int dan = 1;        //段位，共九个段位，最低为初段（1段），最高为9段，默认为初段
     private int grade = 1;       //等级，每个段位10个等级，最高为10级，最低为1级，默认为1级
-    private int status;          //登录状态，0为离线，1为在线未对战，2为在线匹配，3为在线对战中
+    private int status;          //登录状态，0为离线，1为在线未对战，2为在线对弈，
 
     public User() {
     }
