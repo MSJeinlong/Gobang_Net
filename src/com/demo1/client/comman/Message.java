@@ -14,10 +14,12 @@ public class Message implements java.io.Serializable{
     private String getter;
     private String con;
     private String sendTime;
-    private User u;
+    private User u;         //用户自己
     private GradeRecord gr;
-    private List<GradeRecord> grlist;
-    private List<User> userList;
+    private List<GradeRecord> grlist;       //历史战绩列表
+    private List<User> userList;            //用户列表
+    private boolean acceptChallenge;        //接受挑战与否
+
 
     public Message() {
     }
@@ -92,5 +94,13 @@ public class Message implements java.io.Serializable{
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
+    }
+
+    public boolean isAcceptChallenge() {
+        return acceptChallenge;
+    }
+
+    public void setAcceptChallenge(boolean acceptChallenge) {
+        this.acceptChallenge = acceptChallenge;
     }
 }

@@ -65,18 +65,18 @@ public class SerConClientThread extends Thread {
                             //返回消息包给客户端
                             oos = new ObjectOutputStream(s.getOutputStream());
                             oos.writeObject(sendMess);
-                            System.out.println("返回 "+getMess.getU().getName()+" 的对战记录包");
+                            System.out.println("返回 " + getMess.getU().getName() + " 的对战记录包");
                             break;
-                            //客户端请求更新数据库里User信息
+                        //客户端请求更新数据库里User信息
                         case MessageType.UPDATE_USER:
                             uDAO = new UserDAOImpl();
                             uDAO.update(getMess.getU());
                             break;
-                            //服务器相应客户端请求得到的等待对战的用户列表
+                        //服务器相应客户端请求得到的等待对战的用户列表
                         case MessageType.REQUEST_WAIT_VERSUS_USERS:
                             uDAO = new UserDAOImpl();
                             sendMess = new Message();
-                            System.out.println("Server:"+getMess.getU());
+                            System.out.println("Server:" + getMess.getU());
                             sendMess.setU(getMess.getU());
                             //到数据库里查询等待对战的所有用户
                             sendMess.setUserList(uDAO.QueryAllWaitVersusUser());
@@ -86,6 +86,24 @@ public class SerConClientThread extends Thread {
                             oos = new ObjectOutputStream(s.getOutputStream());
                             oos.writeObject(sendMess);
                             uDAO.QueryAllWaitVersusUser();
+                            break;
+                        //客户端请求转发挑战信息
+                        case MessageType.LAUNCH_A_CHALLENGE:
+                            //根据Getter转发信息
+                            //先取得Getter的通信线程
+                            SerConClientThread scct = MapSerConClientThread.getClientThread(getMess.getGetter());
+                            //再把getMess转发给对应的用户
+                            oos = new ObjectOutputStream(scct.getS().getOutputStream());
+                            oos.writeObject(getMess);
+                            break;
+                            //客户端回应了挑战信息，请求转发回应信息
+                        case MessageType.RESPONSE_A_CHALLENGE:
+                            //根据Getter转发信息
+                            //先取得Getter的通信线程
+                            SerConClientThread scct1 = MapSerConClientThread.getClientThread(getMess.getGetter());
+                            //再把getMess转发给对应的用户
+                            oos = new ObjectOutputStream(scct1.getS().getOutputStream());
+                            oos.writeObject(getMess);
                             break;
                     }
                 }

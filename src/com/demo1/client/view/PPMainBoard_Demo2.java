@@ -228,7 +228,8 @@ public class PPMainBoard_Demo2 extends MainBoard {
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
-                System.exit(0);
+                /*System.exit(0);*/
+                dispose();
             }
 
             public void windowClosed(WindowEvent e)
@@ -247,7 +248,7 @@ public class PPMainBoard_Demo2 extends MainBoard {
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
-                System.exit(0);
+               /* System.exit(0);*/
                 System.out.println("触发windowClosed事件");
             }
         });

@@ -21,7 +21,7 @@ import java.util.List;
  * @Author: long
  * @Description:这是显示在线用户的Dialog，用户双击对方头像便可发起挑战
  */
-public class FindRival extends JDialog implements MouseListener{
+public class FindRival extends JFrame implements MouseListener {
 
     private JPanel jp, toolbar;
     private JScrollPane jsp;
@@ -47,21 +47,12 @@ public class FindRival extends JDialog implements MouseListener{
             e.printStackTrace();
         }
 
-    /*    List<User> list = MapFindRival.getUserList(u.getName());
-        if(list == null){
-            System.out.println("list为Null");
-        }
-        for (int i = 0; i < list.size(); i++) {
-            JLabel jlb = new JLabel(i+1+":"+u.getName(), new ImageIcon("images/boy2.png"), JLabel.LEFT);
-            jlb.addMouseListener(this);
-            onLineUser.add(jlb);
-        }*/
 
         jp = new JPanel();
         tip = new JLabel("双击玩家头像发起挑战");
         tip.setEnabled(false);
         jp.add(tip);
-        for(JLabel jlb:onLineUser){
+        for (JLabel jlb : onLineUser) {
             jp.add(jlb);
         }
         jsp = new JScrollPane(jp);
@@ -72,47 +63,68 @@ public class FindRival extends JDialog implements MouseListener{
 
         this.add(jsp, "Center");
         this.add(toolbar, "South");
-      /*  this.setBounds(1000, 400, 150, 300);*/
+        /*  this.setBounds(1000, 400, 150, 300);*/
         this.setLocation(1200, 400);
         /*this.pack();*/
         this.setVisible(true);
         this.setResizable(false);
-        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public void showWaitUser(List<User> list){
+    public void showWaitUser(List<User> list) {
 
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.size());
             User u1 = list.get(i);
-            JLabel jlb = new JLabel(i+1+":"+u1.getName(), new ImageIcon("images/boy2.png"), JLabel.LEFT);
-            if(u1.getName().equals(u.getName())){
+            JLabel jlb = new JLabel(i + 1 + ":" + u1.getName(), new ImageIcon("images/boy2.png"), JLabel.LEFT);
+            if (u1.getName().equals(u.getName())) {
                 //用户自己的头像设置不可点击
                 jlb.setEnabled(false);
             }
-            jlb.addMouseListener(this);
             onLineUser.add(jlb);
         }
         jp.setLayout(new GridLayout(onLineUser.size() + 1, 1, 4, 4));
-        for(JLabel jlb:onLineUser){
+        for (JLabel jlb : onLineUser) {
             jp.add(jlb);
             jlb.addMouseListener(this);
         }
-        usersCount.setText("共有 "+onLineUser.size()+" 个在线用户");
+        usersCount.setText("共有 " + onLineUser.size() + " 个在线用户");
         this.pack();
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         //用户双击对手头像发起挑战
-       if(e.getClickCount() == 2){
-
-       }
+        if(e.getClickCount() == 1) {
+            //发送挑战信息
+            Message m = new Message();
+            //设置消息包类型
+            m.setMesType(MessageType.LAUNCH_A_CHALLENGE);
+            m.setSender(u.getName());
+            m.setU(u);
+            //得到对手的名字
+            String[] strArr = ((JLabel) e.getSource()).getText().split(":");
+          /*  //用户点击了自己头像，不能发起挑战
+            if(strArr[1].equals(u.getName())){
+                return;
+            }*/
+            m.setGetter(strArr[1]);
+            System.out.println("你向 " + strArr[1] + " 发起了挑战");
+            System.out.println("鼠标点击次数："+e.getClickCount());
+            //请求服务器转发挑战信息
+            try {
+                ObjectOutputStream oos = new ObjectOutputStream
+                        (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                oos.writeObject(m);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        System.out.println("按压了鼠标");
     }
 
     @Override
@@ -122,13 +134,15 @@ public class FindRival extends JDialog implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        JLabel jlab = (JLabel)e.getSource();
+        JLabel jlab = (JLabel) e.getSource();
         jlab.setForeground(Color.red);
+        setCursor(Cursor.HAND_CURSOR);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        JLabel jlab = (JLabel)e.getSource();
+        JLabel jlab = (JLabel) e.getSource();
         jlab.setForeground(Color.black);
+        setCursor(Cursor.DEFAULT_CURSOR);
     }
 }

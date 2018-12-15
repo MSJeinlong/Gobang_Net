@@ -22,4 +22,6 @@ public interface MessageType {
     public final static int UPDATE_USER = 13;       //更新数据库里的User.status
     public final static int REQUEST_WAIT_VERSUS_USERS = 14;    //客户端请求得到所有在等待对战的用户
     public final static int RESPONSE_WAIT_VERSUS_USERS = 15;    //服务器返回所有在等待对战的用户list
+    public final static int LAUNCH_A_CHALLENGE = 16;    //用户主动发起挑战
+    public final static int RESPONSE_A_CHALLENGE = 17;  //对手回应对战
 }

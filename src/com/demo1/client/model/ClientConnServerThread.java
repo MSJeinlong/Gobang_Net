@@ -4,9 +4,12 @@ import com.demo1.client.comman.Message;
 import com.demo1.client.comman.MessageType;
 import com.demo1.client.tools.MapGradeRecordDialog;
 import com.demo1.client.tools.MapFindRival;
+import com.demo1.client.tools.MapPPMainBoard;
 import com.demo1.client.view.FindRival;
 
+import javax.swing.*;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**
@@ -15,9 +18,13 @@ import java.net.Socket;
  * @Author: long
  * @Description:客户端和服务器通信的线程
  */
-public class ClientConnServerThread extends Thread{
+public class ClientConnServerThread extends Thread {
 
     private Socket s;
+    private ObjectInputStream ois;      //输入流
+    private ObjectOutputStream oos;     //输出流
+    private Message getMess;            //接收到的信息
+    private Message sendMess;           //要发送的信息
 
     public ClientConnServerThread(Socket s) {
         this.s = s;
@@ -29,11 +36,11 @@ public class ClientConnServerThread extends Thread{
 
     @Override
     public void run() {
-        while (true){
+        while (true) {
             //不停读取从服务器发来的信息
             try {
-                ObjectInputStream ois  = new ObjectInputStream(s.getInputStream());
-                Message m = (Message) ois.readObject();
+                ois = new ObjectInputStream(s.getInputStream());
+                getMess = (Message) ois.readObject();
 
              /*   //普通的信息包
                 int messType = m.getMesType();
@@ -44,19 +51,55 @@ public class ClientConnServerThread extends Thread{
                 //返回在线用户的信息包*/
 
                 //判断服务器发过来的消息包的类型
-                switch (m.getMesType()){
+                switch (getMess.getMesType()) {
                     //服务器返回用户对战记录
                     case MessageType.RECORD_RESPONSE:
                         //拿到客户端的历史记录Dialog,更新数据
-                        MapGradeRecordDialog.getGradeRecordDialog(m.getU().getName()).updateGradeRecord(m.getGrlist());
+                        MapGradeRecordDialog.getGradeRecordDialog(getMess.getU().getName()).updateGradeRecord(getMess.getGrlist());
                         break;
-                        //服务器返回等待对战的用户
+                    //服务器返回等待对战的用户
                     case MessageType.RESPONSE_WAIT_VERSUS_USERS:
                         //得到消息包的等待对战的用户列表，在FindRival显示
-                        MapFindRival.getFindRival(m.getU().getName()).showWaitUser(m.getUserList());
+                        MapFindRival.getFindRival(getMess.getU().getName()).showWaitUser(getMess.getUserList());
+                        break;
+                        //服务器转发过来的挑战信息
+                    case MessageType.LAUNCH_A_CHALLENGE:
+                        //通知该用户收到了挑战信息
+                        int n = JOptionPane.showConfirmDialog
+                                (MapPPMainBoard.getPPMainBoard(getMess.getGetter()), getMess.getSender()+"向你发起了挑战，是否接受?", "挑战请求", JOptionPane.YES_NO_CANCEL_OPTION);
+                        //根据n回应对方的挑战
+                        sendMess = new Message();
+                        sendMess.setMesType(MessageType.RESPONSE_A_CHALLENGE);
+                        //设置sendMess的发起人和接收人
+                        sendMess.setSender(getMess.getGetter());
+                        sendMess.setGetter(getMess.getSender());
+                        //该用户接受了挑战
+                        if(n == JOptionPane.YES_OPTION){
+                            sendMess.setAcceptChallenge(true);
+                        }else {
+                            //用户拒绝了挑战
+                            sendMess.setAcceptChallenge(false);
+                        }
+                        //把信息发送给服务器，让服务器进行转发
+                        oos = new ObjectOutputStream(s.getOutputStream());
+                        oos.writeObject(sendMess);
+                        break;
+                        //对手回应了挑战信息
+                    case MessageType.RESPONSE_A_CHALLENGE:
+                        //通知用户收到了对手的回应
+                        //判断对方是接受挑战还是拒绝挑战
+                        //若对手接受挑战
+                        if(getMess.isAcceptChallenge()) {
+                            JOptionPane.showMessageDialog
+                                    (MapPPMainBoard.getPPMainBoard(getMess.getGetter()), getMess.getSender() + "接受了你的挑战，现在开始游戏", "对方回应", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        //若对手拒绝挑战
+                        else {
+                            JOptionPane.showMessageDialog
+                                    (MapPPMainBoard.getPPMainBoard(getMess.getGetter()), "很遗憾，"+getMess.getSender() + "拒绝了你的挑战", "对方回应", JOptionPane.INFORMATION_MESSAGE);
+                        }
                         break;
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
                 break;
