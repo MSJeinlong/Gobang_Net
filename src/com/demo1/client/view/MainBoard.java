@@ -39,7 +39,6 @@ public class MainBoard extends JFrame implements MouseListener, ActionListener {
         setBounds(400, 150, 1000, 680);
         init1();
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setTitle("趣味五子棋");
     }
@@ -90,6 +89,7 @@ public class MainBoard extends JFrame implements MouseListener, ActionListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+
     }
 
     @Override

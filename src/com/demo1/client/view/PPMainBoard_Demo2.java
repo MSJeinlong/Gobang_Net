@@ -1,8 +1,6 @@
 package com.demo1.client.view;
 
-import com.demo1.client.comman.Message;
-import com.demo1.client.comman.MessageType;
-import com.demo1.client.comman.User;
+import com.demo1.client.comman.*;
 import com.demo1.client.tools.MapClientConServerThread;
 import com.demo1.client.tools.MapUserModel;
 import com.demo1.client.tools.NetTool;
@@ -15,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.DatagramSocket;
 
@@ -30,10 +29,11 @@ public class PPMainBoard_Demo2 extends MainBoard {
     private PPChessBoard_Demo2 cb;
     private JButton findRival;
     private JButton exitGame;
-    private JButton back;//悔棋按钮
-    private JButton send; //聊天发送按钮
+    private JButton back;           //悔棋按钮
+    private JButton send;           //聊天发送按钮
     private JButton gradeRecord;    //历史成绩查询
-    private JLabel timecount;//计时器标签
+    private JLabel timecount;    //计时器标签
+
     //双方状态
     private JLabel people1;//自己标签
     private JLabel people2;//对手标签
@@ -45,29 +45,14 @@ public class PPMainBoard_Demo2 extends MainBoard {
     private JLabel jLabel2;//
 
     private JTextArea talkArea;
-/*    private JTextField tf_ip; //输入IP框*/
-    private JTextField talkField; //聊天文本框
-    private String ip;
-    private DatagramSocket socket;
-    private String gameState;
-    private String enemyGameState;//敌人状态
+/*    private JTextField tf_ip;      //输入IP框*/
+    private JTextField talkField;   //聊天文本框
+    private boolean myTurn;          //是否是我的回合
     private Logger logger = Logger.getLogger("游戏");
     private User rival;     //对手
 
-    public JButton getstart() {
+    public JButton getFindRival() {
         return findRival;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-/*    public JTextField getTf() {
-        return tf_ip;
-    }*/
-
-    public DatagramSocket getSocket() {
-        return socket;
     }
 
     public JLabel getLabel1() {
@@ -86,6 +71,20 @@ public class PPMainBoard_Demo2 extends MainBoard {
         return situation2;
     }
 
+    public JTextArea getTalkArea() {
+        return talkArea;
+    }
+
+    public User getRival() {
+        return rival;
+    }
+
+    public void setRival(User rival) {
+        this.rival = rival;
+        rivalLevel.setText("    等 级: "+rival.getDan()+"-"+rival.getGrade());
+        people2.setText("    对手: "+rival.getName());
+    }
+
     public PPMainBoard_Demo2(String userName) {
         init(userName);
         String title = "欢乐五子棋--当前用户："+u.getName()+"("+u.getSex()+")"+"  等级："+u.getDan()+"-"+u.getGrade();
@@ -98,18 +97,11 @@ public class PPMainBoard_Demo2 extends MainBoard {
      */
     public void init(String userName) {
         //暂时初始化一下rival
-        this.rival = new User();
         this.u = MapUserModel.getUser(userName);
-        gameState = "NOT_START";
-        enemyGameState = "NOT_START";
         cb = new PPChessBoard_Demo2(this);
         cb.setClickable(PPMainBoard.CAN_NOT_CLICK_INFO);
         cb.setBounds(210, 40, 570, 585);
         cb.setVisible(true);
-        cb.setInfoBoard(talkArea);
-/*        tf_ip = new JTextField("请输入对手IP地址");
-        tf_ip.setBounds(780, 75, 200, 30);
-        tf_ip.addMouseListener(this);*/
         //设置历史战绩按钮
         gradeRecord = new JButton("历史成绩");
         gradeRecord.setBounds(780, 75, 200, 50);//设置起始位置，宽度和高度，下同
@@ -134,12 +126,13 @@ public class PPMainBoard_Demo2 extends MainBoard {
         talkField = new JTextField("聊天");
         talkField.setBounds(780, 510, 200, 30);
         talkField.addMouseListener(this);
+        talkField.addActionListener(this);
         exitGame = new JButton("返  回");
         exitGame.setBackground(new Color(218, 165, 32));
         exitGame.setBounds(780, 240, 200, 50);
         exitGame.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
         exitGame.addActionListener(this);
-        people1 = new JLabel("    我:");
+        people1 = new JLabel("    我: "+u.getName());
         people1.setOpaque(true);
         people1.setBackground(new Color(82, 109, 165));
         people1.setBounds(10, 410, 200, 50);
@@ -157,7 +150,7 @@ public class PPMainBoard_Demo2 extends MainBoard {
         myLevel.setBackground(new Color(82, 109, 165));
         myLevel.setBounds(10, 465, 200, 50);
         myLevel.setFont(new Font("宋体", Font.BOLD, 20));
-        rivalLevel = new JLabel("    等 级: "+rival.getDan()+"-"+rival.getGrade());
+        rivalLevel = new JLabel("    等 级:");
         rivalLevel.setOpaque(true);
         rivalLevel.setBackground(new Color(82, 109, 165));
         rivalLevel.setBounds(10, 130, 200, 50);
@@ -172,6 +165,7 @@ public class PPMainBoard_Demo2 extends MainBoard {
         situation2.setBackground(new Color(82, 109, 165));
         situation2.setBounds(10, 520, 200, 50);
         situation2.setFont(new Font("宋体", Font.BOLD, 20));
+
         jLabel1 = new JLabel();
         add(jLabel1);
         jLabel1.setBounds(130, 75, 200, 50);
@@ -254,6 +248,33 @@ public class PPMainBoard_Demo2 extends MainBoard {
         });
     }
 
+    //我方先开始游戏
+    public void myFirstStart(){
+        //设置开始游戏
+        myTurn = true;
+        cb.setClickable(MainBoard.CAN_CLICK_INFO);
+        //先开始游戏的玩家执白
+        cb.setRole(Chess.WHITE);
+        situation1.setText("    状态:等待...");
+        situation2.setText("    状态:下棋...");
+        logger.info("等待对方消息");
+        timer = new TimeThread(label_timeCount);
+        timer.start();
+    }
+
+    //对方先开始游戏
+    public void rivalFirstStart(){
+        //设置开始游戏
+        myTurn = false;
+        /*cb.setClickable(MainBoard.CAN_CLICK_INFO);*/
+        //后开始的玩家执白
+        cb.setRole(Chess.BLACK);
+        situation1.setText("    状态:下棋...");
+        situation2.setText("    状态:等待...");
+        logger.info("等待对方消息");
+        timer = new TimeThread(label_timeCount);
+        timer.start();
+    }
     /**
      * 接收信息放在线程中
      */
@@ -337,41 +358,42 @@ public class PPMainBoard_Demo2 extends MainBoard {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == findRival) {
+        Object source = e.getSource();
+        //寻找对手
+        if (source == findRival) {
             FindRival fr = new FindRival(u);
         }
-        //点击悔棋后的操作
-        else if (e.getSource() == back) {
-            //发送悔棋信息
-            NetTool.sendUDPBroadCast(ip, "back" + ", ");
-            logger.info("玩家选择悔棋");
-        }
-        // 聊天发送按钮
-        else if (e.getSource() == send) {
-            if (!talkField.getText().isEmpty() && !talkField.getText().equals("不能为空")) {
-                //获得输入的内容
-                String msg = talkField.getText();
-                talkArea.append("我：" + msg + "\n");
-                talkField.setText("");
-                /*ip = tf_ip.getText();*/
-                NetTool.sendUDPBroadCast(ip, "enemy" + "," + msg);
-            } else {
-                talkField.setText("不能为空");
-            }
-
-        }
         //退出游戏，加载主菜单
-        else if (e.getSource() == exitGame) {
+        else if (source == exitGame) {
             dispose();
             new SelectModel(u.getName());
         }
-        else if(e.getSource() == gradeRecord){
+        //查询历史战绩
+        else if(source == gradeRecord){
             GradeRecordDialog grd = new GradeRecordDialog(this, "历史战绩", u);
+        }
+        //玩家按下了"发送"按钮或者在输入框输完信息后按下回车，就能发送聊天信息
+        else if(source == send || source == talkField){
+            Message m = new Message();
+            m.setMesType(MessageType.SEND_CHAT_CONTENT);
+            String chatCon = talkField.getText();
+            //在聊天区域中显示聊天信息
+            talkArea.append("我："+chatCon+"\n");
+            //清空输入框
+            talkField.setText("");
+
+            m.setChatContent(chatCon);
+            m.setSender(u.getName());
+            m.setGetter(rival.getName());
+            //请求服务器转发信息
+            try {
+                ObjectOutputStream oos = new ObjectOutputStream
+                        (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                oos.writeObject(m);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
 }

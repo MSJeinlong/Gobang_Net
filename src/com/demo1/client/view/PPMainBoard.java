@@ -1,6 +1,7 @@
 package com.demo1.client.view;
 
 import com.demo1.client.comman.TimeThread;
+import com.demo1.client.comman.User;
 import com.demo1.client.tools.NetTool;
 import org.apache.log4j.Logger;
 
@@ -44,6 +45,7 @@ public class PPMainBoard extends MainBoard {
     private String gameState;
     private String enemyGameState;//敌人状态
     private Logger logger = Logger.getLogger("游戏");
+    private User rival;     //对手
 
     public JButton getstart() {
         return startGame;
@@ -75,6 +77,14 @@ public class PPMainBoard extends MainBoard {
 
     public JLabel getSituation2() {
         return situation2;
+    }
+
+    public User getRival() {
+        return rival;
+    }
+
+    public void setRival(User rival) {
+        this.rival = rival;
     }
 
     public PPMainBoard() {

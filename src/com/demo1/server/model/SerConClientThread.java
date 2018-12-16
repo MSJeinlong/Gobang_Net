@@ -42,7 +42,7 @@ public class SerConClientThread extends Thread {
                 if (!s.isClosed()) {
                     ois = new ObjectInputStream(s.getInputStream());
                     getMess = (Message) ois.readObject();
-
+                    int messType = getMess.getMesType();
                     //对从客户端取得消息进行类型判断，然后做相应的处理
                     switch (getMess.getMesType()) {
                         //客户端请求保存对战记录，并更新玩家等级
@@ -87,22 +87,20 @@ public class SerConClientThread extends Thread {
                             oos.writeObject(sendMess);
                             uDAO.QueryAllWaitVersusUser();
                             break;
+                            //以下的操作相同
                         //客户端请求转发挑战信息
                         case MessageType.LAUNCH_A_CHALLENGE:
+                            //客户端回应了挑战信息，请求转发回应信息
+                        case MessageType.RESPONSE_A_CHALLENGE:
+                            //客户端请求转发棋子的坐标信息
+                        case MessageType.CHESS_COORD:
+                            //客户端请求转发聊天信息
+                        case MessageType.SEND_CHAT_CONTENT:
                             //根据Getter转发信息
                             //先取得Getter的通信线程
                             SerConClientThread scct = MapSerConClientThread.getClientThread(getMess.getGetter());
                             //再把getMess转发给对应的用户
                             oos = new ObjectOutputStream(scct.getS().getOutputStream());
-                            oos.writeObject(getMess);
-                            break;
-                            //客户端回应了挑战信息，请求转发回应信息
-                        case MessageType.RESPONSE_A_CHALLENGE:
-                            //根据Getter转发信息
-                            //先取得Getter的通信线程
-                            SerConClientThread scct1 = MapSerConClientThread.getClientThread(getMess.getGetter());
-                            //再把getMess转发给对应的用户
-                            oos = new ObjectOutputStream(scct1.getS().getOutputStream());
                             oos.writeObject(getMess);
                             break;
                     }

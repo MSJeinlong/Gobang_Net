@@ -240,4 +240,9 @@ public class PPChessBoard extends ChessBoard {
             repaint();
         }
     }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        super.mouseEntered(e);
+    }
 }

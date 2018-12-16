@@ -5,6 +5,7 @@ import com.demo1.client.comman.MessageType;
 import com.demo1.client.comman.User;
 import com.demo1.client.tools.MapClientConServerThread;
 import com.demo1.client.tools.MapFindRival;
+import com.demo1.client.tools.MapPPMainBoard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,7 +64,9 @@ public class FindRival extends JFrame implements MouseListener {
 
         this.add(jsp, "Center");
         this.add(toolbar, "South");
+
         /*  this.setBounds(1000, 400, 150, 300);*/
+        this.setTitle(u.getName());
         this.setLocation(1200, 400);
         /*this.pack();*/
         this.setVisible(true);
@@ -95,7 +98,7 @@ public class FindRival extends JFrame implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         //用户双击对手头像发起挑战
-        if(e.getClickCount() == 1) {
+        if(e.getClickCount() == 2) {
             //发送挑战信息
             Message m = new Message();
             //设置消息包类型
@@ -116,6 +119,11 @@ public class FindRival extends JFrame implements MouseListener {
                 ObjectOutputStream oos = new ObjectOutputStream
                         (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
                 oos.writeObject(m);
+
+                JButton jb_findRival = MapPPMainBoard.getPPMainBoard(u.getName()).getFindRival();
+                jb_findRival.setText("等待对手回应");
+                jb_findRival.setEnabled(false);
+                this.dispose();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }

@@ -50,10 +50,12 @@ public class GradeRecordDialog extends JDialog {
         this.add(infobar, "South");
 
         //设置JDialog属性
+        this.setTitle(u.getName()+"的历史战绩");
         this.setBounds(500, 400, 1100, 500);
+       /* this.setLocation(500, 400);
+        this.pack();*/
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setVisible(true);
-        this.setResizable(false);
 
         //向服务器发出请求，要求得到用户的对战记录
         try {

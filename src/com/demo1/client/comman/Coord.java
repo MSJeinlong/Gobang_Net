@@ -3,11 +3,17 @@ package com.demo1.client.comman;
 /**
  * 坐标的get和set方法
  *
- * @author admin
+ * @author long
+ * 保存棋子的坐标
  */
 public class Coord {
     int x;
     int y;
+
+    public Coord(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public int getX() {
         return x;

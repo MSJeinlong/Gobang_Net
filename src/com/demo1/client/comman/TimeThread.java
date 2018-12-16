@@ -29,7 +29,10 @@ public class TimeThread extends Thread {
             //如果30秒结束，督促
             if (label.getText().equals("0")) {
                 timeOver = true;
-                cb.WinEvent(Chess.BLACK);
+                if(cb != null) {
+                    //超过时间限制，电脑获胜
+                    cb.WinEvent(Chess.BLACK);
+                }
                /* startTime = System.currentTimeMillis();     //重新获取开始时间*/
                 timeOver = false;
                 label.setText(null);

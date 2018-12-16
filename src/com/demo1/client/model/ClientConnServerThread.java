@@ -5,7 +5,9 @@ import com.demo1.client.comman.MessageType;
 import com.demo1.client.tools.MapGradeRecordDialog;
 import com.demo1.client.tools.MapFindRival;
 import com.demo1.client.tools.MapPPMainBoard;
+import com.demo1.client.tools.MapUserModel;
 import com.demo1.client.view.FindRival;
+import com.demo1.client.view.PPMainBoard_Demo2;
 
 import javax.swing.*;
 import java.io.ObjectInputStream;
@@ -25,6 +27,7 @@ public class ClientConnServerThread extends Thread {
     private ObjectOutputStream oos;     //输出流
     private Message getMess;            //接收到的信息
     private Message sendMess;           //要发送的信息
+    private PPMainBoard_Demo2 ppMB;     //用户对应的游戏界面
 
     public ClientConnServerThread(Socket s) {
         this.s = s;
@@ -62,21 +65,33 @@ public class ClientConnServerThread extends Thread {
                         //得到消息包的等待对战的用户列表，在FindRival显示
                         MapFindRival.getFindRival(getMess.getU().getName()).showWaitUser(getMess.getUserList());
                         break;
-                        //服务器转发过来的挑战信息
+                    //服务器转发过来的挑战信息
                     case MessageType.LAUNCH_A_CHALLENGE:
+                        //取得该用户的游戏界面
+                        ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
                         //通知该用户收到了挑战信息
                         int n = JOptionPane.showConfirmDialog
-                                (MapPPMainBoard.getPPMainBoard(getMess.getGetter()), getMess.getSender()+"向你发起了挑战，是否接受?", "挑战请求", JOptionPane.YES_NO_CANCEL_OPTION);
+                                (ppMB, getMess.getSender() + "向你发起了挑战，是否接受?", "挑战请求", JOptionPane.YES_NO_CANCEL_OPTION);
                         //根据n回应对方的挑战
                         sendMess = new Message();
+                        sendMess.setU(MapUserModel.getUser(getMess.getGetter()));
                         sendMess.setMesType(MessageType.RESPONSE_A_CHALLENGE);
                         //设置sendMess的发起人和接收人
                         sendMess.setSender(getMess.getGetter());
                         sendMess.setGetter(getMess.getSender());
                         //该用户接受了挑战
-                        if(n == JOptionPane.YES_OPTION){
+                        if (n == JOptionPane.YES_OPTION) {
                             sendMess.setAcceptChallenge(true);
-                        }else {
+                            //设置对手Rival
+                            ppMB.setRival(getMess.getU());
+                            //被挑战者优先开始
+                            ppMB.myFirstStart();
+
+                            //设置"寻找对手"按钮状态
+                            JButton jb1 = ppMB.getFindRival();
+                            jb1.setText("游戏开始...");
+                            jb1.setEnabled(false);
+                        } else {
                             //用户拒绝了挑战
                             sendMess.setAcceptChallenge(false);
                         }
@@ -84,20 +99,42 @@ public class ClientConnServerThread extends Thread {
                         oos = new ObjectOutputStream(s.getOutputStream());
                         oos.writeObject(sendMess);
                         break;
-                        //对手回应了挑战信息
+                    //对手回应了挑战信息
                     case MessageType.RESPONSE_A_CHALLENGE:
+                        ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
+                        JButton jb_findRival = ppMB.getFindRival();
                         //通知用户收到了对手的回应
                         //判断对方是接受挑战还是拒绝挑战
                         //若对手接受挑战
-                        if(getMess.isAcceptChallenge()) {
-                            JOptionPane.showMessageDialog
-                                    (MapPPMainBoard.getPPMainBoard(getMess.getGetter()), getMess.getSender() + "接受了你的挑战，现在开始游戏", "对方回应", JOptionPane.INFORMATION_MESSAGE);
+                        if (getMess.isAcceptChallenge()) {
+                           /* JOptionPane.showMessageDialog
+                                    (ppMB1, getMess.getSender() + "接受了你的挑战，现在开始游戏", "对方回应", JOptionPane.INFORMATION_MESSAGE);*/
+                            //设置对手
+                            ppMB.setRival(getMess.getU());
+                            //让对手先开始游戏
+                            ppMB.rivalFirstStart();
+                            //设置"寻找对手"按钮状态
+                            jb_findRival.setText("游戏开始...");
                         }
                         //若对手拒绝挑战
                         else {
                             JOptionPane.showMessageDialog
-                                    (MapPPMainBoard.getPPMainBoard(getMess.getGetter()), "很遗憾，"+getMess.getSender() + "拒绝了你的挑战", "对方回应", JOptionPane.INFORMATION_MESSAGE);
+                                    (ppMB, "很遗憾，" + getMess.getSender() + "拒绝了你的挑战", "对方回应", JOptionPane.INFORMATION_MESSAGE);
+                            jb_findRival.setText("寻找对手");
+                            jb_findRival.setEnabled(true);
                         }
+                        break;
+                    //处理对手发送过来的聊天信息
+                    case MessageType.SEND_CHAT_CONTENT:
+                        if (ppMB == null) {
+                            ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
+                        }
+                        //把对手发过来的聊天信息显示在聊天面板内
+                        ppMB.getTalkArea().append(getMess.getSender() + "：" + getMess.getChatContent() + "\n");
+                        break;
+                    //处理对手发过来的棋子信息
+                    case MessageType.CHESS_COORD:
+
                         break;
                 }
             } catch (Exception e) {

@@ -12,13 +12,13 @@ public class Message implements java.io.Serializable{
     private int mesType;
     private String sender;
     private String getter;
-    private String con;
-    private String sendTime;
+    private String chatContent;     //聊天内容
     private User u;         //用户自己
     private GradeRecord gr;
     private List<GradeRecord> grlist;       //历史战绩列表
     private List<User> userList;            //用户列表
     private boolean acceptChallenge;        //接受挑战与否
+    private Coord coord;                       //保存棋子的坐标
 
 
     public Message() {
@@ -48,20 +48,12 @@ public class Message implements java.io.Serializable{
         this.getter = getter;
     }
 
-    public String getCon() {
-        return con;
+    public String getChatContent() {
+        return chatContent;
     }
 
-    public void setCon(String con) {
-        this.con = con;
-    }
-
-    public String getSendTime() {
-        return sendTime;
-    }
-
-    public void setSendTime(String sendTime) {
-        this.sendTime = sendTime;
+    public void setChatContent(String chatContent) {
+        this.chatContent = chatContent;
     }
 
     public User getU() {
@@ -102,5 +94,13 @@ public class Message implements java.io.Serializable{
 
     public void setAcceptChallenge(boolean acceptChallenge) {
         this.acceptChallenge = acceptChallenge;
+    }
+
+    public Coord getCoord() {
+        return coord;
+    }
+
+    public void setCoord(Coord coord) {
+        this.coord = coord;
     }
 }

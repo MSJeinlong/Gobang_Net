@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.ObjectOutputStream;
@@ -81,21 +82,19 @@ public class PCMainBoard extends MainBoard {
         this.u = MapUserModel.getUser(userName);
         this.level = level;
         //根据玩家选择的电脑等级，在游戏界面将其显示出来
-        if(level == SelectLevel.PRIMARY){
+        if (level == SelectLevel.PRIMARY) {
             clv_text = "初级";
-        } else if(level == SelectLevel.MEDIUM){
+        } else if (level == SelectLevel.MEDIUM) {
             clv_text = "中级";
-        } else if(level == SelectLevel.SENIOR){
+        } else if (level == SelectLevel.SENIOR) {
             clv_text = "高级";
         }
         init();
-        String title = "欢乐五子棋--当前用户："+u.getName()+"("+u.getSex()+")"+"  等级："+u.getDan()+"-"+u.getGrade();
+        String title = "欢乐五子棋--当前用户：" + u.getName() + "(" + u.getSex() + ")" + "  等级：" + u.getDan() + "-" + u.getGrade();
         setTitle(title);
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        this.addWindowListener(new WindowAdapter()
-        {
-            public void windowClosing(WindowEvent e)
-            {
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
                 System.out.println("触发windowClosing事件");
                 //向服务器发出请求，要求更新数据库里的user.status
                 try {
@@ -111,12 +110,11 @@ public class PCMainBoard extends MainBoard {
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
-                /*System.exit(0);*/
-                dispose();
+                System.exit(0);
+               /* dispose();*/
             }
 
-            public void windowClosed(WindowEvent e)
-            {
+            public void windowClosed(WindowEvent e) {
                 //向服务器发出请求，要求更新数据库里的user.status
                 try {
                     //获取客户端到服务器的通信线程
@@ -131,7 +129,7 @@ public class PCMainBoard extends MainBoard {
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
-               /* System.exit(0);*/
+                /* System.exit(0);*/
                 System.out.println("触发windowClosed事件");
             }
         });
@@ -185,12 +183,12 @@ public class PCMainBoard extends MainBoard {
         timecount = new JLabel("    计时器:");
         timecount.setBounds(320, 1, 200, 50);
         timecount.setFont(new Font("宋体", Font.BOLD, 30));
-        plv = new JLabel("    等 级: "+u.getDan()+"-"+u.getGrade());
+        plv = new JLabel("    等 级: " + u.getDan() + "-" + u.getGrade());
         plv.setOpaque(true);
         plv.setBackground(new Color(82, 109, 165));
         plv.setBounds(10, 465, 200, 50);
         plv.setFont(new Font("宋体", Font.BOLD, 20));
-        clv = new JLabel("    等 级: "+clv_text);
+        clv = new JLabel("    等 级: " + clv_text);
         clv.setOpaque(true);
         clv.setBackground(new Color(82, 109, 165));
         clv.setBounds(10, 130, 200, 50);
@@ -262,11 +260,11 @@ public class PCMainBoard extends MainBoard {
             restart.setEnabled(true);
         }
         //点击重新开始操作
-        else if(source == restart){
+        else if (source == restart) {
             //重新开始前让用户确认
             int rs = JOptionPane.showConfirmDialog(this, "您将丢失现在的游戏进度，确定要重新开始吗?", "提示", JOptionPane.YES_NO_OPTION);
             //用户点击了"是"
-            if (rs == JOptionPane.YES_OPTION){
+            if (rs == JOptionPane.YES_OPTION) {
                 //重置游戏
                 cb.gameRestart();
                 //自动开始新一局游戏
@@ -291,14 +289,28 @@ public class PCMainBoard extends MainBoard {
         }
         //点击返回后的操作，返回模式选择界面
         else if (source == exit) {
-                dispose();
-                new SelectLevel(u.getName());
-                logger.info("玩家选择返回主菜单");
+            dispose();
+            new SelectLevel(u.getName());
+            logger.info("玩家选择返回主菜单");
         }
         //玩家点击了历史战绩
-        else if(source == gradeHistory){
+        else if (source == gradeHistory) {
             GradeRecordDialog grd = new GradeRecordDialog(this, "历史战绩", u);
         }
     }
 
+ /*   @Override
+    public void mouseEntered(MouseEvent e) {
+        //棋盘可以点击时，把光标设置为手型
+        Point  p = this.getLocation();
+        int px = p.x;
+        int py = p.y;
+        if(cb.clickable == MainBoard.CAN_CLICK_INFO){
+            if(cb.mousex >= px + 210 && cb.mousex <= px + 780 && cb.mousey >= py + 40 && cb.mousey <= py + 625){
+                this.setCursor(Cursor.HAND_CURSOR);
+            }
+        }
+        System.out.println("cb的鼠标坐标：("+cb.mousex+","+cb.mousey+")");
+        System.out.println(e.getX()+", "+e.getY());
+    }*/
 }

@@ -1,13 +1,16 @@
 package com.demo1.client.view;
 
-import com.demo1.client.comman.Chess;
+import com.demo1.client.comman.*;
 import com.demo1.client.tools.Judge;
+import com.demo1.client.tools.MapClientConServerThread;
 import com.demo1.client.tools.NetTool;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 /**
  * @program: Gobang
@@ -17,7 +20,6 @@ import java.awt.event.MouseEvent;
  */
 public class PPChessBoard_Demo2 extends ChessBoard{
     private int role; //角色
-    private JTextArea talkArea; //交流信息
     private PPMainBoard_Demo2 mb;
     private int step[][] = new int[30 * 30][2];//定义储存步数数组
     private int stepCount = 0;//初始化数组
@@ -25,6 +27,7 @@ public class PPChessBoard_Demo2 extends ChessBoard{
     private ImageIcon imageIcon1 = new ImageIcon(blackChess);
     private ImageIcon imageIcon2 = new ImageIcon(whiteChess);
     private Logger logger = Logger.getLogger("棋盘");
+    private User u;
 
     /**
      * 构造函数，初始化棋盘的图片，初始化数组
@@ -34,17 +37,9 @@ public class PPChessBoard_Demo2 extends ChessBoard{
     public PPChessBoard_Demo2(PPMainBoard_Demo2 mb) {
         super();
         this.mb = mb;
-        //设置先开始游戏的玩家执白
-        setRole(Chess.WHITE);
-    }
-
-    /**
-     * 设置聊天窗口
-     *
-     * @param area 聊天窗口
-     */
-    public void setInfoBoard(JTextArea area) {
-        talkArea = area;
+        this.u = mb.getU();
+        /*//设置先开始游戏的玩家执白
+        setRole(Chess.WHITE);*/
     }
 
     /**
@@ -148,8 +143,8 @@ public class PPChessBoard_Demo2 extends ChessBoard{
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            mb.getstart().setText("开始游戏");
-            mb.getstart().setEnabled(true);
+            /*mb.getstart().setText("开始游戏");
+            mb.getstart().setEnabled(true);*/
             result = Chess.WHITE;
             JOptionPane.showMessageDialog(mb, "恭喜！白棋获胜");
             logger.info("白棋获胜！初始化页面");
@@ -167,8 +162,8 @@ public class PPChessBoard_Demo2 extends ChessBoard{
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            mb.getstart().setText("开始游戏");
-            mb.getstart().setEnabled(true);
+           /* mb.getstart().setText("开始游戏");
+            mb.getstart().setEnabled(true);*/
             result = Chess.BLACK;
             setClickable(MainBoard.CAN_NOT_CLICK_INFO);
             JOptionPane.showMessageDialog(mb, "恭喜！黑棋获胜");
@@ -215,14 +210,29 @@ public class PPChessBoard_Demo2 extends ChessBoard{
                         e1.printStackTrace();
                     }
                     chess[x1][y1] = role;
-                    saveStep(x1, y1);
+                    saveStep(x1, y1);     //保存这一步的棋子坐标，用于悔棋
                     savePreChess(x1, y1); //保存最新棋子的坐标，用于红框标识
-                    //发送棋坐标
-                    NetTool.sendUDPBroadCast(mb.getIp(), "POS" + "," + x1 + "," + y1 + "," + role);
                     //判断输赢
                     int winner = Judge.whowin(x1, y1, chess, role);
                     WinEvent(winner);
                     setClickable(MainBoard.CAN_NOT_CLICK_INFO);
+
+                    //请求服务器转发这一步棋的信息
+                    try {
+                        ObjectOutputStream oos = new ObjectOutputStream
+                                (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                        //设置消息包
+                        Message m = new Message();
+                        m.setMesType(MessageType.CHESS_COORD);
+                        //设置棋子坐标
+                        m.setCoord(new Coord(x1, y1));
+                        m.setSender(u.getName());
+                        m.setGetter(mb.getRival().getName());
+
+                        oos.writeObject(m);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
                 }
             }
         }

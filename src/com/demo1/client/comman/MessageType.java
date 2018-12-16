@@ -24,4 +24,6 @@ public interface MessageType {
     public final static int RESPONSE_WAIT_VERSUS_USERS = 15;    //服务器返回所有在等待对战的用户list
     public final static int LAUNCH_A_CHALLENGE = 16;    //用户主动发起挑战
     public final static int RESPONSE_A_CHALLENGE = 17;  //对手回应对战
+    public final static int SEND_CHAT_CONTENT = 18;     //发送聊天信息
+    public final static int CHESS_COORD = 19;           //棋子的坐标信息
 }
