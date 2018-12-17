@@ -107,13 +107,11 @@ public class FindRival extends JFrame implements MouseListener {
             m.setU(u);
             //得到对手的名字
             String[] strArr = ((JLabel) e.getSource()).getText().split(":");
-          /*  //用户点击了自己头像，不能发起挑战
+            //用户点击了自己头像，不能发起挑战
             if(strArr[1].equals(u.getName())){
                 return;
-            }*/
+            }
             m.setGetter(strArr[1]);
-            System.out.println("你向 " + strArr[1] + " 发起了挑战");
-            System.out.println("鼠标点击次数："+e.getClickCount());
             //请求服务器转发挑战信息
             try {
                 ObjectOutputStream oos = new ObjectOutputStream
@@ -132,7 +130,6 @@ public class FindRival extends JFrame implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("按压了鼠标");
     }
 
     @Override

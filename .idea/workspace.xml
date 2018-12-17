@@ -4,28 +4,19 @@
     <list default="true" id="43bf1f5a-6951-4f4c-89d0-597c5fc13baa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fivechess.log" beforeDir="false" afterPath="$PROJECT_DIR$/fivechess.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/comman/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/comman/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/comman/MessageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/comman/MessageType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/model/ClientConnServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/model/ClientConnServerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/ChessBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/ChessBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/GradeRecordDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/GradeRecordDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/MainBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/MainBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPChessBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPChessBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/server/model/SerConClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/server/model/SerConClientThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/comman/TimeThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/comman/TimeThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/client/comman/Coord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/comman/Coord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/client/comman/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/comman/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/client/comman/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/comman/MessageType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/client/comman/TimeThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/comman/TimeThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/ChessBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/FindRival.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/FindRival.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard_Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard_Demo2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard_Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard_Demo2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java" afterDir="false" />
     </list>
@@ -41,26 +32,62 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard_Demo2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2540">
-              <caret line="169" column="21" lean-forward="true" selection-start-line="169" selection-start-column="21" selection-end-line="169" selection-end-column="21" />
+            <state relative-caret-position="-155">
+              <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1536#1537#0" expanded="true" />
-                <element signature="e#1568#1569#0" expanded="true" />
+                <element signature="e#1894#1895#0" expanded="true" />
+                <element signature="e#1924#1925#0" expanded="true" />
+                <element signature="e#1994#1995#0" expanded="true" />
+                <element signature="e#1896#1897#0" expanded="true" />
+                <element signature="e#1927#1928#0" expanded="true" />
+                <element signature="e#1892#1893#0" expanded="true" />
+                <element signature="e#1919#1920#0" expanded="true" />
+                <element signature="e#1907#1908#0" expanded="true" />
+                <element signature="e#1934#1935#0" expanded="true" />
                 <element signature="e#1900#1901#0" expanded="true" />
                 <element signature="e#1931#1932#0" expanded="true" />
-                <element signature="e#2185#2186#0" expanded="true" />
-                <element signature="e#2213#2214#0" expanded="true" />
+                <element signature="e#15129#15130#0" expanded="true" />
+                <element signature="e#15165#15166#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/FindRival.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="112" column="13" lean-forward="true" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java">
+        <entry file="file://$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1406">
-              <caret line="91" selection-start-line="91" selection-end-line="91" />
+            <state relative-caret-position="153">
+              <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5">
+              <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#624#625#0" expanded="true" />
+                <element signature="e#651#652#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,8 +95,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard_Demo2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="226" column="32" selection-start-line="226" selection-start-column="32" selection-end-line="226" selection-end-column="32" />
+            <state relative-caret-position="499">
+              <caret line="291" column="40" selection-start-line="291" selection-start-column="40" selection-end-line="291" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1365#1366#0" expanded="true" />
+                <element signature="e#1396#1397#0" expanded="true" />
+                <element signature="e#1445#1446#0" expanded="true" />
+                <element signature="e#1485#1486#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="455">
+              <caret line="286" column="12" lean-forward="true" selection-start-line="286" selection-start-column="12" selection-end-line="286" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,10 +121,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/MessageType.java">
+        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+            <state relative-caret-position="172">
+              <caret line="175" column="34" selection-start-line="175" selection-start-column="34" selection-end-line="175" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,59 +135,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4967">
-              <caret line="296" column="9" lean-forward="true" selection-start-line="296" selection-start-column="9" selection-end-line="296" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/ChessBoard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3142">
-              <caret line="191" column="44" selection-start-line="191" selection-start-column="44" selection-end-line="191" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Coord.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Message.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
-              <folding>
-                <element signature="e#1065#1066#0" expanded="true" />
-                <element signature="e#1099#1100#0" expanded="true" />
-                <element signature="e#1153#1154#0" expanded="true" />
-                <element signature="e#1199#1200#0" expanded="true" />
-                <element signature="e#2045#2046#0" expanded="true" />
-                <element signature="e#2086#2087#0" expanded="true" />
-                <element signature="e#2120#2121#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="932">
-              <caret line="119" column="22" lean-forward="true" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
+            <state relative-caret-position="-1120">
+              <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,8 +147,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="94" column="37" lean-forward="true" selection-start-line="94" selection-start-column="37" selection-end-line="94" selection-end-column="37" />
+            <state relative-caret-position="220">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAOImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -215,25 +222,25 @@
         <option value="$PROJECT_DIR$/src/com/demo1/client/comman/User.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/server/model/MyServer.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/ChessBoard.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/view/Login.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/SelectModel.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/SelectRival.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/SelectLevel.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/view/FindRival.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/comman/TimeThread.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard_Demo2.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/comman/MessageType.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/comman/Coord.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/comman/MessageType.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/comman/TimeThread.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/comman/Message.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard_Demo2.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/view/Login.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard_Demo2.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard_Demo2.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/view/FindRival.java" />
       </list>
     </option>
   </component>
@@ -247,8 +254,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -338,12 +343,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544973516959" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545039720624" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -450,7 +457,8 @@
       <workItem from="1544872055068" duration="3194000" />
       <workItem from="1544876961860" duration="5599000" />
       <workItem from="1544940267775" duration="7273000" />
-      <workItem from="1544958519682" duration="10032000" />
+      <workItem from="1544958519682" duration="10088000" />
+      <workItem from="1545016927030" duration="16829000" />
     </task>
     <task id="LOCAL-00001" summary="finish gradeHistory query">
       <created>1544525798201</created>
@@ -487,16 +495,24 @@
       <option name="project" value="LOCAL" />
       <updated>1544881962442</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="finish chat and start game">
+      <created>1544973569459</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1544973569460</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79298000" />
+    <option name="totallyTimeSpent" value="96183000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="999" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.18956336" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.19116081" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -505,7 +521,38 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32918552" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49893504" visible="true" weight="0.32918552" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49840257" weight="0.19570136" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49840257" visible="true" weight="0.19570136" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50159746" side_tool="true" weight="0.32918552" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" id="Structure" order="9" sideWeight="0.50106496" side_tool="true" weight="0.11821086" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.19116081" />
+      <window_info id="Image Layers" order="1" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32918552" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49893504" visible="true" weight="0.32918552" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49840257" visible="true" weight="0.19570136" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -525,7 +572,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="right" id="Structure" order="9" sideWeight="0.50106496" side_tool="true" visible="true" weight="0.11821086" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -536,7 +583,8 @@
     <MESSAGE value="finish PP gradeRecord" />
     <MESSAGE value="finish onlineUserList" />
     <MESSAGE value="finish launch a challenge" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish launch a challenge" />
+    <MESSAGE value="finish chat and start game" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish chat and start game" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/MyServerFrame.java">
@@ -558,34 +606,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Chess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/tools/Judge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1256">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="53" column="135" selection-start-line="53" selection-start-column="135" selection-end-line="53" selection-end-column="135" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -610,13 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/GradeRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -683,13 +700,6 @@
             <element signature="e#509#510#0" expanded="true" />
             <element signature="e#559#560#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -765,19 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1915#1916#0" expanded="true" />
-            <element signature="e#1955#1956#0" expanded="true" />
-            <element signature="e#1989#1990#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/SelectModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
@@ -792,77 +789,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3375">
-          <caret line="245" column="30" selection-start-line="245" selection-start-column="30" selection-end-line="245" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6423#6424#0" expanded="true" />
-            <element signature="e#6460#6461#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/tools/MapClientConServerThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/TimeThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-          <folding>
-            <element signature="e#1318#1319#0" expanded="true" />
-            <element signature="e#1384#1385#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2652">
-          <caret line="245" column="34" selection-start-line="245" selection-start-column="34" selection-end-line="245" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/FindRival.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="125" column="31" selection-start-line="125" selection-start-column="31" selection-end-line="125" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="75" column="30" lean-forward="true" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -877,9 +809,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/GradeRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/Computer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
+        <state relative-caret-position="-2803">
           <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -887,83 +833,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/ChessBoard.java">
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Chess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3142">
-          <caret line="191" column="44" selection-start-line="191" selection-start-column="44" selection-end-line="191" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="114">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java">
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/tools/Judge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4967">
-          <caret line="296" column="9" lean-forward="true" selection-start-line="296" selection-start-column="9" selection-end-line="296" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="278">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard_Demo2.java">
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Coord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2540">
-          <caret line="169" column="21" lean-forward="true" selection-start-line="169" selection-start-column="21" selection-end-line="169" selection-end-column="21" />
+        <state relative-caret-position="-42">
+          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1536#1537#0" expanded="true" />
-            <element signature="e#1568#1569#0" expanded="true" />
-            <element signature="e#1900#1901#0" expanded="true" />
-            <element signature="e#1931#1932#0" expanded="true" />
-            <element signature="e#2185#2186#0" expanded="true" />
-            <element signature="e#2213#2214#0" expanded="true" />
+            <element signature="e#353#354#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#417#418#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1406">
-          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        <state relative-caret-position="285">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding>
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2275">
+          <caret line="245" column="30" selection-start-line="245" selection-start-column="30" selection-end-line="245" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6423#6424#0" expanded="true" />
+            <element signature="e#6460#6461#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/MessageType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+        <state relative-caret-position="323">
+          <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Coord.java">
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/ChessBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+        <state relative-caret-position="285">
+          <caret line="76" column="16" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="804">
+          <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1915#1916#0" expanded="true" />
+            <element signature="e#1955#1956#0" expanded="true" />
+            <element signature="e#1989#1990#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/TimeThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="49" column="54" selection-start-line="49" selection-start-column="54" selection-end-line="49" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
+        <state relative-caret-position="568">
+          <caret line="106" column="40" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
           <folding>
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1099#1100#0" expanded="true" />
-            <element signature="e#1153#1154#0" expanded="true" />
-            <element signature="e#1199#1200#0" expanded="true" />
+            <element signature="e#2017#2018#0" expanded="true" />
             <element signature="e#2045#2046#0" expanded="true" />
             <element signature="e#2086#2087#0" expanded="true" />
             <element signature="e#2120#2121#0" expanded="true" />
+            <element signature="e#2249#2250#0" expanded="true" />
+            <element signature="e#2312#2313#0" expanded="true" />
+            <element signature="e#2366#2367#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard_Demo2.java">
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="226" column="32" selection-start-line="226" selection-start-column="32" selection-end-line="226" selection-end-column="32" />
+        <state relative-caret-position="455">
+          <caret line="286" column="12" lean-forward="true" selection-start-line="286" selection-start-column="12" selection-end-line="286" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -972,8 +958,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="94" column="37" lean-forward="true" selection-start-line="94" selection-start-column="37" selection-end-line="94" selection-end-column="37" />
+        <state relative-caret-position="220">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1120">
+          <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -982,8 +988,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="932">
-          <caret line="119" column="22" lean-forward="true" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
+        <state relative-caret-position="172">
+          <caret line="175" column="34" selection-start-line="175" selection-start-column="34" selection-end-line="175" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5">
+          <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#624#625#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard_Demo2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="291" column="40" selection-start-line="291" selection-start-column="40" selection-end-line="291" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1365#1366#0" expanded="true" />
+            <element signature="e#1396#1397#0" expanded="true" />
+            <element signature="e#1445#1446#0" expanded="true" />
+            <element signature="e#1485#1486#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard_Demo2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-155">
+          <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1894#1895#0" expanded="true" />
+            <element signature="e#1924#1925#0" expanded="true" />
+            <element signature="e#1994#1995#0" expanded="true" />
+            <element signature="e#1896#1897#0" expanded="true" />
+            <element signature="e#1927#1928#0" expanded="true" />
+            <element signature="e#1892#1893#0" expanded="true" />
+            <element signature="e#1919#1920#0" expanded="true" />
+            <element signature="e#1907#1908#0" expanded="true" />
+            <element signature="e#1934#1935#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
+            <element signature="e#15129#15130#0" expanded="true" />
+            <element signature="e#15165#15166#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/FindRival.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="112" column="13" lean-forward="true" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

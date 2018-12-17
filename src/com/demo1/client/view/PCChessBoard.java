@@ -278,7 +278,7 @@ public class PCChessBoard extends ChessBoard {
                         chess[coord.getX()][coord.getY()] = Chess.BLACK;//输出黑棋图片
                         //重新启动计时线程
                         mb.timer = new TimeThread(mb.getLabel());
-                        mb.timer.setCb(this);
+                        mb.timer.setPCChessBoard(this);
                         mb.timer.start();
                         logger1.info("黑棋落子:" + coord.getX() + "," + coord.getY());
                         mb.getSituation1().setText("    状态:等待...");

@@ -1,5 +1,6 @@
 package com.demo1.client.model;
 
+import com.demo1.client.comman.Coord;
 import com.demo1.client.comman.Message;
 import com.demo1.client.comman.MessageType;
 import com.demo1.client.tools.MapGradeRecordDialog;
@@ -134,7 +135,54 @@ public class ClientConnServerThread extends Thread {
                         break;
                     //处理对手发过来的棋子信息
                     case MessageType.CHESS_COORD:
-
+                        if (ppMB == null) {
+                            ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
+                        }
+                        //获取对手刚下的棋子信息
+                        Coord coord = getMess.getCoord();
+                        //显示对手的棋子，我的回合
+                        ppMB.getPpcb().myTurn(coord);
+                        break;
+                    //应答对方发送的请求悔棋操作
+                    case MessageType.REQUEST_UNDO_CHESS:
+                        if (ppMB == null) {
+                            ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
+                        }
+                        int n1 = JOptionPane.showConfirmDialog
+                                (ppMB, getMess.getSender() + "请求悔棋，您是否同意?", "悔棋请求", JOptionPane.YES_NO_CANCEL_OPTION);
+                        //根据n1回应对方的挑战
+                        sendMess = new Message();
+                        sendMess.setMesType(MessageType.RESPONSE_UNDO_CHESS);
+                        sendMess.setSender(ppMB.u.getName());
+                        sendMess.setGetter(getMess.getSender());
+                        //该用户同意悔棋
+                        if(n1 == JOptionPane.YES_OPTION){
+                            sendMess.setAgreedUndoChess(true);
+                            //执行悔棋操作
+                            ppMB.getPpcb().backstep();
+                        }
+                        //该用户不同意悔棋
+                        else {
+                            sendMess.setAgreedUndoChess(false);
+                        }
+                        oos.writeObject(sendMess);
+                        break;
+                        //收到对方的
+                    case MessageType.RESPONSE_UNDO_CHESS:
+                        if (ppMB == null) {
+                            ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
+                        }
+                        //如果对方通知悔棋，执行悔棋操作
+                        if(getMess.isAgreedUndoChess()){
+                            ppMB.getPpcb().backstep();
+                            JOptionPane.showMessageDialog
+                                    (ppMB, "恭喜，"+getMess.getSender() + "同意了你的悔棋请求~", "信息", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            JOptionPane.showMessageDialog
+                                    (ppMB, "很遗憾，" + getMess.getSender() + "拒绝了你的悔棋请求~", "信息", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        ppMB.getBack().setText("悔棋");
+                        ppMB.getBack().setEnabled(true);
                         break;
                 }
             } catch (Exception e) {

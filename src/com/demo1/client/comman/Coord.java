@@ -6,13 +6,26 @@ package com.demo1.client.comman;
  * @author long
  * 保存棋子的坐标
  */
-public class Coord {
-    int x;
-    int y;
+public class Coord implements java.io.Serializable{
+    private int x;
+    private int y;
+    private int role;   //棋子的类型
 
-    public Coord(int x, int y) {
+    public Coord() {
+    }
+
+    public Coord(int x, int y, int role) {
         this.x = x;
         this.y = y;
+        this.role = role;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 
     public int getX() {

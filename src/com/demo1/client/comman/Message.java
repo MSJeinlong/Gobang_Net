@@ -18,8 +18,8 @@ public class Message implements java.io.Serializable{
     private List<GradeRecord> grlist;       //历史战绩列表
     private List<User> userList;            //用户列表
     private boolean acceptChallenge;        //接受挑战与否
-    private Coord coord;                       //保存棋子的坐标
-
+    private Coord coord;                    //保存棋子的坐标
+    private boolean agreedUndoChess;        //是否同意悔棋
 
     public Message() {
     }
@@ -102,5 +102,13 @@ public class Message implements java.io.Serializable{
 
     public void setCoord(Coord coord) {
         this.coord = coord;
+    }
+
+    public boolean isAgreedUndoChess() {
+        return agreedUndoChess;
+    }
+
+    public void setAgreedUndoChess(boolean agreedUndoChess) {
+        this.agreedUndoChess = agreedUndoChess;
     }
 }

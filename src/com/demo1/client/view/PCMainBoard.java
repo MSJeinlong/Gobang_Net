@@ -252,7 +252,7 @@ public class PCMainBoard extends MainBoard {
             cb.setClickable(MainBoard.CAN_CLICK_INFO);
             //加载计时线程
             timer = new TimeThread(label_timeCount);
-            timer.setCb(cb);
+            timer.setPCChessBoard(cb);
             timer.start();
             //设置结果为1，游戏继续
             cb.setResult(1);

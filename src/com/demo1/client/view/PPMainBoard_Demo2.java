@@ -16,6 +16,7 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.DatagramSocket;
+import java.util.concurrent.CyclicBarrier;
 
 /**
  * @program: Gobang
@@ -26,7 +27,7 @@ import java.net.DatagramSocket;
  * 接受信息线程
  */
 public class PPMainBoard_Demo2 extends MainBoard {
-    private PPChessBoard_Demo2 cb;
+    private PPChessBoard_Demo2 ppcb;
     private JButton findRival;
     private JButton exitGame;
     private JButton back;           //悔棋按钮
@@ -47,7 +48,6 @@ public class PPMainBoard_Demo2 extends MainBoard {
     private JTextArea talkArea;
 /*    private JTextField tf_ip;      //输入IP框*/
     private JTextField talkField;   //聊天文本框
-    private boolean myTurn;          //是否是我的回合
     private Logger logger = Logger.getLogger("游戏");
     private User rival;     //对手
 
@@ -71,6 +71,26 @@ public class PPMainBoard_Demo2 extends MainBoard {
         return situation2;
     }
 
+    public JLabel getMyLevel() {
+        return myLevel;
+    }
+
+    public JLabel getRivalLevel() {
+        return rivalLevel;
+    }
+
+    public JButton getExitGame() {
+        return exitGame;
+    }
+
+    public JButton getBack() {
+        return back;
+    }
+
+    public PPChessBoard_Demo2 getPpcb() {
+        return ppcb;
+    }
+
     public JTextArea getTalkArea() {
         return talkArea;
     }
@@ -88,8 +108,8 @@ public class PPMainBoard_Demo2 extends MainBoard {
     public PPMainBoard_Demo2(String userName) {
         init(userName);
         String title = "欢乐五子棋--当前用户："+u.getName()+"("+u.getSex()+")"+"  等级："+u.getDan()+"-"+u.getGrade();
-        setTitle(title);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle(title);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     /**
@@ -98,10 +118,10 @@ public class PPMainBoard_Demo2 extends MainBoard {
     public void init(String userName) {
         //暂时初始化一下rival
         this.u = MapUserModel.getUser(userName);
-        cb = new PPChessBoard_Demo2(this);
-        cb.setClickable(PPMainBoard.CAN_NOT_CLICK_INFO);
-        cb.setBounds(210, 40, 570, 585);
-        cb.setVisible(true);
+        ppcb = new PPChessBoard_Demo2(this);
+        ppcb.setClickable(PPMainBoard.CAN_NOT_CLICK_INFO);
+        ppcb.setBounds(210, 40, 570, 585);
+        ppcb.setVisible(true);
         //设置历史战绩按钮
         gradeRecord = new JButton("历史成绩");
         gradeRecord.setBounds(780, 75, 200, 50);//设置起始位置，宽度和高度，下同
@@ -183,7 +203,7 @@ public class PPMainBoard_Demo2 extends MainBoard {
         p.setBounds(780, 295, 200, 200);
 
      /*   add(tf_ip);*/
-        add(cb);
+        add(ppcb);
         add(gradeRecord);
         add(findRival);
         add(back);
@@ -198,8 +218,7 @@ public class PPMainBoard_Demo2 extends MainBoard {
         add(p);
         add(send);
         add(talkField);
-        //加载线程
-        /*ReicThread();*/
+        //刷新
         repaint();
 
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -251,110 +270,71 @@ public class PPMainBoard_Demo2 extends MainBoard {
     //我方先开始游戏
     public void myFirstStart(){
         //设置开始游戏
-        myTurn = true;
-        cb.setClickable(MainBoard.CAN_CLICK_INFO);
+        //是否是我的回合
+        ppcb.setTurnToMe(true);
+        ppcb.setClickable(MainBoard.CAN_CLICK_INFO);
         //先开始游戏的玩家执白
-        cb.setRole(Chess.WHITE);
+        ppcb.setRole(Chess.WHITE);
+        people1.setIcon(new ImageIcon("images/white.png"));
+        people2.setIcon(new ImageIcon("images/black.png"));
         situation1.setText("    状态:等待...");
         situation2.setText("    状态:下棋...");
         logger.info("等待对方消息");
         timer = new TimeThread(label_timeCount);
         timer.start();
+        //禁止退出游戏
+        exitGame.setEnabled(false);
+        //禁止悔棋
+        back.setEnabled(false);
+
+        //更新status为对战中
+        u.setStatus(User.VERSUSING);
+        //请求服务器更新status
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream
+                    (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+            Message m = new Message();
+            m.setMesType(MessageType.UPDATE_USER);
+            m.setU(u);
+            oos.writeObject(m);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //对方先开始游戏
     public void rivalFirstStart(){
         //设置开始游戏
-        myTurn = false;
-        /*cb.setClickable(MainBoard.CAN_CLICK_INFO);*/
+        //是否是我的回合
+        ppcb.setTurnToMe(false);
         //后开始的玩家执白
-        cb.setRole(Chess.BLACK);
+        ppcb.setRole(Chess.BLACK);
+        people1.setIcon(new ImageIcon("images/black.png"));
+        people2.setIcon(new ImageIcon("images/white.png"));
         situation1.setText("    状态:下棋...");
         situation2.setText("    状态:等待...");
         logger.info("等待对方消息");
         timer = new TimeThread(label_timeCount);
         timer.start();
+        //禁止退出游戏
+        exitGame.setEnabled(false);
+        //禁止悔棋
+        back.setEnabled(false);
+
+        //更新status为对战中
+        u.setStatus(User.VERSUSING);
+        //请求服务器更新status
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream
+                    (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+            Message m = new Message();
+            m.setMesType(MessageType.UPDATE_USER);
+            m.setU(u);
+            oos.writeObject(m);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    /**
-     * 接收信息放在线程中
-     */
-   /* public void ReicThread() {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    byte buf[] = new byte[1024];
-                    socket = new DatagramSocket(10086);
-                    DatagramPacket dp = new DatagramPacket(buf, buf.length);
-                    while (true) {
-                        socket.receive(dp);
-                        //0.接收到的发送端的主机名
-                        InetAddress ia = dp.getAddress();
-                        //enemyMsg.add(new String(ia.getHostName()));  //对方端口
-                        logger.info("对手IP：" + ia.getHostName());
-                        //1.接收到的内容
-                        String data = new String(dp.getData(), 0, dp.getLength());
-                        if (data.isEmpty()) {
-                            cb.setClickable(MainBoard.CAN_NOT_CLICK_INFO);
-                        } else {
-                            String[] msg = data.split(",");
-                            System.out.println(msg[0] + " " + msg[1]);
-                            //接收到对面准备信息并且自己点击了准备
-                            if (msg[0].equals("ready")) {
-                                enemyGameState = "ready";
-                                System.out.println("对方已准备");
-                                if (gameState.equals("ready")) {
-                                    gameState = "FIGHTING";
-                                    cb.setClickable(MainBoard.CAN_CLICK_INFO);
-                                    startGame.setText("正在游戏");
-                                    situation1.setText("    状态:等待...");
-                                    situation2.setText("    状态:下棋...");
-                                    logger.info("等待对方消息");
-                                    timer = new TimeThread(label_timeCount);
-                                    timer.start();
-                                }
-                            } else if (msg[0].equals("POS")) {
-                                System.out.println("发送坐标");
-                                //接受坐标以及角色
-                                situation1.setText("    状态:等待...");
-                                situation2.setText("    状态:下棋...");
-                                //重新启动计时线程
-                                timer = new TimeThread(label_timeCount);
-                                timer.start();
-
-                                cb.setCoord(Integer.parseInt(msg[1]), Integer.parseInt(msg[2]), Integer.parseInt(msg[3]));
-
-                            } else if (msg[0].equals("enemy")) {
-                                talkArea.append("对手：" + msg[1] + "\n");
-                                logger.info("对手发送的消息" + msg[1]);
-                            } else if (msg[0].equals("back")) {
-                                int n = JOptionPane.showConfirmDialog(cb, "是否同意对方悔棋", "选择", JOptionPane.YES_NO_OPTION);
-                                //点击确定按钮则可以悔棋
-                                if (n == JOptionPane.YES_OPTION) {
-                                    cb.backstep();
-                                    NetTool.sendUDPBroadCast(ia.getHostName(), "canBack" + ", ");
-                                } else {
-                                    NetTool.sendUDPBroadCast(ia.getHostName(), "noBack" + ", ");
-                                }
-
-                            }
-                            //允许悔棋
-                            else if (msg[0].equals("canBack")) {
-                                JOptionPane.showMessageDialog(cb, "对方允许您悔棋");
-                                cb.backstep();
-                            }
-                            //不允许悔棋
-                            else if (msg[0].equals("noBack")) {
-                                JOptionPane.showMessageDialog(cb, "对方不允许您悔棋");
-                            }
-
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }*/
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -394,6 +374,36 @@ public class PPMainBoard_Demo2 extends MainBoard {
                 e1.printStackTrace();
             }
         }
+        //玩家按下了悔棋按钮
+        else if(source == back){
+            Message m1 = new Message();
+            m1.setMesType(MessageType.REQUEST_UNDO_CHESS);
+            m1.setSender(u.getName());
+            m1.setGetter(rival.getName());
+            back.setText("等待对手同意");
+            back.setEnabled(false);
+            try {
+                ObjectOutputStream oos1 = new ObjectOutputStream
+                        (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                oos1.writeObject(m1);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        if(ppcb.clickable == MainBoard.CAN_CLICK_INFO){
+            this.setCursor(Cursor.HAND_CURSOR);
+        }else {
+            this.setCursor(Cursor.DEFAULT_CURSOR);
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        this.setCursor(Cursor.DEFAULT_CURSOR);
+    }
 }

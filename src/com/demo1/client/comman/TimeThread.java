@@ -1,6 +1,7 @@
 package com.demo1.client.comman;
 
 import com.demo1.client.view.PCChessBoard;
+import com.demo1.client.view.PPChessBoard_Demo2;
 
 import javax.swing.*;
 
@@ -12,7 +13,8 @@ import javax.swing.*;
 public class TimeThread extends Thread {
     JLabel label; //计时标签
     private boolean timeOver;   //30s 时间是否结束
-    PCChessBoard cb;
+    PCChessBoard pccb;          //人机对战的面板
+    PPChessBoard_Demo2 ppcb;    //人人对弈的面板
 
     public TimeThread(JLabel label) {
         this.label = label;
@@ -29,9 +31,24 @@ public class TimeThread extends Thread {
             //如果30秒结束，督促
             if (label.getText().equals("0")) {
                 timeOver = true;
-                if(cb != null) {
+                if(pccb != null) {
                     //超过时间限制，电脑获胜
-                    cb.WinEvent(Chess.BLACK);
+                    pccb.WinEvent(Chess.BLACK);
+                } else if(ppcb != null){
+                    //超过时间限制
+                    int rivalRole;      //对手执黑或执白
+                    if(ppcb.getRole() == Chess.BLACK){
+                        rivalRole = Chess.WHITE;
+                    } else {
+                        rivalRole = Chess.BLACK;
+                    }
+                    //该回合是我的回合，我方输了
+                    if(ppcb.isTurnToMe()){
+                        ppcb.WinEvent(rivalRole);
+                    } else {
+                        //该回合是对方的回合，我赢了
+                        ppcb.WinEvent(ppcb.getRole());
+                    }
                 }
                /* startTime = System.currentTimeMillis();     //重新获取开始时间*/
                 timeOver = false;
@@ -46,8 +63,12 @@ public class TimeThread extends Thread {
         }
     }
 
-    public void setCb(PCChessBoard cb) {
-        this.cb = cb;
+    public void setPCChessBoard(PCChessBoard pccb) {
+        this.pccb = pccb;
+    }
+
+    public void setPPChessBoard(PPChessBoard_Demo2 ppcb){
+        this.ppcb = ppcb;
     }
 
     public boolean isTimeOver() {

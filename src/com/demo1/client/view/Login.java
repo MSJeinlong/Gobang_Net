@@ -37,8 +37,8 @@ public class Login extends JDialog implements ActionListener{
         jlb2 = new JLabel("密码：");
 
         // 文本框和密码框
-        jtf = new JTextField(16);
-        jpf = new JPasswordField(16);
+        jtf = new JTextField(12);
+        jpf = new JPasswordField(12);
 
         // 2个按钮
         jb1 = new JButton("登录");
