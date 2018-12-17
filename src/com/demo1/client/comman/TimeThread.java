@@ -1,7 +1,7 @@
 package com.demo1.client.comman;
 
 import com.demo1.client.view.PCChessBoard;
-import com.demo1.client.view.PPChessBoard_Demo2;
+import com.demo1.client.view.PPChessBoard;
 
 import javax.swing.*;
 
@@ -14,7 +14,7 @@ public class TimeThread extends Thread {
     JLabel label; //计时标签
     private boolean timeOver;   //30s 时间是否结束
     PCChessBoard pccb;          //人机对战的面板
-    PPChessBoard_Demo2 ppcb;    //人人对弈的面板
+    PPChessBoard ppcb;    //人人对弈的面板
 
     public TimeThread(JLabel label) {
         this.label = label;
@@ -67,7 +67,7 @@ public class TimeThread extends Thread {
         this.pccb = pccb;
     }
 
-    public void setPPChessBoard(PPChessBoard_Demo2 ppcb){
+    public void setPPChessBoard(PPChessBoard ppcb){
         this.ppcb = ppcb;
     }
 

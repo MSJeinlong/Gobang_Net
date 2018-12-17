@@ -254,8 +254,8 @@ public class PCMainBoard extends MainBoard {
             timer = new TimeThread(label_timeCount);
             timer.setPCChessBoard(cb);
             timer.start();
-            //设置结果为1，游戏继续
-            cb.setResult(1);
+            //设置结果为false，游戏继续
+            cb.setGameOver(false);
             //设置重新开始按钮可用
             restart.setEnabled(true);
         }
@@ -278,8 +278,8 @@ public class PCMainBoard extends MainBoard {
                 //加载计时线程
                 timer = new TimeThread(label_timeCount);
                 timer.start();
-                //设置结果为1，游戏继续
-                cb.setResult(1);
+                //设置结果为false，游戏继续
+                cb.setGameOver(false);
             }
         }
         //点击悔棋后的操作
@@ -299,18 +299,4 @@ public class PCMainBoard extends MainBoard {
         }
     }
 
- /*   @Override
-    public void mouseEntered(MouseEvent e) {
-        //棋盘可以点击时，把光标设置为手型
-        Point  p = this.getLocation();
-        int px = p.x;
-        int py = p.y;
-        if(cb.clickable == MainBoard.CAN_CLICK_INFO){
-            if(cb.mousex >= px + 210 && cb.mousex <= px + 780 && cb.mousey >= py + 40 && cb.mousey <= py + 625){
-                this.setCursor(Cursor.HAND_CURSOR);
-            }
-        }
-        System.out.println("cb的鼠标坐标：("+cb.mousex+","+cb.mousey+")");
-        System.out.println(e.getX()+", "+e.getY());
-    }*/
 }

@@ -47,7 +47,6 @@ public class SerConClientThread extends Thread {
                     switch (getMess.getMesType()) {
                         //客户端请求保存对战记录，并更新玩家等级
                         case MessageType.UPDATE_GRADE:
-                            System.out.println("保存用户对战记录");
                             uDAO = new UserDAOImpl();
                             uDAO.update(getMess.getU());     //用户等级信息更新到数据库
                             //保存用户战绩到数据库
@@ -77,7 +76,6 @@ public class SerConClientThread extends Thread {
                         case MessageType.REQUEST_WAIT_VERSUS_USERS:
                             uDAO = new UserDAOImpl();
                             sendMess = new Message();
-                            System.out.println("Server:" + getMess.getU());
                             sendMess.setU(getMess.getU());
                             //到数据库里查询等待对战的所有用户
                             sendMess.setUserList(uDAO.QueryAllWaitVersusUser());
@@ -97,6 +95,8 @@ public class SerConClientThread extends Thread {
                         case MessageType.CHESS_COORD:
                             //用户请求悔棋，转发即可
                         case MessageType.REQUEST_UNDO_CHESS:
+                            //用户回应了悔棋请求，转发即可
+                        case MessageType.RESPONSE_UNDO_CHESS:
                             //客户端请求转发聊天信息
                         case MessageType.SEND_CHAT_CONTENT:
                             //根据Getter转发信息

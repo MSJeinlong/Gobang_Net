@@ -1,6 +1,6 @@
 package com.demo1.client.tools;
 
-import com.demo1.client.view.PPMainBoard_Demo2;
+import com.demo1.client.view.PPMainBoard;
 
 import java.util.HashMap;
 
@@ -11,14 +11,14 @@ import java.util.HashMap;
  * @Description:管理人人对战用户的界面的Map映射
  */
 public class MapPPMainBoard {
-    private static HashMap<String, PPMainBoard_Demo2> hm = new HashMap<>();
+    private static HashMap<String, PPMainBoard> hm = new HashMap<>();
 
     // K-V(userName-PPMainBoard)加入HashMap
-    public static void addPPMainBoard(String userName, PPMainBoard_Demo2 ppmb){
+    public static void addPPMainBoard(String userName, PPMainBoard ppmb){
         hm.put(userName, ppmb);
     }
 
-    public static PPMainBoard_Demo2 getPPMainBoard(String userName){
-        return (PPMainBoard_Demo2)hm.get(userName);
+    public static PPMainBoard getPPMainBoard(String userName){
+        return (PPMainBoard)hm.get(userName);
     }
 }

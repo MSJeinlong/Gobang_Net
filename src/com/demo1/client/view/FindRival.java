@@ -30,11 +30,10 @@ public class FindRival extends JFrame implements MouseListener {
     private ArrayList<JLabel> onLineUser;        //在线且是选择了人人对战的用户JLabel
     private User u;
 
-    public FindRival(User u) {
+    public FindRival(User u, int x, int y) {
         this.u = u;
         //把自个添加到Map映射里
         MapFindRival.addFindRival(u.getName(), this);
-        System.out.println("FindRival加入Map");
         onLineUser = new ArrayList<>();
         //向服务器发起请求，要求添加在线等待对战的用户列表
         try {
@@ -67,7 +66,7 @@ public class FindRival extends JFrame implements MouseListener {
 
         /*  this.setBounds(1000, 400, 150, 300);*/
         this.setTitle(u.getName());
-        this.setLocation(1200, 400);
+        this.setLocation(x, y);
         /*this.pack();*/
         this.setVisible(true);
         this.setResizable(false);

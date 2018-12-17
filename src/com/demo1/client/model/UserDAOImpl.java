@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO {
     //查询
     @Override
     public User Query(User u) {
-        sql = "select * from users where name = ? and password = ?";
+        sql = "select * from users where name = ? and password = ? and status = 0";
         conn =  DBConnection.getConnection();
         try {
             pstmt = conn.prepareStatement(sql);

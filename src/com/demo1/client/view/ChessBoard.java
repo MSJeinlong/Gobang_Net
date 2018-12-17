@@ -15,10 +15,9 @@ import java.awt.event.MouseMotionListener;
  * @author: admin
  */
 public class ChessBoard extends JPanel implements MouseMotionListener, MouseListener {
-    public static final int GAME_OVER = 0; //结束游戏
     public static final int COLS = 19;
     public static final int RAWS = 19;//棋盘的行数和列数
-    public int result = 1; //结果，为0则结束游戏
+    public boolean gameOver;        //游戏是否结束
     public Image whiteChess;
     //黑白棋子
     public Image chessBoardImage;
@@ -62,6 +61,15 @@ public class ChessBoard extends JPanel implements MouseMotionListener, MouseList
         addMouseMotionListener(this);
     }
 
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
+
     /**
      * 设置面板是否可以点击
      *
@@ -80,6 +88,22 @@ public class ChessBoard extends JPanel implements MouseMotionListener, MouseList
                 chess[i][j] = Chess.BLANK;
             }
         }
+    }
+
+    /**
+     * 判断是否和棋
+     */
+
+    public boolean isGameDraw(){
+        for (int i = 0; i < 19; i++) {
+            for (int j = 0; j < 19; j++) {
+                //还有可以下棋的地方（且胜负未分），就不是和棋
+                if(chess[i][j] == Chess.BLANK){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**

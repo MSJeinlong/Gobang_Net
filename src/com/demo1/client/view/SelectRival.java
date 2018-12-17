@@ -66,7 +66,7 @@ public class SelectRival extends JDialog implements ActionListener {
                 e1.printStackTrace();
             }
             //生成人人对战界面
-            PPMainBoard_Demo2 ppmb = new PPMainBoard_Demo2(userName);
+            PPMainBoard ppmb = new PPMainBoard(userName);
             //把userName的PPMainBoard添加到Map，用于通信
             MapPPMainBoard.addPPMainBoard(userName, ppmb);
         } else if(e.getSource() == jb2){

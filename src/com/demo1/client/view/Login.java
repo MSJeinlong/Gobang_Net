@@ -101,7 +101,7 @@ public class Login extends JDialog implements ActionListener{
                     this.dispose();     //关闭登录界面
                 } else {
                     //登录失败，提示用户
-                    JOptionPane.showMessageDialog(this, "登录失败!\n原因：账号或密码错误！", "错误", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "登录失败!\n可能的原因：\n1、账号或密码错误\n2、该账户已经登录", "错误", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
                 //注册
