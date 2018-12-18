@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -25,11 +24,11 @@ import java.io.ObjectOutputStream;
 public class PPMainBoard extends MainBoard {
     private PPChessBoard ppcb;
     private JButton findRival;
-    private JButton exitGame;
-    private JButton back;           //悔棋按钮
-    private JButton send;           //聊天发送按钮
-    private JButton gradeRecord;    //历史成绩查询
-    private JLabel timecount;    //计时器标签
+    private JButton giveUp;     //认输
+    private JButton back;       //悔棋按钮
+    private JButton send;       //聊天发送按钮
+    private JButton forPease;   //求和
+    private JLabel timecount;   //计时器标签
 
     //双方状态
     private JLabel people1;//自己标签
@@ -41,6 +40,9 @@ public class PPMainBoard extends MainBoard {
     private JLabel jLabel1;
     private JLabel jLabel2;
     private JLabel turnTip;     //提示这是谁的回合标签
+    private JMenuBar jmb;       //菜单栏
+    private JMenu jmu1, jmu2;     //3个菜单项
+    private JMenuItem backMainMenu, gameRecord;     //2个菜单子选项
 
     private JTextArea talkArea;
     private JTextField talkField;   //聊天文本框
@@ -75,9 +77,6 @@ public class PPMainBoard extends MainBoard {
         return rivalLevel;
     }
 
-    public JButton getExitGame() {
-        return exitGame;
-    }
 
     public JButton getBack() {
         return back;
@@ -103,8 +102,16 @@ public class PPMainBoard extends MainBoard {
         return people2;
     }
 
-    public JLabel getTimecount() {
-        return timecount;
+    public JMenuItem getBackMainMenu() {
+        return backMainMenu;
+    }
+
+    public JButton getForPease() {
+        return forPease;
+    }
+
+    public JButton getGiveUp() {
+        return giveUp;
     }
 
     public void setRival(User rival) {
@@ -131,22 +138,22 @@ public class PPMainBoard extends MainBoard {
         ppcb.setBounds(210, 40, 570, 585);
         ppcb.setVisible(true);
         //设置历史战绩按钮
-        gradeRecord = new JButton("历史成绩");
-        gradeRecord.setBounds(780, 75, 200, 50);//设置起始位置，宽度和高度，下同
-        gradeRecord.setBackground(new Color(50, 205, 50));//设置颜色，下同
-        gradeRecord.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
-        gradeRecord.addActionListener(this);
-
-        findRival = new JButton("寻找对手");//设置名称，下同
-        findRival.setBounds(780, 130, 200, 50);//设置起始位置，宽度和高度，下同
+        findRival = new JButton("寻找对手");
+        findRival.setBounds(780, 75, 200, 50);//设置起始位置，宽度和高度，下同
         findRival.setBackground(new Color(50, 205, 50));//设置颜色，下同
         findRival.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
         findRival.addActionListener(this);
-        back = new JButton("悔  棋");
-        back.setBounds(780, 185, 200, 50);
-        back.setBackground(new Color(85, 107, 47));
-        back.setFont(new Font("宋体", Font.BOLD, 20));
+
+        back = new JButton("悔 棋");//设置名称，下同
+        back.setBounds(780, 130, 200, 50);//设置起始位置，宽度和高度，下同
+        back.setBackground(new Color(50, 205, 50));//设置颜色，下同
+        back.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
         back.addActionListener(this);
+        forPease = new JButton("求 和");
+        forPease.setBounds(780, 185, 200, 50);
+        forPease.setBackground(new Color(85, 107, 47));
+        forPease.setFont(new Font("宋体", Font.BOLD, 20));
+        forPease.addActionListener(this);
         send = new JButton("发送");
         send.setBounds(840, 550, 60, 30);
         send.setBackground(new Color(50, 205, 50));
@@ -155,11 +162,11 @@ public class PPMainBoard extends MainBoard {
         talkField.setBounds(780, 510, 200, 30);
         talkField.addMouseListener(this);
         talkField.addActionListener(this);
-        exitGame = new JButton("返  回");
-        exitGame.setBackground(new Color(218, 165, 32));
-        exitGame.setBounds(780, 240, 200, 50);
-        exitGame.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
-        exitGame.addActionListener(this);
+        giveUp = new JButton("认 输");
+        giveUp.setBackground(new Color(218, 165, 32));
+        giveUp.setBounds(780, 240, 200, 50);
+        giveUp.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
+        giveUp.addActionListener(this);
         people1 = new JLabel("    我: "+u.getName());
         people1.setOpaque(true);
         people1.setBackground(new Color(82, 109, 165));
@@ -216,12 +223,37 @@ public class PPMainBoard extends MainBoard {
         JScrollPane p = new JScrollPane(talkArea);
         p.setBounds(780, 295, 200, 200);
 
-     /*   add(tf_ip);*/
+        //设置菜单
+        jmb = new JMenuBar();
+        jmu1 = new JMenu("菜单");
+        jmu2 = new JMenu("记录");
+
+
+        backMainMenu = new JMenuItem("返回主菜单");
+        gameRecord = new JMenuItem("游戏战绩");
+
+        //加入监听
+        backMainMenu.addActionListener(this);
+        gameRecord.addActionListener(this);
+        gameRecord.addActionListener(this);
+
+        //加入菜单选项
+        jmu1.add(backMainMenu);
+        jmu2.add(gameRecord);
+
+
+        //菜单选项加入菜单栏
+        jmb.add(jmu1);
+        jmb.add(jmu2);
+
+        //菜单栏加入窗体
+        setJMenuBar(jmb);
+        //加入组件
         add(ppcb);
-        add(gradeRecord);
+        add(forPease);
         add(findRival);
         add(back);
-        add(exitGame);
+        add(giveUp);
         add(people1);
         add(people2);
         add(myLevel);
@@ -235,6 +267,12 @@ public class PPMainBoard extends MainBoard {
         add(turnTip);
         //刷新
         repaint();
+
+        //刚开始时设置某些按钮不可用
+        back.setEnabled(false);
+        forPease.setEnabled(false);
+        giveUp.setEnabled(false);
+        send.setEnabled(false);
 
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter()
@@ -286,6 +324,7 @@ public class PPMainBoard extends MainBoard {
     public void myFirstStart(){
         //设置开始游戏
         //是否是我的回合
+        ppcb.gameOver = false;
         ppcb.setTurnToMe(true);
         turnTip.setText("   我的回合");
         ppcb.setClickable(MainBoard.CAN_CLICK_INFO);
@@ -299,9 +338,11 @@ public class PPMainBoard extends MainBoard {
         timer = new TimeThread(label_timeCount);
         timer.start();
         //禁止退出游戏
-        exitGame.setEnabled(false);
-        //禁止悔棋
-        back.setEnabled(false);
+        backMainMenu.setEnabled(false);
+        //设置某些按钮可用
+        forPease.setEnabled(true);
+        giveUp.setEnabled(true);
+        send.setEnabled(true);
 
         //更新status为对战中
         u.setStatus(User.VERSUSING);
@@ -322,6 +363,7 @@ public class PPMainBoard extends MainBoard {
     public void rivalFirstStart(){
         //设置开始游戏
         //是否是我的回合
+        ppcb.gameOver = false;
         ppcb.setTurnToMe(false);
         turnTip.setText("   对手的回合");
         //后开始的玩家执白
@@ -334,9 +376,11 @@ public class PPMainBoard extends MainBoard {
         timer = new TimeThread(label_timeCount);
         timer.start();
         //禁止退出游戏
-        exitGame.setEnabled(false);
-        //禁止悔棋
-        back.setEnabled(false);
+        backMainMenu.setEnabled(false);
+        //设置某些按钮可用
+        forPease.setEnabled(true);
+        giveUp.setEnabled(true);
+        send.setEnabled(true);
 
         //更新status为对战中
         u.setStatus(User.VERSUSING);
@@ -360,14 +404,45 @@ public class PPMainBoard extends MainBoard {
         if (source == findRival) {
             FindRival fr = new FindRival(u, this.getX() + 800, this.getY() + 220);
         }
-        //退出游戏，加载主菜单
-        else if (source == exitGame) {
-            dispose();
-            new SelectModel(u.getName());
+        //求和
+        else if (source == forPease) {
+            //发送信息给服务器，求和
+            try {
+                ObjectOutputStream oos = new ObjectOutputStream
+                        (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                Message m = new Message();
+                m.setMesType(MessageType.REQUEST_FOR_PEACE);
+                m.setSender(u.getName());
+                m.setGetter(rival.getName());
+                oos.writeObject(m);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
-        //查询历史战绩
-        else if(source == gradeRecord){
-            GradeRecordDialog grd = new GradeRecordDialog(this, "历史战绩", u);
+        //认输
+        else if(source == giveUp){
+            int rivalRole;      //对手执黑或执白
+            //获取对手的角色
+            if(ppcb.getRole() == Chess.BLACK){
+                rivalRole = Chess.WHITE;
+            } else {
+                rivalRole = Chess.BLACK;
+            }
+            //通知对手我方认输
+            try {
+                ObjectOutputStream oos = new ObjectOutputStream
+                        (MapClientConServerThread.getClientConnServerThread(u.getName()).getS().getOutputStream());
+                Message m = new Message();
+                m.setMesType(MessageType.GIVE_UP);
+                m.setSender(u.getName());
+                m.setGetter(rival.getName());
+                oos.writeObject(m);
+                System.out.println("我方认输，通知对方");
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            //设置对手获胜
+            ppcb.WinEvent(rivalRole);
         }
         //玩家按下了"发送"按钮或者在输入框输完信息后按下回车，就能发送聊天信息
         else if(source == send || source == talkField){
@@ -412,20 +487,15 @@ public class PPMainBoard extends MainBoard {
                 e1.printStackTrace();
             }
         }
-    }
-
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        if(ppcb.clickable == MainBoard.CAN_CLICK_INFO){
-            this.setCursor(Cursor.HAND_CURSOR);
-        }else {
-            this.setCursor(Cursor.DEFAULT_CURSOR);
+        //返回主菜单
+        else if(source == backMainMenu){
+            dispose();
+            new SelectModel(u.getName());
+        }
+        //用户查看游戏战绩
+        else if(source == gameRecord){
+            new GradeRecordDialog(this, "历史战绩", u);
         }
     }
 
-    @Override
-    public void mouseExited(MouseEvent e) {
-        this.setCursor(Cursor.DEFAULT_CURSOR);
-    }
 }

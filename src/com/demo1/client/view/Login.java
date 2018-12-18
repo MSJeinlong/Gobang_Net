@@ -9,13 +9,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author long
  * 用户登录界面
  */
 
-public class Login extends JDialog implements ActionListener{
+public class Login extends JFrame implements ActionListener{
     //定义组件
     private JPanel jp1, jp2, jp3;
     private JLabel jlb1, jlb2;
@@ -74,7 +76,7 @@ public class Login extends JDialog implements ActionListener{
       /*  setBounds(500, 500, 300, 400);*/
         pack();
         setLocation(700, 400);
-        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setResizable(false);
     }
@@ -90,6 +92,12 @@ public class Login extends JDialog implements ActionListener{
                 User u = new User();
                 u.setName(name);
                 u.setPassword(password);
+                //获取当前系统时间
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+                String time = df.format(new Date()).toString();
+                System.out.println("登录时间："+time);
+                //设置登录时间
+                u.setLoginTime(time);
                 Message m = new Message();
                 m.setMesType(MessageType.USER_LOGIN);
                 m.setU(u);

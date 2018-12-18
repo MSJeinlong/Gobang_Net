@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ObjectOutputStream;
 
-public class SelectRival extends JDialog implements ActionListener {
+public class SelectRival extends JFrame implements ActionListener {
 
     private JButton jb1, jb2, jb3;
     private String userName;
@@ -36,7 +36,7 @@ public class SelectRival extends JDialog implements ActionListener {
 
         this.setTitle("选择对战模式");
         this.setBounds(800, 400, 200, 150);
-        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setResizable(false);
     }

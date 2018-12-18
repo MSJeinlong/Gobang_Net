@@ -3,7 +3,10 @@ import com.demo1.client.comman.User;
 import com.demo1.client.tools.DBConnection;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
@@ -31,6 +34,8 @@ public class UserDAOImpl implements UserDAO {
                 u.setDan(rs.getInt(5));
                 u.setGrade(rs.getInt(6));
                 u.setStatus(rs.getInt(7));
+                //更新用户u的登录时间
+                update(u);
                 return u;
             }
         } catch (SQLException e){
@@ -86,7 +91,7 @@ public class UserDAOImpl implements UserDAO {
     //更新
     @Override
     public boolean update(User u) {
-        sql = "update users set name = ?, password = ? , sex = ?, dan = ?, grade = ?, status = ? where id = ?";
+        sql = "update users set name = ?, password = ? , sex = ?, dan = ?, grade = ?, status = ?, loginTime = ? where id = ?";
         conn = DBConnection.getConnection();
         try {
             pstmt = conn.prepareStatement(sql);
@@ -96,7 +101,18 @@ public class UserDAOImpl implements UserDAO {
             pstmt.setInt(4, u.getDan());
             pstmt.setInt(5, u.getGrade());
             pstmt.setInt(6, u.getStatus());
-            pstmt.setInt(7, u.getId());
+            //设置登录时间
+            //储存datetime，格式转换
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = null;
+            try {
+                date = dateFormat.parse(u.getLoginTime());
+            } catch (ParseException e){
+                e.printStackTrace();
+            }
+            Timestamp d = new Timestamp((date.getTime()));
+            pstmt.setTimestamp(7, d);
+            pstmt.setInt(8, u.getId());
             if(pstmt.executeUpdate() != 0){
                 return true;
             }
@@ -110,9 +126,9 @@ public class UserDAOImpl implements UserDAO {
 
     //查询所有状态为1的玩家
     @Override
-    public List<User> QueryAllWaitVersusUser() {
+    public List<User> queryAllOnLineUser() {
         List<User> list = new ArrayList<>();
-        String sql = "select * from users where status = 1";
+        String sql = "select * from users where status != 0";
         conn = DBConnection.getConnection();
         try {
             stmt = conn.createStatement();
@@ -127,6 +143,9 @@ public class UserDAOImpl implements UserDAO {
                 u.setDan(rs.getInt(5));
                 u.setGrade(rs.getInt(6));
                 u.setStatus(rs.getInt(7));
+                //读取datatime格式的数据
+                String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(rs.getTimestamp(8));
+                u.setLoginTime(time);
                 list.add(u);
             }
         } catch (SQLException e) {

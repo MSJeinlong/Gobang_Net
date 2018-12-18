@@ -1,5 +1,6 @@
 package com.demo1.client.model;
 
+import com.demo1.client.comman.Chess;
 import com.demo1.client.comman.Coord;
 import com.demo1.client.comman.Message;
 import com.demo1.client.comman.MessageType;
@@ -7,6 +8,7 @@ import com.demo1.client.tools.MapGradeRecordDialog;
 import com.demo1.client.tools.MapFindRival;
 import com.demo1.client.tools.MapPPMainBoard;
 import com.demo1.client.tools.MapUserModel;
+import com.demo1.client.view.PPChessBoard;
 import com.demo1.client.view.PPMainBoard;
 
 import javax.swing.*;
@@ -28,6 +30,7 @@ public class ClientConnServerThread extends Thread {
     private Message getMess;            //接收到的信息
     private Message sendMess;           //要发送的信息
     private PPMainBoard ppMB;     //用户对应的游戏界面
+    private PPChessBoard pcMB;    //棋盘面板
 
     public ClientConnServerThread(Socket s) {
         this.s = s;
@@ -69,9 +72,10 @@ public class ClientConnServerThread extends Thread {
                     case MessageType.LAUNCH_A_CHALLENGE:
                         //取得该用户的游戏界面
                         ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
+                        pcMB = ppMB.getPpcb();
                         //通知该用户收到了挑战信息
                         int n = JOptionPane.showConfirmDialog
-                                (ppMB, getMess.getSender() + "向你发起了挑战，是否接受?", "挑战请求", JOptionPane.YES_NO_CANCEL_OPTION);
+                                (ppMB, getMess.getSender() + "向你发起了挑战，是否接受?", "挑战请求", JOptionPane.YES_NO_OPTION);
                         //根据n回应对方的挑战
                         sendMess = new Message();
                         sendMess.setU(MapUserModel.getUser(getMess.getGetter()));
@@ -102,6 +106,7 @@ public class ClientConnServerThread extends Thread {
                     //对手回应了挑战信息
                     case MessageType.RESPONSE_A_CHALLENGE:
                         ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
+                        pcMB = ppMB.getPpcb();
                         JButton jb_findRival = ppMB.getFindRival();
                         //通知用户收到了对手的回应
                         //判断对方是接受挑战还是拒绝挑战
@@ -126,9 +131,6 @@ public class ClientConnServerThread extends Thread {
                         break;
                     //处理对手发送过来的聊天信息
                     case MessageType.SEND_CHAT_CONTENT:
-                        if (ppMB == null) {
-                            ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
-                        }
                         //把对手发过来的聊天信息显示在聊天面板内
                         ppMB.getTalkArea().append(getMess.getSender() + "：" + getMess.getChatContent() + "\n");
                         break;
@@ -140,15 +142,12 @@ public class ClientConnServerThread extends Thread {
                         //获取对手刚下的棋子信息
                         Coord coord = getMess.getCoord();
                         //显示对手的棋子，我的回合
-                        ppMB.getPpcb().myTurn(coord);
+                        pcMB.myTurn(coord);
                         break;
                     //应答对方发送的请求悔棋操作
                     case MessageType.REQUEST_UNDO_CHESS:
-                        if (ppMB == null) {
-                            ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
-                        }
                         int n1 = JOptionPane.showConfirmDialog
-                                (ppMB, getMess.getSender() + "请求悔棋，您是否同意?", "悔棋请求", JOptionPane.YES_NO_CANCEL_OPTION);
+                                (ppMB, getMess.getSender() + "请求悔棋，您是否同意?", "悔棋请求", JOptionPane.YES_NO_OPTION);
                         //根据n1回应对方的挑战
                         sendMess = new Message();
                         sendMess.setMesType(MessageType.RESPONSE_UNDO_CHESS);
@@ -158,9 +157,9 @@ public class ClientConnServerThread extends Thread {
                         if (n1 == JOptionPane.YES_OPTION) {
                             sendMess.setAgreedUndoChess(true);
                             //执行悔棋操作
-                            ppMB.getPpcb().backstep();
+                            pcMB.backstep();
                             //轮到对手的回合
-                            ppMB.getPpcb().undoToRivalTurn();
+                            pcMB.undoToRivalTurn();
                         }
                         //该用户不同意悔棋
                         else {
@@ -171,20 +170,61 @@ public class ClientConnServerThread extends Thread {
                         break;
                     //收到对方的悔棋回应
                     case MessageType.RESPONSE_UNDO_CHESS:
-                        if (ppMB == null) {
-                            ppMB = MapPPMainBoard.getPPMainBoard(getMess.getGetter());
-                        }
                         //如果对方同意悔棋，执行悔棋操作
                         if (getMess.isAgreedUndoChess()) {
-                            ppMB.getPpcb().backstep();
+                            pcMB.backstep();
                             //轮到我的回合
-                            ppMB.getPpcb().undoToMyTurn();
+                            pcMB.undoToMyTurn();
                         } else {
                             JOptionPane.showMessageDialog
                                     (ppMB, "很遗憾，" + getMess.getSender() + "拒绝了你的悔棋请求~", "信息", JOptionPane.INFORMATION_MESSAGE);
                         }
                         ppMB.getBack().setText("悔棋");
                         ppMB.getBack().setEnabled(true);
+                        break;
+                    //对方认输
+                    case MessageType.GIVE_UP:
+                        //直接宣布我方胜利
+                        System.out.println("对方认输");
+                        pcMB.setRivalGiveUp(true);
+
+                        pcMB.WinEvent(pcMB.getRole());
+                        break;
+                        //收到对方的和棋请求
+                    case MessageType.REQUEST_FOR_PEACE:
+                        //对方求和
+                        //通知用户，请求确认
+                        int rs = JOptionPane.showConfirmDialog(ppMB, getMess.getSender() + "请求和棋，您是否同意？", "求和通知", JOptionPane.YES_NO_OPTION);
+                        sendMess = new Message();
+                        sendMess.setMesType(MessageType.RESPONSE_FOR_PEACE);
+                        sendMess.setSender(getMess.getGetter());
+                        sendMess.setGetter(getMess.getSender());
+                        //该用户同意和棋
+                        if (rs == JOptionPane.YES_OPTION) {
+                            sendMess.setAgreedGamePeace(true);
+                        } else {
+                            //用户不同意和棋
+                            sendMess.setAgreedGamePeace(false);
+                        }
+                        oos = new ObjectOutputStream(s.getOutputStream());
+                        oos.writeObject(sendMess);
+                        //保存通知的一致性，故在此执行
+                        if(sendMess.isAgreedGamePeace()){
+                            //执行和棋操作
+                            pcMB.setGamePeace(true);
+                            pcMB.WinEvent(Chess.BLANK);     //和棋
+                        }
+                        break;
+                        //对方的求和回应
+                    case MessageType.RESPONSE_FOR_PEACE:
+                        //对方同意和棋
+                        if(getMess.isAgreedGamePeace()){
+                            //执行和棋操作
+                            pcMB.setGamePeace(true);
+                            pcMB.WinEvent(Chess.BLANK);     //和棋
+                        } else {
+                            JOptionPane.showMessageDialog(ppMB, getMess.getSender()+"拒绝了你的和棋请求");
+                        }
                         break;
                 }
             } catch (Exception e) {

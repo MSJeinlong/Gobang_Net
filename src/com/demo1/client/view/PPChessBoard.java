@@ -29,8 +29,9 @@ public class PPChessBoard extends ChessBoard {
     private ImageIcon imageIcon2 = new ImageIcon(whiteChess);
     private Logger logger = Logger.getLogger("棋盘");
     private User u;         //用户
-    private int rounds;     //回合数
     private boolean turnToMe;   //我的回合
+    private boolean rivalGiveUp;    //对方是否认输
+    private boolean gamePeace;      //是否和棋
 
     /**
      * 构造函数，初始化棋盘的图片，初始化数组
@@ -55,6 +56,18 @@ public class PPChessBoard extends ChessBoard {
 
     public int getStepCount() {
         return stepCount;
+    }
+
+    public void setRivalGiveUp(boolean rivalGiveUp) {
+        this.rivalGiveUp = rivalGiveUp;
+    }
+
+    public boolean isGamePeace() {
+        return gamePeace;
+    }
+
+    public void setGamePeace(boolean gamePeace) {
+        this.gamePeace = gamePeace;
     }
 
     /**
@@ -145,7 +158,7 @@ public class PPChessBoard extends ChessBoard {
         if (winner == Chess.WHITE || winner == Chess.BLACK) {
             reStartInit(winner);
         } //和棋
-        else if (isGameDraw()) {
+        else if (isGameDraw() || gamePeace) {
             reStartInit(winner);
         } else {
             //胜负未分，也没有和棋
@@ -270,6 +283,8 @@ public class PPChessBoard extends ChessBoard {
             if (mb.getTimer().isTimeOver()) {
                 //对方超时，我方胜利
                 JOptionPane.showMessageDialog(mb, "对方超出时间限制\n恭喜！你赢了~\n共 " + rounds + " 个回合", "信息", JOptionPane.INFORMATION_MESSAGE);
+            } else if(rivalGiveUp){
+                JOptionPane.showMessageDialog(mb, "对方认输！恭喜，你赢了~\n共 " + rounds + " 个回合", "信息", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(mb, "恭喜！你赢了~\n共 " + rounds + " 个回合", "信息", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -312,10 +327,11 @@ public class PPChessBoard extends ChessBoard {
         jb_findRival.setEnabled(true);
         mb.getSituation1().setText("    状态:");
         mb.getSituation2().setText("    状态:");
-
         mb.getTalkArea().setText(null);
-        mb.getBack().setEnabled(true);
-        mb.getExitGame().setEnabled(true);
+        mb.getBack().setEnabled(false);
+        mb.getBackMainMenu().setEnabled(true);
+        mb.getForPease().setEnabled(false);
+        mb.getGiveUp().setEnabled(false);
         mb.setRival(new User());
         String title = "欢乐五子棋--当前用户：" + u.getName() + "(" + u.getSex() + ")" + "  等级：" + u.getDan() + "-" + u.getGrade();
         mb.setTitle(title);
@@ -330,6 +346,8 @@ public class PPChessBoard extends ChessBoard {
         initArray();
         mb.getLabel().setText(null);
         gameOver = true;
+        gamePeace = false;
+        rivalGiveUp = false;
     }
 
     /**

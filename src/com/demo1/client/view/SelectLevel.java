@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ObjectOutputStream;
 
-public class SelectLevel extends JDialog implements ActionListener {
+public class SelectLevel extends JFrame implements ActionListener {
     public static final int PRIMARY = 1; //初级
     public static final int MEDIUM = 2;  //中级
     public static final int SENIOR = 3;  //高级
@@ -43,7 +43,7 @@ public class SelectLevel extends JDialog implements ActionListener {
         //设置属性
         this.setTitle("请选择电脑等级");
         this.setBounds(800, 400, 200, 250);
-        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setResizable(false);
     }

@@ -25,4 +25,7 @@ public interface MessageType {
     public final static int RESPONSE_A_CHALLENGE = 17;  //对手回应对战
     public final static int SEND_CHAT_CONTENT = 18;     //发送聊天信息
     public final static int CHESS_COORD = 19;           //棋子的坐标信息
+    public final static int GIVE_UP = 20;               //其中一方认输
+    public final static int REQUEST_FOR_PEACE = 21;     //一方请求和棋
+    public final static int RESPONSE_FOR_PEACE = 22;    //另一方回应和棋
 }

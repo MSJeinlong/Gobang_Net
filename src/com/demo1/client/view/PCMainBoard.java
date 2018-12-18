@@ -1,9 +1,6 @@
 package com.demo1.client.view;
 
-import com.demo1.client.comman.Message;
-import com.demo1.client.comman.MessageType;
-import com.demo1.client.comman.TimeThread;
-import com.demo1.client.comman.User;
+import com.demo1.client.comman.*;
 import com.demo1.client.tools.MapClientConServerThread;
 import com.demo1.client.tools.MapUserModel;
 
@@ -30,6 +27,7 @@ public class PCMainBoard extends MainBoard {
     private JButton back;//悔棋按钮
     private JButton exit;//返回按钮
     private JButton gradeHistory;   //玩家历史战绩按钮
+    private JButton giveUp;     //认输按钮
     private JLabel people;//玩家标签
     private JLabel computer;//电脑标签
     private JLabel plv;//玩家等级标签
@@ -160,9 +158,14 @@ public class PCMainBoard extends MainBoard {
         back.setBackground(new Color(85, 107, 47));
         back.setFont(new Font("宋体", Font.BOLD, 20));
         back.addActionListener(this);
+        giveUp = new JButton("认输");
+        giveUp.setBackground(new Color(218, 165, 32));
+        giveUp.setBounds(780, 405, 200, 50);
+        giveUp.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
+        giveUp.addActionListener(this);
         exit = new JButton("改变电脑等级");
         exit.setBackground(new Color(218, 165, 32));
-        exit.setBounds(780, 405, 200, 50);
+        exit.setBounds(780, 465, 200, 50);
         exit.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
         exit.addActionListener(this);
         gradeHistory = new JButton("历史战绩");
@@ -231,6 +234,13 @@ public class PCMainBoard extends MainBoard {
         add(plv);
         add(situation1);
         add(situation2);
+        add(giveUp);
+
+        //为开始游戏之前，禁用某些按钮
+       if(cb.rounds < 1){
+           back.setEnabled(false);
+           giveUp.setEnabled(false);
+       }
     }
 
     /**
@@ -256,8 +266,10 @@ public class PCMainBoard extends MainBoard {
             timer.start();
             //设置结果为false，游戏继续
             cb.setGameOver(false);
-            //设置重新开始按钮可用
+            //设置按钮可用
             restart.setEnabled(true);
+            back.setEnabled(true);
+            giveUp.setEnabled(true);
         }
         //点击重新开始操作
         else if (source == restart) {
@@ -296,6 +308,11 @@ public class PCMainBoard extends MainBoard {
         //玩家点击了历史战绩
         else if (source == gradeHistory) {
             GradeRecordDialog grd = new GradeRecordDialog(this, "历史战绩", u);
+        }
+        //玩家认输
+        else if(source == giveUp){
+            //设置电脑胜利
+            cb.WinEvent(Chess.BLACK);
         }
     }
 

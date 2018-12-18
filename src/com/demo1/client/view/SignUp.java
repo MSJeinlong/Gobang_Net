@@ -22,7 +22,7 @@ public class SignUp extends JDialog implements ActionListener {
     private Box box;
     private String sex;
 
-    public SignUp(Dialog owner, String title) {
+    public SignUp(JFrame owner, String title) {
         super(owner, title);        //父类方法初始化
 
         //创建组件

@@ -1,6 +1,8 @@
 package com.demo1.server.view;
 
+import com.demo1.client.model.UserModel;
 import com.demo1.server.model.MyServer;
+import com.demo1.server.model.UserPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,9 +17,10 @@ import java.net.Socket;
  * @Description:服务器启动与关闭的界面
  */
 public class MyServerFrame extends JFrame implements ActionListener {
-    private JPanel jp1;
+    private JPanel jp1, jp2;
     private JButton jb1, jb2;
     private MyServer server;
+    private UserPanel up;
 
     public static void main(String[] args) {
         new MyServerFrame();
@@ -32,9 +35,15 @@ public class MyServerFrame extends JFrame implements ActionListener {
         jp1.add(jb1);
         jp1.add(jb2);
 
-        this.add(jp1);
+        up = new UserPanel();
+        Thread t = new Thread(up);
+        t.start();
+
+        this.add(jp1, "North");
+        this.add(up, "Center");
         this.setTitle("游戏服务器");
-        this.setBounds(500, 300, 500, 300);
+        this.setBounds(500, 300, 800, 500);
+       /* this.pack();*/
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }

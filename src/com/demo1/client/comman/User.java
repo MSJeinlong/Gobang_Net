@@ -12,6 +12,7 @@ public class User implements java.io.Serializable{
     private int dan = 1;        //段位，共九个段位，最低为初段（1段），最高为9段，默认为初段
     private int grade = 1;       //等级，每个段位10个等级，最高为10级，最低为1级，默认为1级
     private int status;          //登录状态，0为离线，1为在线未对战，2为在线对弈，
+    private String loginTime;    //最近登录时间
 
     public User() {
     }
@@ -78,6 +79,14 @@ public class User implements java.io.Serializable{
         this.status = status;
     }
 
+    public String getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(String loginTime) {
+        this.loginTime = loginTime;
+    }
+
     //玩家段位上升
     /**
      * @param num 上升num个段位
@@ -112,16 +121,4 @@ public class User implements java.io.Serializable{
         }
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", sex='" + sex + '\'' +
-                ", dan=" + dan +
-                ", grade=" + grade +
-                ", status=" + status +
-                '}';
-    }
 }

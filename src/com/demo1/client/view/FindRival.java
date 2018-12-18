@@ -76,8 +76,11 @@ public class FindRival extends JFrame implements MouseListener {
     public void showWaitUser(List<User> list) {
 
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.size());
             User u1 = list.get(i);
+            //只显示那些在等待对战的用户
+            if(u1.getStatus() != User.WAIT_VERSUS){
+                continue;
+            }
             JLabel jlb = new JLabel(i + 1 + ":" + u1.getName(), new ImageIcon("images/boy2.png"), JLabel.LEFT);
             if (u1.getName().equals(u.getName())) {
                 //用户自己的头像设置不可点击

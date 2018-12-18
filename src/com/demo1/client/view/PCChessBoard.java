@@ -285,6 +285,7 @@ public class PCChessBoard extends ChessBoard {
                 }
             }
         }
+
     }
 
     /**

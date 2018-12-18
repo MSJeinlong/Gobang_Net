@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ObjectOutputStream;
 
-public class SelectModel extends JDialog implements ActionListener {
+public class SelectModel extends JFrame implements ActionListener {
 
     private JButton jb1, jb2;
     private String userName;
@@ -31,7 +31,7 @@ public class SelectModel extends JDialog implements ActionListener {
 
         this.setTitle("模式选择");
         this.setBounds(800, 400, 200, 100);
-        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setResizable(false);
     }

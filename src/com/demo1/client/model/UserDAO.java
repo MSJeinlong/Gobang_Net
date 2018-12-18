@@ -9,5 +9,5 @@ public interface UserDAO {
     public boolean add(User u);
     public boolean delete(int id);
     public boolean update(User u);
-    public List<User> QueryAllWaitVersusUser();
+    public List<User> queryAllOnLineUser();
 }

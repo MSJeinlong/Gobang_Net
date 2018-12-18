@@ -50,7 +50,6 @@ public class TimeThread extends Thread {
                         ppcb.WinEvent(ppcb.getRole());
                     }
                 }
-               /* startTime = System.currentTimeMillis();     //重新获取开始时间*/
                 timeOver = false;
                 label.setText(null);
                 this.interrupt();

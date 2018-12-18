@@ -20,6 +20,7 @@ public class Message implements java.io.Serializable{
     private boolean acceptChallenge;        //接受挑战与否
     private Coord coord;                    //保存棋子的坐标
     private boolean agreedUndoChess;        //是否同意悔棋
+    private boolean agreedGamePeace;        //是否同意悔棋
 
     public Message() {
     }
@@ -110,5 +111,13 @@ public class Message implements java.io.Serializable{
 
     public void setAgreedUndoChess(boolean agreedUndoChess) {
         this.agreedUndoChess = agreedUndoChess;
+    }
+
+    public boolean isAgreedGamePeace() {
+        return agreedGamePeace;
+    }
+
+    public void setAgreedGamePeace(boolean agreedGamePeace) {
+        this.agreedGamePeace = agreedGamePeace;
     }
 }

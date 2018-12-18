@@ -16,15 +16,6 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) {
-       /* HashMap<String, Integer> hm = new HashMap<>();
-        hm.put("1", 2);
-        hm.put("1", 3);
-        hm.put("1", 5);
-        System.out.println(hm.get("1"));*/
-        UserDAO userDAO = new UserDAOImpl();
-        List<User> list = userDAO.QueryAllWaitVersusUser();
-        for (User u:list){
-         System.out.println(u);
-        }
+
     }
 }

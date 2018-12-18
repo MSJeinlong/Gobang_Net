@@ -78,15 +78,15 @@ public class SerConClientThread extends Thread {
                             sendMess = new Message();
                             sendMess.setU(getMess.getU());
                             //到数据库里查询等待对战的所有用户
-                            sendMess.setUserList(uDAO.QueryAllWaitVersusUser());
+                            sendMess.setUserList(uDAO.queryAllOnLineUser());
                             //设置信息包类型
                             sendMess.setMesType(MessageType.RESPONSE_WAIT_VERSUS_USERS);
                             //返回消息包
                             oos = new ObjectOutputStream(s.getOutputStream());
                             oos.writeObject(sendMess);
-                            uDAO.QueryAllWaitVersusUser();
+                            uDAO.queryAllOnLineUser();
                             break;
-                            //以下的操作相同
+                        //以下的操作相同
                         //客户端请求转发挑战信息
                         case MessageType.LAUNCH_A_CHALLENGE:
                             //客户端回应了挑战信息，请求转发回应信息
@@ -97,6 +97,12 @@ public class SerConClientThread extends Thread {
                         case MessageType.REQUEST_UNDO_CHESS:
                             //用户回应了悔棋请求，转发即可
                         case MessageType.RESPONSE_UNDO_CHESS:
+                            //其中一方认输
+                        case MessageType.GIVE_UP:
+                            //求和
+                        case MessageType.REQUEST_FOR_PEACE:
+                            //回应求和
+                        case MessageType.RESPONSE_FOR_PEACE:
                             //客户端请求转发聊天信息
                         case MessageType.SEND_CHAT_CONTENT:
                             //根据Getter转发信息
