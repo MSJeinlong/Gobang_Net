@@ -92,8 +92,8 @@ public class PCChessBoard extends ChessBoard {
             e1.printStackTrace();
         }
         /*恢复初始页面状态*/
-        mb.getstart().setText("开始游戏");
-        mb.getstart().setEnabled(true);
+        mb.getStart().setText("开始游戏");
+        mb.getStart().setEnabled(true);
         mb.getRestart().setEnabled(false);
         mb.getSituation1().setText("    状态:");
         mb.getSituation2().setText("    状态:");
@@ -205,6 +205,9 @@ public class PCChessBoard extends ChessBoard {
         initArray();    //初始化页面
         rounds = 0;     //重置chessCount
         mb.getLabel().setText(null);    //清空计时
+        //设置悔棋和认输不可用
+        mb.getBack().setEnabled(false);
+        mb.getGiveUp().setEnabled(false);
     }
 
     /**
@@ -218,7 +221,7 @@ public class PCChessBoard extends ChessBoard {
             e.printStackTrace();
         }
         /*恢复初始页面状态*/
-        mb.getstart().setText("开始游戏");
+        mb.getStart().setText("开始游戏");
         mb.getSituation1().setText("    状态:");
         mb.getSituation2().setText("    状态:");
         initArray();        //初始化数据

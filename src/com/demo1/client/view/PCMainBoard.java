@@ -51,14 +51,6 @@ public class PCMainBoard extends MainBoard {
         return level;
     }//返回你要挑战的等级
 
-    public JButton getstart() {
-        return start;
-    }//返回start
-
-    public JButton getback() {
-        return back;
-    }//返回back
-
     public JLabel getSituation1() {
         return situation1;
     }//返回玩家状态
@@ -73,6 +65,18 @@ public class PCMainBoard extends MainBoard {
 
     public JLabel getPlv() {
         return plv;
+    }
+
+    public JButton getBack() {
+        return back;
+    }
+
+    public JButton getGiveUp() {
+        return giveUp;
+    }
+
+    public JButton getStart() {
+        return start;
     }
 
     //显示对应等级的人机对战界面
