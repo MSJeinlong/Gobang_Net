@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
@@ -41,8 +42,8 @@ public class PPMainBoard extends MainBoard {
     private JLabel jLabel2;
     private JLabel turnTip;     //提示这是谁的回合标签
     private JMenuBar jmb;       //菜单栏
-    private JMenu jmu1, jmu2;     //2个菜单项
-    private JMenuItem backMainMenu, gameRecord;     //2个菜单子选项
+    private JMenu jmu1, jmu2, jmu3;     //3个菜单项
+    private JMenuItem backMainMenu, gameRecord, help;     //3个菜单子选项
 
     private JTextArea talkArea;
     private JTextField talkField;   //聊天文本框
@@ -227,23 +228,26 @@ public class PPMainBoard extends MainBoard {
         jmb = new JMenuBar();
         jmu1 = new JMenu("菜单");
         jmu2 = new JMenu("记录");
-
+        jmu3 = new JMenu("帮助");
 
         backMainMenu = new JMenuItem("返回主菜单");
         gameRecord = new JMenuItem("游戏战绩");
+        help = new JMenuItem("游戏帮助");
 
         //加入监听
         backMainMenu.addActionListener(this);
         gameRecord.addActionListener(this);
+        help.addActionListener(this);
 
         //加入菜单选项
         jmu1.add(backMainMenu);
         jmu2.add(gameRecord);
-
+        jmu3.add(help);
 
         //菜单选项加入菜单栏
         jmb.add(jmu1);
         jmb.add(jmu2);
+        jmb.add(jmu3);
 
         //菜单栏加入窗体
         setJMenuBar(jmb);
@@ -494,6 +498,18 @@ public class PPMainBoard extends MainBoard {
         //用户查看游戏战绩
         else if(source == gameRecord){
             new GradeRecordDialog(this, "历史战绩", u);
+        }
+        //用户查看帮助文档
+        else if (source == help) {
+            if (Desktop.isDesktopSupported()) {
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    // 打开帮助文档
+                    desktop.open(new File("files/help.txt"));
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
         }
     }
 

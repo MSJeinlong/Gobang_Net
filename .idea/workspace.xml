@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43bf1f5a-6951-4f4c-89d0-597c5fc13baa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/files/help.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="348" column="29" selection-start-line="348" selection-start-column="29" selection-end-line="348" selection-end-column="29" />
+            <state relative-caret-position="476">
+              <caret line="354" column="9" lean-forward="true" selection-start-line="343" selection-start-column="8" selection-end-line="354" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3553">
-              <caret line="198" column="32" selection-start-line="198" selection-start-column="32" selection-end-line="198" selection-end-column="32" />
+            <state relative-caret-position="609">
+              <caret line="512" column="9" selection-start-line="512" selection-start-column="9" selection-end-line="512" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -206,7 +209,6 @@
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/ChessBoard.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServer.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/model/Test.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAO.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAOImpl.java" />
@@ -217,6 +219,7 @@
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java" />
         <option value="$PROJECT_DIR$/files/help.txt" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" />
       </list>
     </option>
   </component>
@@ -297,7 +300,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545310825358" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545311062028" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -427,7 +430,7 @@
       <workItem from="1545226113953" duration="2338000" />
       <workItem from="1545234929254" duration="259000" />
       <workItem from="1545304591058" duration="4207000" />
-      <workItem from="1545308911512" duration="1295000" />
+      <workItem from="1545308911512" duration="1503000" />
     </task>
     <task id="LOCAL-00001" summary="finish gradeHistory query">
       <created>1544525798201</created>
@@ -499,17 +502,24 @@
       <option name="project" value="LOCAL" />
       <updated>1545309045054</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add help txt">
+      <created>1545310849045</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1545310849045</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135511000" />
+    <option name="totallyTimeSpent" value="135719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="999" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.19009584" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.19009584" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -539,37 +549,6 @@
       <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="right" id="Structure" order="9" sideWeight="0.50106496" side_tool="true" weight="0.14643237" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.18849841" />
-      <window_info id="Image Layers" order="1" />
-      <window_info id="Designer" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32918552" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49893504" visible="true" weight="0.32918552" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4978701" weight="0.19570136" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5021299" side_tool="true" weight="0.19570136" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" id="Structure" order="9" sideWeight="0.50106496" side_tool="true" visible="true" weight="0.14643237" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -585,7 +564,8 @@
     <MESSAGE value="figure out the bug of undo and time limit" />
     <MESSAGE value="finish all function and figure out all bug" />
     <MESSAGE value="add count about win, lose, peace, winpct" />
-    <option name="LAST_COMMIT_MESSAGE" value="add count about win, lose, peace, winpct" />
+    <MESSAGE value="add help txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="add help txt" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/tools/MapGradeRecordDialog.java">
@@ -856,16 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3667">
-          <caret line="236" column="43" selection-start-line="236" selection-start-column="43" selection-end-line="236" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3059">
@@ -1035,8 +1005,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="348" column="29" selection-start-line="348" selection-start-column="29" selection-end-line="348" selection-end-column="29" />
+        <state relative-caret-position="476">
+          <caret line="354" column="9" lean-forward="true" selection-start-line="343" selection-start-column="8" selection-end-line="354" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="512" column="9" selection-start-line="512" selection-start-column="9" selection-end-line="512" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
