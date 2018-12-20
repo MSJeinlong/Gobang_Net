@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="43bf1f5a-6951-4f4c-89d0-597c5fc13baa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fivechess.log" beforeDir="false" afterPath="$PROJECT_DIR$/fivechess.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/Login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-163">
-              <caret line="80" column="28" lean-forward="true" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
+            <state relative-caret-position="305">
+              <caret line="57" column="18" lean-forward="true" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,20 +46,7 @@
         <entry file="file://$PROJECT_DIR$/files/help.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="342">
-              <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-              <folding>
-                <element signature="e#858#859#0" expanded="true" />
-                <element signature="e#896#897#0" expanded="true" />
-              </folding>
+              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -69,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="354" column="9" lean-forward="true" selection-start-line="343" selection-start-column="8" selection-end-line="354" selection-end-column="9" />
+            <state relative-caret-position="6156">
+              <caret line="354" column="9" selection-start-line="343" selection-start-column="8" selection-end-line="354" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="512" column="9" selection-start-line="512" selection-start-column="9" selection-end-line="512" selection-end-column="9" />
+            <state relative-caret-position="283">
+              <caret line="483" column="35" lean-forward="true" selection-start-line="483" selection-start-column="35" selection-end-line="483" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,10 +111,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="874">
-              <caret line="64" column="62" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
+            <state relative-caret-position="363">
+              <caret line="170" column="39" lean-forward="true" selection-start-line="170" selection-start-column="39" selection-end-line="170" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="213" column="35" selection-start-line="213" selection-start-column="35" selection-end-line="213" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1646#1647#0" expanded="true" />
+                <element signature="e#1678#1679#0" expanded="true" />
+                <element signature="e#1729#1730#0" expanded="true" />
+                <element signature="e#1771#1772#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,7 +139,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
+            <state relative-caret-position="551">
               <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -198,7 +199,6 @@
         <option value="$PROJECT_DIR$/src/com/demo1/server/model/UserPanel.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/comman/TimeThread.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/comman/MessageType.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/model/UserModel.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/SelectLevel.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/SelectModel.java" />
@@ -214,12 +214,13 @@
         <option value="$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/comman/Message.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java" />
         <option value="$PROJECT_DIR$/files/help.txt" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java" />
       </list>
     </option>
   </component>
@@ -234,6 +235,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -258,6 +260,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="demo1" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gobang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gobang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="demo1" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Gobang" type="b2602c69:ProjectViewProjectNode" />
@@ -294,13 +304,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545311062028" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545318358450" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -430,7 +439,9 @@
       <workItem from="1545226113953" duration="2338000" />
       <workItem from="1545234929254" duration="259000" />
       <workItem from="1545304591058" duration="4207000" />
-      <workItem from="1545308911512" duration="1503000" />
+      <workItem from="1545308911512" duration="1581000" />
+      <workItem from="1545311140105" duration="39000" />
+      <workItem from="1545311249133" duration="2784000" />
     </task>
     <task id="LOCAL-00001" summary="finish gradeHistory query">
       <created>1544525798201</created>
@@ -509,17 +520,24 @@
       <option name="project" value="LOCAL" />
       <updated>1545310849045</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add help txt and finish 100%">
+      <created>1545311086070</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1545311086070</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135719000" />
+    <option name="totallyTimeSpent" value="138620000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="999" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.19009584" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.19382322" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -528,7 +546,7 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32918552" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49893504" weight="0.32918552" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4978701" visible="true" weight="0.19570136" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4978701" visible="true" weight="0.2183258" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -565,7 +583,8 @@
     <MESSAGE value="finish all function and figure out all bug" />
     <MESSAGE value="add count about win, lose, peace, winpct" />
     <MESSAGE value="add help txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="add help txt" />
+    <MESSAGE value="add help txt and finish 100%" />
+    <option name="LAST_COMMIT_MESSAGE" value="add help txt and finish 100%" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/tools/MapGradeRecordDialog.java">
@@ -725,13 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/util/Vector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="476" selection-start-line="476" selection-end-line="476" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/SignUp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -836,20 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3059">
-          <caret line="190" column="12" selection-start-line="190" selection-start-column="12" selection-end-line="190" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1646#1647#0" expanded="true" />
-            <element signature="e#1678#1679#0" expanded="true" />
-            <element signature="e#1729#1730#0" expanded="true" />
-            <element signature="e#1771#1772#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/ChessBoard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="912">
@@ -928,6 +926,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding>
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6156">
+          <caret line="354" column="9" selection-start-line="343" selection-start-column="8" selection-end-line="354" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Message.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1482">
@@ -955,37 +974,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="64" column="62" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/files/help.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
-          <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/util/Vector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-          <folding>
-            <element signature="e#858#859#0" expanded="true" />
-            <element signature="e#896#897#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="476" selection-start-line="476" selection-end-line="476" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
+        <state relative-caret-position="551">
           <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -995,18 +1000,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/Login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-163">
-          <caret line="80" column="28" lean-forward="true" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="354" column="9" lean-forward="true" selection-start-line="343" selection-start-column="8" selection-end-line="354" selection-end-column="9" />
+        <state relative-caret-position="305">
+          <caret line="57" column="18" lean-forward="true" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1015,10 +1010,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="512" column="9" selection-start-line="512" selection-start-column="9" selection-end-line="512" selection-end-column="9" />
+        <state relative-caret-position="283">
+          <caret line="483" column="35" lean-forward="true" selection-start-line="483" selection-start-column="35" selection-end-line="483" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="170" column="39" lean-forward="true" selection-start-line="170" selection-start-column="39" selection-end-line="170" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPChessBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="213" column="35" selection-start-line="213" selection-start-column="35" selection-end-line="213" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1646#1647#0" expanded="true" />
+            <element signature="e#1678#1679#0" expanded="true" />
+            <element signature="e#1729#1730#0" expanded="true" />
+            <element signature="e#1771#1772#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -211,6 +211,7 @@ public class PPChessBoard extends ChessBoard {
         }
         turnToMe = true;
         mb.getTurnTip().setText("   我的回合");
+        mb.getBack().setText("悔棋");
         mb.getBack().setEnabled(false);     //设置不能请求悔棋
         //设置棋盘可以点击
         setClickable(MainBoard.CAN_CLICK_INFO);
@@ -231,8 +232,8 @@ public class PPChessBoard extends ChessBoard {
         turnToMe = false;
         mb.getTurnTip().setText("   对方的回合");
         mb.getBack().setEnabled(true);     //设置可以请求悔棋
-        //设置棋盘可以点击
-        setClickable(MainBoard.CAN_CLICK_INFO);
+        //设置棋盘不可以点击
+        setClickable(MainBoard.CAN_NOT_CLICK_INFO);
         mb.getSituation1().setText("    状态:下棋...");
         mb.getSituation2().setText("    状态:等待...");
         restartTimer();

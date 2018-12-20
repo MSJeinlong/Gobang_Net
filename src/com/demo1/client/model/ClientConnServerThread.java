@@ -48,13 +48,6 @@ public class ClientConnServerThread extends Thread {
                 ois = new ObjectInputStream(s.getInputStream());
                 getMess = (Message) ois.readObject();
 
-             /*   //普通的信息包
-                int messType = m.getMesType();
-                if(messType == MessageType.COMMON_MESSAGE){
-                    //把从服务器获得消息，显示到该显示的聊天界面
-                    //稍后再做
-                }
-                //返回在线用户的信息包*/
 
                 //判断服务器发过来的消息包的类型
                 switch (getMess.getMesType()) {
@@ -179,9 +172,9 @@ public class ClientConnServerThread extends Thread {
                         } else {
                             JOptionPane.showMessageDialog
                                     (ppMB, "很遗憾，" + getMess.getSender() + "拒绝了你的悔棋请求~", "信息", JOptionPane.INFORMATION_MESSAGE);
+                            ppMB.getBack().setText("悔棋");
+                            ppMB.getBack().setEnabled(true);
                         }
-                        ppMB.getBack().setText("悔棋");
-                        ppMB.getBack().setEnabled(true);
                         break;
                     //对方认输
                     case MessageType.GIVE_UP:
