@@ -26,7 +26,6 @@ public class PCMainBoard extends MainBoard {
     private JButton restart;    //重新开始按钮
     private JButton back;//悔棋按钮
     private JButton exit;//返回按钮
-    private JButton gradeHistory;   //玩家历史战绩按钮
     private JButton giveUp;     //认输按钮
     private JLabel people;//玩家标签
     private JLabel computer;//电脑标签
@@ -46,6 +45,9 @@ public class PCMainBoard extends MainBoard {
     private ImageIcon imageIcon2;//
     private int level;
     private Logger logger = Logger.getLogger("游戏");
+    private JMenuBar jmb;       //菜单栏
+    private JMenu jmu1, jmu2;     //2个菜单项
+    private JMenuItem backMainMenu, gameRecord;     //2个菜单子选项
 
     public int getLevel() {
         return level;
@@ -113,7 +115,6 @@ public class PCMainBoard extends MainBoard {
                     e1.printStackTrace();
                 }
                 System.exit(0);
-               /* dispose();*/
             }
 
             public void windowClosed(WindowEvent e) {
@@ -131,52 +132,42 @@ public class PCMainBoard extends MainBoard {
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
-                /* System.exit(0);*/
                 System.out.println("触发windowClosed事件");
             }
         });
     }
 
     public void init() {
-    /*    this.u = MapUserModel.getU();//获取用户的数据模型
-        if(u == null){
-            u = new User();
-        }*/
         cb = new PCChessBoard(this);
         cb.setClickable(CAN_NOT_CLICK_INFO);//设置棋盘是否能被点击
         cb.setBounds(210, 40, 570, 585);
         cb.setVisible(true);
         start = new JButton("开始游戏");//设置名称，下同
-        start.setBounds(780, 240, 200, 50);//设置起始位置，宽度和高度，下同
+        start.setBounds(780, 160, 200, 50);//设置起始位置，宽度和高度，下同
         start.setBackground(new Color(50, 205, 50));//设置颜色，下同
         start.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
         start.addActionListener(this);
         restart = new JButton("重新开始");    //设置名称，下同
         restart.setEnabled(false);              //游戏未开始，该按钮不可用
-        restart.setBounds(780, 295, 200, 50);//设置起始位置，宽度和高度，下同
+        restart.setBounds(780, 215, 200, 50);//设置起始位置，宽度和高度，下同
         restart.setBackground(new Color(50, 205, 50));//设置颜色，下同
         restart.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
         restart.addActionListener(this);
         back = new JButton("悔  棋");
-        back.setBounds(780, 350, 200, 50);
+        back.setBounds(780, 270, 200, 50);
         back.setBackground(new Color(85, 107, 47));
         back.setFont(new Font("宋体", Font.BOLD, 20));
         back.addActionListener(this);
         giveUp = new JButton("认输");
         giveUp.setBackground(new Color(218, 165, 32));
-        giveUp.setBounds(780, 405, 200, 50);
+        giveUp.setBounds(780, 325, 200, 50);
         giveUp.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
         giveUp.addActionListener(this);
         exit = new JButton("改变电脑等级");
         exit.setBackground(new Color(218, 165, 32));
-        exit.setBounds(780, 465, 200, 50);
+        exit.setBounds(780, 380, 200, 50);
         exit.setFont(new Font("宋体", Font.BOLD, 20));//设置字体，下同
         exit.addActionListener(this);
-        gradeHistory = new JButton("历史战绩");
-        gradeHistory.setBounds(780, 185, 200, 50);
-        gradeHistory.setBackground(new Color(85, 107, 47));
-        gradeHistory.setFont(new Font("宋体", Font.BOLD, 20));
-        gradeHistory.addActionListener(this);
         people = new JLabel("    玩 家:");
         people.setOpaque(true);
         people.setBackground(new Color(82, 109, 165));
@@ -216,6 +207,32 @@ public class PCMainBoard extends MainBoard {
         imageIcon1 = new ImageIcon(image1);
         jLabel1.setIcon(imageIcon1);
 
+        //设置菜单
+        jmb = new JMenuBar();
+        jmu1 = new JMenu("菜单");
+        jmu2 = new JMenu("记录");
+
+
+        backMainMenu = new JMenuItem("返回主菜单");
+        gameRecord = new JMenuItem("游戏战绩");
+
+        //加入监听
+        backMainMenu.addActionListener(this);
+        gameRecord.addActionListener(this);
+
+
+        //加入菜单选项
+        jmu1.add(backMainMenu);
+        jmu2.add(gameRecord);
+
+
+        //菜单选项加入菜单栏
+        jmb.add(jmu1);
+        jmb.add(jmu2);
+
+        //菜单栏加入窗体
+        setJMenuBar(jmb);
+
         setVisible(true);
         jLabel1.setBounds(130, 75, 200, 50);
         image2 = Toolkit.getDefaultToolkit().getImage("images/white.png");//添加白棋图片
@@ -230,7 +247,6 @@ public class PCMainBoard extends MainBoard {
         add(start);
         add(restart);
         add(exit);
-        add(gradeHistory);
         add(people);
         add(computer);
         add(timecount);
@@ -241,10 +257,10 @@ public class PCMainBoard extends MainBoard {
         add(giveUp);
 
         //为开始游戏之前，禁用某些按钮
-       if(cb.rounds < 1){
-           back.setEnabled(false);
-           giveUp.setEnabled(false);
-       }
+        if (cb.rounds < 1) {
+            back.setEnabled(false);
+            giveUp.setEnabled(false);
+        }
     }
 
     /**
@@ -309,14 +325,17 @@ public class PCMainBoard extends MainBoard {
             new SelectLevel(u.getName());
             logger.info("玩家选择返回主菜单");
         }
-        //玩家点击了历史战绩
-        else if (source == gradeHistory) {
-            GradeRecordDialog grd = new GradeRecordDialog(this, "历史战绩", u);
-        }
         //玩家认输
-        else if(source == giveUp){
+        else if (source == giveUp) {
             //设置电脑胜利
             cb.WinEvent(Chess.BLACK);
+        } else if (source == backMainMenu) {
+            dispose();
+            new SelectModel(u.getName());
+        }
+        //用户查看游戏战绩
+        else if (source == gameRecord) {
+            new GradeRecordDialog(this, "历史战绩", u);
         }
     }
 

@@ -8,6 +8,7 @@ import com.demo1.client.tools.MapUserModel;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 /**
@@ -25,7 +26,8 @@ public class ClientConnServer {
 
         try {
             //连接到服务器，服务器的IP地址为192.168.1.146
-            s = new Socket("192.168.1.146", 8888);
+            s = new Socket();
+            s.connect(new InetSocketAddress("192.168.1.146",8888));
             //把登录信息通过对象流发送服务器
             ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
             oos.writeObject(o);

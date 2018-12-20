@@ -61,7 +61,8 @@ public class ClientConnServerThread extends Thread {
                     //服务器返回用户对战记录
                     case MessageType.RECORD_RESPONSE:
                         //拿到客户端的历史记录Dialog,更新数据
-                        MapGradeRecordDialog.getGradeRecordDialog(getMess.getU().getName()).updateGradeRecord(getMess.getGrlist());
+                        MapGradeRecordDialog.getGradeRecordDialog
+                                (getMess.getU().getName()).updateGradeRecord(getMess.getGrlist(), getMess.getWinCount(), getMess.getLoseCount(), getMess.getPeaceCount());
                         break;
                     //服务器返回等待对战的用户
                     case MessageType.RESPONSE_WAIT_VERSUS_USERS:
@@ -190,7 +191,7 @@ public class ClientConnServerThread extends Thread {
 
                         pcMB.WinEvent(pcMB.getRole());
                         break;
-                        //收到对方的和棋请求
+                    //收到对方的和棋请求
                     case MessageType.REQUEST_FOR_PEACE:
                         //对方求和
                         //通知用户，请求确认
@@ -209,21 +210,21 @@ public class ClientConnServerThread extends Thread {
                         oos = new ObjectOutputStream(s.getOutputStream());
                         oos.writeObject(sendMess);
                         //保存通知的一致性，故在此执行
-                        if(sendMess.isAgreedGamePeace()){
+                        if (sendMess.isAgreedGamePeace()) {
                             //执行和棋操作
                             pcMB.setGamePeace(true);
                             pcMB.WinEvent(Chess.BLANK);     //和棋
                         }
                         break;
-                        //对方的求和回应
+                    //对方的求和回应
                     case MessageType.RESPONSE_FOR_PEACE:
                         //对方同意和棋
-                        if(getMess.isAgreedGamePeace()){
+                        if (getMess.isAgreedGamePeace()) {
                             //执行和棋操作
                             pcMB.setGamePeace(true);
                             pcMB.WinEvent(Chess.BLANK);     //和棋
                         } else {
-                            JOptionPane.showMessageDialog(ppMB, getMess.getSender()+"拒绝了你的和棋请求");
+                            JOptionPane.showMessageDialog(ppMB, getMess.getSender() + "拒绝了你的和棋请求");
                         }
                         break;
                 }

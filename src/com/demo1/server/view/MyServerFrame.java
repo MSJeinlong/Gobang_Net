@@ -42,7 +42,7 @@ public class MyServerFrame extends JFrame implements ActionListener {
         this.add(jp1, "North");
         this.add(up, "Center");
         this.setTitle("游戏服务器");
-        this.setBounds(500, 300, 800, 500);
+        this.setBounds(500, 300, 900, 500);
        /* this.pack();*/
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);

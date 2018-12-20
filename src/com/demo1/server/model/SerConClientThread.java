@@ -60,8 +60,13 @@ public class SerConClientThread extends Thread {
                             sendMess.setMesType(MessageType.RECORD_RESPONSE);
                             sendMess.setU(getMess.getU());
                             ghDAO = new GradeRDAOImpl();
+                            String userName = getMess.getU().getName();
                             //得到对应用户的对战记录
-                            sendMess.setGrlist(ghDAO.Query(getMess.getU().getName()));
+                            sendMess.setGrlist(ghDAO.Query(userName));
+                            //得到用户记录的统计情况
+                            sendMess.setWinCount(ghDAO.getWinCount(userName));
+                            sendMess.setLoseCount(ghDAO.getLoseCount(userName));
+                            sendMess.setPeaceCount(ghDAO.getPeaceCount(userName));
                             //返回消息包给客户端
                             oos = new ObjectOutputStream(s.getOutputStream());
                             oos.writeObject(sendMess);

@@ -8,19 +8,22 @@ import java.util.List;
  * @Author: long
  * @Description:
  */
-public class Message implements java.io.Serializable{
-    private int mesType;
-    private String sender;
-    private String getter;
-    private String chatContent;     //聊天内容
-    private User u;         //用户自己
-    private GradeRecord gr;
+public class Message implements java.io.Serializable {
+    private int mesType;                    //消息包类型
+    private String sender;                  //消息的发送者
+    private String getter;                  //消息的接受者
+    private String chatContent;             //聊天内容
+    private User u;                         //用户自己
+    private GradeRecord gr;                 //保存用户的一条记录
     private List<GradeRecord> grlist;       //历史战绩列表
     private List<User> userList;            //用户列表
     private boolean acceptChallenge;        //接受挑战与否
     private Coord coord;                    //保存棋子的坐标
     private boolean agreedUndoChess;        //是否同意悔棋
     private boolean agreedGamePeace;        //是否同意悔棋
+    private int winCount;                   //胜的次数
+    private int loseCount;                  //负的次数
+    private int peaceCount;                 //和的次数
 
     public Message() {
     }
@@ -119,5 +122,29 @@ public class Message implements java.io.Serializable{
 
     public void setAgreedGamePeace(boolean agreedGamePeace) {
         this.agreedGamePeace = agreedGamePeace;
+    }
+
+    public int getWinCount() {
+        return winCount;
+    }
+
+    public void setWinCount(int winCount) {
+        this.winCount = winCount;
+    }
+
+    public int getLoseCount() {
+        return loseCount;
+    }
+
+    public void setLoseCount(int loseCount) {
+        this.loseCount = loseCount;
+    }
+
+    public int getPeaceCount() {
+        return peaceCount;
+    }
+
+    public void setPeaceCount(int peaceCount) {
+        this.peaceCount = peaceCount;
     }
 }

@@ -41,7 +41,7 @@ public class PPMainBoard extends MainBoard {
     private JLabel jLabel2;
     private JLabel turnTip;     //提示这是谁的回合标签
     private JMenuBar jmb;       //菜单栏
-    private JMenu jmu1, jmu2;     //3个菜单项
+    private JMenu jmu1, jmu2;     //2个菜单项
     private JMenuItem backMainMenu, gameRecord;     //2个菜单子选项
 
     private JTextArea talkArea;
@@ -234,7 +234,6 @@ public class PPMainBoard extends MainBoard {
 
         //加入监听
         backMainMenu.addActionListener(this);
-        gameRecord.addActionListener(this);
         gameRecord.addActionListener(this);
 
         //加入菜单选项
