@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43bf1f5a-6951-4f4c-89d0-597c5fc13baa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/files/help.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fivechess.log" beforeDir="false" afterPath="$PROJECT_DIR$/fivechess.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/model/ClientConnServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/model/ClientConnServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCChessBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCChessBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PCMainBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gobang/com/demo1/client/view/PPMainBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/comman/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/comman/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/Login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="62" column="21" lean-forward="true" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
+            <state relative-caret-position="-163">
+              <caret line="80" column="28" lean-forward="true" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,34 +42,32 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java">
+        <entry file="file://$PROJECT_DIR$/files/help.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1517">
-              <caret line="96" column="20" lean-forward="true" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="342">
+              <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="270">
+              <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#858#859#0" expanded="true" />
+                <element signature="e#896#897#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="167" column="31" selection-start-line="167" selection-start-column="31" selection-end-line="167" selection-end-column="31" />
+            <state relative-caret-position="362">
+              <caret line="348" column="29" selection-start-line="348" selection-start-column="29" selection-end-line="348" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,7 +78,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-647">
+            <state relative-caret-position="3553">
               <caret line="198" column="32" selection-start-line="198" selection-start-column="32" selection-end-line="198" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -107,24 +90,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
+            <state relative-caret-position="1482">
               <caret line="126" column="30" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
               <folding>
-                <element signature="e#2461#2462#0" expanded="true" />
-                <element signature="e#2499#2500#0" expanded="true" />
-                <element signature="e#2562#2563#0" expanded="true" />
-                <element signature="e#2616#2617#0" expanded="true" />
-                <element signature="e#2968#2969#0" expanded="true" />
-                <element signature="e#3013#3014#0" expanded="true" />
-                <element signature="e#3053#3054#0" expanded="true" />
-                <element signature="e#3086#3087#0" expanded="true" />
-                <element signature="e#3118#3119#0" expanded="true" />
-                <element signature="e#3165#3166#0" expanded="true" />
-                <element signature="e#3207#3208#0" expanded="true" />
-                <element signature="e#3231#3232#0" expanded="true" />
-                <element signature="e#3264#3265#0" expanded="true" />
-                <element signature="e#3313#3314#0" expanded="true" />
-                <element signature="e#3357#3358#0" expanded="true" />
+                <element signature="e#2964#2965#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="68" column="82" lean-forward="true" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
+            <state relative-caret-position="1045">
+              <caret line="68" column="82" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -154,8 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="64" column="62" lean-forward="true" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
+            <state relative-caret-position="874">
+              <caret line="64" column="62" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,7 +136,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="528">
-              <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+              <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -197,7 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/demo1/client/view/SignUpDialog.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/model/ClientCommServerThread.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/tools/ClientConServer.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/tools/LoginUser.java" />
@@ -246,8 +214,9 @@
         <option value="$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java" />
-        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" />
         <option value="$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java" />
+        <option value="$PROJECT_DIR$/files/help.txt" />
+        <option value="$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java" />
       </list>
     </option>
   </component>
@@ -261,7 +230,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -287,22 +255,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="demo1" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Gobang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Gobang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="demo1" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="comman" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Gobang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Gobang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="demo1" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Gobang" type="b2602c69:ProjectViewProjectNode" />
@@ -339,12 +291,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545308615105" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545310825358" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -474,6 +427,7 @@
       <workItem from="1545226113953" duration="2338000" />
       <workItem from="1545234929254" duration="259000" />
       <workItem from="1545304591058" duration="4207000" />
+      <workItem from="1545308911512" duration="1295000" />
     </task>
     <task id="LOCAL-00001" summary="finish gradeHistory query">
       <created>1544525798201</created>
@@ -538,17 +492,24 @@
       <option name="project" value="LOCAL" />
       <updated>1545143796039</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add count about win, lose, peace, winpct">
+      <created>1545309045054</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1545309045054</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134216000" />
+    <option name="totallyTimeSpent" value="135511000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="999" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.18849841" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.19009584" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -557,7 +518,7 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32918552" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49893504" weight="0.32918552" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4978701" weight="0.19570136" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4978701" visible="true" weight="0.19570136" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -623,20 +584,10 @@
     <MESSAGE value="finish 99%" />
     <MESSAGE value="figure out the bug of undo and time limit" />
     <MESSAGE value="finish all function and figure out all bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish all function and figure out all bug" />
+    <MESSAGE value="add count about win, lose, peace, winpct" />
+    <option name="LAST_COMMIT_MESSAGE" value="add count about win, lose, peace, winpct" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/tools/MapUserModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1043#1044#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/tools/MapGradeRecordDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -905,17 +856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-          <folding>
-            <element signature="e#858#859#0" expanded="true" />
-            <element signature="e#896#897#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PPMainBoard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3667">
@@ -967,13 +907,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="66" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="16" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/Test.java" />
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -994,34 +928,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Message.java">
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="126" column="30" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
-          <folding>
-            <element signature="e#2461#2462#0" expanded="true" />
-            <element signature="e#2499#2500#0" expanded="true" />
-            <element signature="e#2562#2563#0" expanded="true" />
-            <element signature="e#2616#2617#0" expanded="true" />
-            <element signature="e#2968#2969#0" expanded="true" />
-            <element signature="e#3013#3014#0" expanded="true" />
-            <element signature="e#3053#3054#0" expanded="true" />
-            <element signature="e#3086#3087#0" expanded="true" />
-            <element signature="e#3118#3119#0" expanded="true" />
-            <element signature="e#3165#3166#0" expanded="true" />
-            <element signature="e#3207#3208#0" expanded="true" />
-            <element signature="e#3231#3232#0" expanded="true" />
-            <element signature="e#3264#3265#0" expanded="true" />
-            <element signature="e#3313#3314#0" expanded="true" />
-            <element signature="e#3357#3358#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="68" column="82" lean-forward="true" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
+        <state relative-caret-position="1577">
+          <caret line="96" column="20" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1030,10 +940,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/GradeRDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
+        <state relative-caret-position="266">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3553">
+          <caret line="198" column="32" selection-start-line="198" selection-start-column="32" selection-end-line="198" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/comman/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1482">
+          <caret line="126" column="30" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
+          <folding>
+            <element signature="e#2964#2965#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1045,22 +975,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java">
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/server/model/SerConClientThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="64" column="62" lean-forward="true" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
+        <state relative-caret-position="1045">
+          <caret line="68" column="82" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCChessBoard.java">
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/model/ClientConnServerThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-647">
-          <caret line="198" column="32" selection-start-line="198" selection-start-column="32" selection-end-line="198" selection-end-column="32" />
+        <state relative-caret-position="874">
+          <caret line="64" column="62" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/help.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/MainBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding>
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1068,27 +1016,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/demo1/server/view/MyServerFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
-          <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="167" column="31" selection-start-line="167" selection-start-column="31" selection-end-line="167" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/GradeRecordDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1517">
-          <caret line="96" column="20" lean-forward="true" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="20" />
+          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1097,8 +1025,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/Login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="62" column="21" lean-forward="true" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
+        <state relative-caret-position="-163">
+          <caret line="80" column="28" lean-forward="true" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/demo1/client/view/PCMainBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="348" column="29" selection-start-line="348" selection-start-column="29" selection-end-line="348" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
