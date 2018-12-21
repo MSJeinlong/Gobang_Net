@@ -24,6 +24,7 @@ public class Message implements java.io.Serializable {
     private int winCount;                   //胜的次数
     private int loseCount;                  //负的次数
     private int peaceCount;                 //和的次数
+    private int pcCount;                    //人机对战的次数
 
     public Message() {
     }
@@ -146,5 +147,13 @@ public class Message implements java.io.Serializable {
 
     public void setPeaceCount(int peaceCount) {
         this.peaceCount = peaceCount;
+    }
+
+    public int getPcCount() {
+        return pcCount;
+    }
+
+    public void setPcCount(int pcCount) {
+        this.pcCount = pcCount;
     }
 }

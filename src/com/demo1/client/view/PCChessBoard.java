@@ -205,6 +205,9 @@ public class PCChessBoard extends ChessBoard {
         initArray();    //初始化页面
         rounds = 0;     //重置chessCount
         mb.getLabel().setText(null);    //清空计时
+        //刷新用户等级
+        String title = "欢乐五子棋--当前用户：" + u.getName() + "(" + u.getSex() + ")" + "  等级：" + u.getDan() + "-" + u.getGrade();
+        mb.setTitle(title);
         //设置悔棋和认输不可用
         mb.getBack().setEnabled(false);
         mb.getGiveUp().setEnabled(false);

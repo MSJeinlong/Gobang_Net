@@ -140,5 +140,24 @@ public class GradeRDAOImpl implements GradeRDAO {
         return 0;
     }
 
+    @Override
+    public int getPcCount(String userName) {
+        String sql = "select count(*) from gradeHistory where userName = ? and rivalName = '电脑'";
+        conn = DBConnection.getConnection();
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userName);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnection.free(conn, pstmt, rs);
+        }
+        return 0;
+    }
+
 }
 

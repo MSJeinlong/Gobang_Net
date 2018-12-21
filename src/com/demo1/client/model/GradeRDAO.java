@@ -15,4 +15,6 @@ public interface GradeRDAO {
 
     public int getPeaceCount(String userName);          //得到userName的和棋的次数
 
+    public int getPcCount(String userName);             //得到userName人机对战次数
+
 }

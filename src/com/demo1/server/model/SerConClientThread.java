@@ -67,6 +67,7 @@ public class SerConClientThread extends Thread {
                             sendMess.setWinCount(ghDAO.getWinCount(userName));
                             sendMess.setLoseCount(ghDAO.getLoseCount(userName));
                             sendMess.setPeaceCount(ghDAO.getPeaceCount(userName));
+                            sendMess.setPcCount(ghDAO.getPcCount(userName));
                             //返回消息包给客户端
                             oos = new ObjectOutputStream(s.getOutputStream());
                             oos.writeObject(sendMess);

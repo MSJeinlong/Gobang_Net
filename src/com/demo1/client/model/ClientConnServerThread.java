@@ -1,9 +1,6 @@
 package com.demo1.client.model;
 
-import com.demo1.client.comman.Chess;
-import com.demo1.client.comman.Coord;
-import com.demo1.client.comman.Message;
-import com.demo1.client.comman.MessageType;
+import com.demo1.client.comman.*;
 import com.demo1.client.tools.MapGradeRecordDialog;
 import com.demo1.client.tools.MapFindRival;
 import com.demo1.client.tools.MapPPMainBoard;
@@ -12,9 +9,11 @@ import com.demo1.client.view.PPChessBoard;
 import com.demo1.client.view.PPMainBoard;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.List;
 
 /**
  * @program: Gobang
@@ -54,8 +53,13 @@ public class ClientConnServerThread extends Thread {
                     //服务器返回用户对战记录
                     case MessageType.RECORD_RESPONSE:
                         //拿到客户端的历史记录Dialog,更新数据
+                        List<GradeRecord> grlist = getMess.getGrlist();
+                        int winCount = getMess.getWinCount();
+                        int loseCount = getMess.getLoseCount();
+                        int peaceCount = getMess.getPeaceCount();
+                        int pcCount = getMess.getPcCount();
                         MapGradeRecordDialog.getGradeRecordDialog
-                                (getMess.getU().getName()).updateGradeRecord(getMess.getGrlist(), getMess.getWinCount(), getMess.getLoseCount(), getMess.getPeaceCount());
+                                (getMess.getU().getName()).updateGradeRecord(grlist, winCount, loseCount, peaceCount, pcCount);
                         break;
                     //服务器返回等待对战的用户
                     case MessageType.RESPONSE_WAIT_VERSUS_USERS:

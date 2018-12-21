@@ -28,6 +28,7 @@ public class GradeRecordDialog extends JDialog {
     private JLabel label_count; //用于显示记录总数的标签
     private JPanel jp1;    //显示统计情况
     private JLabel jlb_win, jlb_lose, jlb_peace, jlb_win_pct;   //胜，败，和，胜率标签
+    private JLabel jlb_ppvs, jlb_pcvs;      //人人对战次数，人机对战次数
 
     public GradeRecordDialog(Frame owner, String title, User u) {
         super(owner, title);
@@ -41,11 +42,15 @@ public class GradeRecordDialog extends JDialog {
         jlb_lose = new JLabel();
         jlb_peace = new JLabel();
         jlb_win_pct = new JLabel();
+        jlb_ppvs = new JLabel();
+        jlb_pcvs = new JLabel();
 
         jp1.add(jlb_win);
         jp1.add(jlb_lose);
         jp1.add(jlb_peace);
         jp1.add(jlb_win_pct);
+        jp1.add(jlb_ppvs);
+        jp1.add(jlb_pcvs);
 
         grModel = new GradeRModel();
         table = new JTable(grModel);
@@ -88,7 +93,7 @@ public class GradeRecordDialog extends JDialog {
 
 
     //更新历史记录表
-    public void updateGradeRecord(List<GradeRecord> list, int winCount, int loseCount, int peaceCount){
+    public void updateGradeRecord(List<GradeRecord> list, int winCount, int loseCount, int peaceCount, int pcCount){
         grModel = new GradeRModel();
         grModel.updateRows(list);
         table.setModel(grModel);
@@ -99,6 +104,9 @@ public class GradeRecordDialog extends JDialog {
         jlb_lose.setText("负："+loseCount+" 次     ");
         jlb_peace.setText("和："+peaceCount+" 次    ");
         DecimalFormat df = new DecimalFormat("#.00");
-        jlb_win_pct.setText("胜率："+ df.format(100 * ((double)winCount / list.size())) +"%");
+        jlb_win_pct.setText("胜率："+ df.format(100 * ((double)winCount / list.size())) +"%    ");
+        jlb_ppvs.setText("人人对战："+(list.size() - pcCount)+" 次    ");
+        jlb_pcvs.setText("人机对战："+pcCount+" 次    ");
+
     }
 }
